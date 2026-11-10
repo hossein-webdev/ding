@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>svelte-sonner alternative for Svelte 5: one toast at a time</title>
-    <meta name="description" content="Ding is a Svelte 5 toast library with no dependencies that shows one toast at a time. How it differs from svelte-sonner, and how to switch." />
+    <title>جایگزین svelte-sonner برای Svelte 5: هر بار فقط یک توست</title>
+    <meta name="description" content="Ding یک کتابخانهٔ توست برای Svelte 5 است که بدون وابستگی کار می‌کند و هر بار فقط یک توست نشان می‌دهد. چه تفاوتی با svelte-sonner دارد و چطور از آن به Ding مهاجرت کنید." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/svelte-sonner-alternative/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="svelte-sonner alternative for Svelte 5: one toast at a time" />
-    <meta property="og:description" content="Ding is a Svelte 5 toast library with no dependencies that shows one toast at a time. How it differs from svelte-sonner, and how to switch." />
+    <meta property="og:title" content="جایگزین svelte-sonner برای Svelte 5: هر بار فقط یک توست" />
+    <meta property="og:description" content="Ding یک کتابخانهٔ توست برای Svelte 5 است که بدون وابستگی کار می‌کند و هر بار فقط یک توست نشان می‌دهد. چه تفاوتی با svelte-sonner دارد و چطور از آن به Ding مهاجرت کنید." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/svelte-sonner-alternative/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "A svelte-sonner alternative for Svelte 5",
-        "description": "Ding is a Svelte 5 toast library with no dependencies that shows one toast at a time. How it differs from svelte-sonner, and how to switch.",
+        "headline": "جایگزینی برای svelte-sonner در Svelte 5",
+        "description": "Ding یک کتابخانهٔ توست برای Svelte 5 است که بدون وابستگی کار می‌کند و هر بار فقط یک توست نشان می‌دهد. چه تفاوتی با svelte-sonner دارد و چطور از آن به Ding مهاجرت کنید.",
         "url": "https://ding.yusufcengiz.dev/svelte-sonner-alternative/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,20 +35,20 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="ناوبری سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>A svelte-sonner alternative for Svelte 5</h1>
-      <p class="lead">svelte-sonner is a Svelte port of Sonner and it stacks toasts. Ding is a separate library built around one toast on screen that changes in place when a new message arrives.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
+      <h1>جایگزینی برای svelte-sonner در Svelte 5</h1>
+      <p class="lead">svelte-sonner نسخهٔ Svelte از Sonner است و توست‌ها را روی هم می‌چیند. Ding کتابخانه‌ای جداست که حول یک توست روی صفحه ساخته شده و با رسیدن پیام تازه، همان توست درجا تغییر شکل می‌دهد.</p>
+      <div class="try" role="group" aria-label="توست را امتحان کنید">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
         <button type="button" data-demo="promise">Promise</button>
       </div>
-      <h2>Install and mount</h2>
+      <h2>نصب و افزودن به برنامه</h2>
       <pre><code>npm i @yusufceng1z/ding-svelte</code></pre>
       <pre><code>&lt;script&gt;
         import { Toaster } from '@yusufceng1z/ding-svelte';
@@ -57,15 +57,15 @@
 
       {@render children()}
       &lt;Toaster position="top-center" theme="system" /&gt;</code></pre>
-      <h2>Use it</h2>
+      <h2>استفاده</h2>
       <pre><code>import { toast } from '@yusufceng1z/ding-svelte';
 
       toast.success('Saved');
       toast.promise(save(), { loading: 'Saving…', success: 'Saved', error: 'Failed' });</code></pre>
-      <h2>Should you switch</h2>
-      <p>If you want one message at a time and no dependencies, yes, it is worth trying. If you need several toasts on screen at once, stay with a stacking library. Ding only supports Svelte 5.</p>
-      <p>The full Svelte setup is on the <a href="/svelte-toast/">Svelte toast page</a>, and the reasoning behind one toast at a time is on the <a href="/sonner-alternative/">Sonner alternative page</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <h2>آیا باید مهاجرت کنید؟</h2>
+      <p>اگر هر بار یک پیام می‌خواهید و وابستگی نمی‌خواهید، بله، ارزش امتحان کردن دارد. اگر لازم است چند توست هم‌زمان روی صفحه باشند، سراغ کتابخانه‌ای بروید که توست‌ها را روی هم می‌چیند. Ding فقط از Svelte 5 پشتیبانی می‌کند.</p>
+      <p>راه‌اندازی کامل Svelte در <a href="/svelte-toast/">صفحهٔ توست Svelte</a> آمده است و دلیل انتخاب «هر بار یک توست» در <a href="/sonner-alternative/">صفحهٔ جایگزین Sonner</a> توضیح داده شده.</p>
+      <footer>Ding ساختهٔ <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> است. با مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

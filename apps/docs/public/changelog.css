@@ -2,7 +2,7 @@
 .version { color: var(--muted); font-size: 15px; margin: -0.4rem 0 1.5rem; }
 .entry { margin-top: 2.6rem; padding-top: 0.2rem; }
 .entry h2 { margin-top: 0; }
-.tag { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.55rem; margin-inline-start: 0.5rem; vertical-align: middle; }
+.tag { display: inline-block; font-size: 12px; font-weight: 600; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 0.05rem 0.55rem; margin-inline-start: 0.5rem; vertical-align: middle; }
 .credit { color: var(--muted); font-size: 15px; }
 .demo { border: 1px solid var(--line); border-radius: 12px; padding: 1rem; margin: 1rem 0 0; background: var(--code); }
 .demo p { margin: 0 0 0.75rem; font-size: 15px; color: var(--muted); max-width: none; }
@@ -14,7 +14,7 @@
 .demo button:focus-visible, .modes button:focus-visible, .demo input:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 .demo button[aria-pressed='true'], .modes button[aria-pressed='true'] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
 .demo input { font: inherit; font-size: 16px; min-height: 40px; padding: 0.4rem 0.7rem; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); color: var(--fg); width: 100%; max-width: 22rem; }
-.out { font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; margin: 0.75rem 0 0; padding: 0.6rem 0.8rem; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); color: var(--fg); white-space: pre-wrap; }
+.out { font: 14px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; margin: 0.75rem 0 0; padding: 0.6rem 0.8rem; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); color: var(--fg); white-space: pre-wrap; direction: rtl; unicode-bidi: plaintext; text-align: start; }
 .modes { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; padding: 0.6rem 0; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); margin: 0 0 1rem; }
 .modes span { color: var(--muted); font-size: 15px; margin-inline-end: 0.25rem; }
 dialog { border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--fg); padding: 1.25rem; max-width: 22rem; }

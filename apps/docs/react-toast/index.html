@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>React toast notifications: install and use Ding</title>
-    <meta name="description" content="How to add toast notifications to a React app with Ding: install, render one Toaster, call toast() anywhere. No dependencies and no CSS import." />
+    <title>اعلان‌های توست در React: نصب و استفاده از Ding</title>
+    <meta name="description" content="روش افزودن اعلان‌های توست به یک برنامهٔ React با Ding: نصب، رندر یک Toaster و صدا زدن toast() از هر جا. بدون وابستگی و بدون ایمپورت CSS." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/react-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="React toast notifications: install and use Ding" />
-    <meta property="og:description" content="How to add toast notifications to a React app with Ding: install, render one Toaster, call toast() anywhere. No dependencies and no CSS import." />
+    <meta property="og:title" content="اعلان‌های توست در React: نصب و استفاده از Ding" />
+    <meta property="og:description" content="روش افزودن اعلان‌های توست به یک برنامهٔ React با Ding: نصب، رندر یک Toaster و صدا زدن toast() از هر جا. بدون وابستگی و بدون ایمپورت CSS." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/react-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "React toast notifications",
-        "description": "How to add toast notifications to a React app with Ding: install, render one Toaster, call toast() anywhere. No dependencies and no CSS import.",
+        "headline": "اعلان‌های توست در React",
+        "description": "روش افزودن اعلان‌های توست به یک برنامهٔ React با Ding: نصب، رندر یک Toaster و صدا زدن toast() از هر جا. بدون وابستگی و بدون ایمپورت CSS.",
         "url": "https://ding.yusufcengiz.dev/react-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,26 +35,26 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>React toast notifications</h1>
-      <p class="lead">Ding is a React toast library with no dependencies and no stylesheet. You render one component and call a function. This page covers the setup and the parts people usually ask about next.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
-        <button type="button" data-demo="error">Error</button>
+      <h1>اعلان‌های توست در React</h1>
+      <p class="lead">کتابخانهٔ توست Ding برای React، بدون وابستگی و بدون استایل‌شیت است. یک کامپوننت رندر می‌کنید و یک تابع را صدا می‌زنید. این صفحه راه‌اندازی و سؤال‌هایی را پوشش می‌دهد که معمولاً بعد از آن پیش می‌آید.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
+        <button type="button" data-demo="error">خطا</button>
         <button type="button" data-demo="promise">Promise</button>
-        <button type="button" data-demo="undo">Undo</button>
+        <button type="button" data-demo="undo">بازگردانی</button>
       </div>
-      <h2>Install</h2>
-      <p>One package, nothing else to add.</p>
+      <h2>نصب</h2>
+      <p>فقط یک پکیج؛ چیز دیگری لازم نیست.</p>
       <pre><code>npm i @yusufceng1z/ding-react</code></pre>
-      <h2>Render the Toaster once</h2>
-      <p>Put it near the root of the app. The styles are injected from JavaScript, so there is no CSS file to import.</p>
+      <h2>رندر یک‌بارهٔ Toaster</h2>
+      <p>آن را نزدیک ریشهٔ برنامه بگذارید. استایل‌ها از داخل جاوااسکریپت تزریق می‌شوند، پس نیازی به ایمپورت فایل CSS نیست.</p>
       <pre><code>import { Toaster } from '@yusufceng1z/ding-react';
 
       export default function App() {
@@ -65,27 +65,27 @@
           &lt;/&gt;
         );
       }</code></pre>
-      <h2>Call toast from anywhere</h2>
-      <p><code>toast</code> is a plain function, so it works in event handlers, effects, data-fetching code and anything else that is not a component.</p>
+      <h2>صدا زدن toast از هر جا</h2>
+      <p>خودِ <code>toast</code> یک تابع معمولی است، بنابراین در کنترل‌کننده‌های رویداد، افکت‌ها، کد دریافت داده و هر جای دیگری که کامپوننت نیست کار می‌کند.</p>
       <pre><code>import { toast } from '@yusufceng1z/ding-react';
 
       toast.success('Saved');
       toast.error('Payment failed', { description: 'Card declined' });</code></pre>
-      <p>Only one toast is on screen. If you call <code>toast</code> again while one is showing, the toast on screen changes into the new message. Calling it with the same message twice adds a counter (×2) instead of a second toast.</p>
-      <h2>Saving, loading and undo</h2>
-      <p>For a request, pass the promise and one toast goes from loading to the result. The <a href="/loading-toast/">loading toast page</a> has the details.</p>
+      <p>همیشه فقط یک توست روی صفحه است. اگر در حالی که یک توست نمایش داده می‌شود دوباره <code>toast</code> را صدا بزنید، توستِ روی صفحه به پیام جدید تبدیل می‌شود. اگر دو بار با همان پیام صدایش بزنید، به‌جای توست دوم یک شمارنده (×۲) اضافه می‌شود.</p>
+      <h2>ذخیره‌سازی، بارگذاری و بازگردانی</h2>
+      <p>برای یک درخواست، promise را بدهید تا همان یک توست از حالت بارگذاری به نتیجه برسد. جزئیات در <a href="/loading-toast/">صفحهٔ توست بارگذاری</a> آمده است.</p>
       <pre><code>toast.promise(save(), {
         loading: 'Saving…',
         success: 'Saved',
         error: (err) =&gt; `Could not save: ${err.message}`,
       });</code></pre>
-      <p>An action button can return a patch, which is how <a href="/undo-toast/">undo toasts</a> confirm that the undo worked.</p>
-      <h2>Next.js and shadcn/ui</h2>
-      <p>The package is marked <code>"use client"</code>, so in the Next.js App Router <code>Toaster</code> can go straight into a server layout. The <a href="/nextjs-toast/">Next.js setup</a> shows how. If the project uses shadcn/ui, there is also a <a href="/shadcn-toast/">one-command install</a>.</p>
-      <h2>Timing</h2>
-      <p>Plain toasts close after 5 seconds. Errors, loading toasts and toasts with a button stay until the user dismisses them, because those are the ones people must not miss. Hovering or focusing a toast pauses the timer.</p>
-      <p>I wrote Ding because I wanted a toast that does not pile up. If that sounds like what you need, a star on <a href="https://github.com/YusufCeng1z/ding">GitHub</a> helps others find it.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <p>دکمهٔ اقدام می‌تواند یک شیء به‌روزرسانی (patch) برگرداند؛ <a href="/undo-toast/">توست‌های بازگردانی</a> از همین راه تأیید می‌کنند که بازگردانی کار کرده است.</p>
+      <h2>در Next.js و shadcn/ui</h2>
+      <p>این پکیج با <code>"use client"</code> علامت‌گذاری شده است، پس در App Router در Next.js می‌توان <code>Toaster</code> را مستقیم در یک layout سمت سرور گذاشت. <a href="/nextjs-toast/">راه‌اندازی Next.js</a> نشان می‌دهد چطور. اگر پروژه از shadcn/ui استفاده می‌کند، یک <a href="/shadcn-toast/">نصب با یک دستور</a> هم وجود دارد.</p>
+      <h2>زمان‌بندی</h2>
+      <p>توست‌های ساده بعد از ۵ ثانیه بسته می‌شوند. توست‌های خطا و بارگذاری و توست‌هایی که دکمه دارند ماندگارند و تا وقتی کاربر آن‌ها را نبندد می‌مانند، چون کاربران نباید این‌ها را از دست بدهند. با قرار گرفتن ماوس روی توست یا فوکوس روی آن، تایمر متوقف می‌شود.</p>
+      <p>من Ding را نوشتم چون توستی می‌خواستم که روی هم نچیند. اگر این همان چیزی است که لازم دارید، ستاره‌ای در <a href="https://github.com/YusufCeng1z/ding">GitHub</a> به دیگران کمک می‌کند آن را پیدا کنند.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

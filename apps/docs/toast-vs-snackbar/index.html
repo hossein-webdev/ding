@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Toast vs snackbar: is there a difference?</title>
-    <meta name="description" content="Toast and snackbar usually mean the same UI element: a short, temporary message. Where each name comes from and which one to use in your code." />
+    <title>توست در برابر اسنک‌بار: تفاوتی دارند؟</title>
+    <meta name="description" content="توست و اسنک‌بار معمولاً یک عنصر رابط کاربری را توصیف می‌کنند: پیامی کوتاه و موقت. هر نام از کجا آمده و در کدتان کدام را به کار ببرید." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/toast-vs-snackbar/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Toast vs snackbar: is there a difference?" />
-    <meta property="og:description" content="Toast and snackbar usually mean the same UI element: a short, temporary message. Where each name comes from and which one to use in your code." />
+    <meta property="og:title" content="توست در برابر اسنک‌بار: تفاوتی دارند؟" />
+    <meta property="og:description" content="توست و اسنک‌بار معمولاً یک عنصر رابط کاربری را توصیف می‌کنند: پیامی کوتاه و موقت. هر نام از کجا آمده و در کدتان کدام را به کار ببرید." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/toast-vs-snackbar/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Toast vs snackbar",
-        "description": "Toast and snackbar usually mean the same UI element: a short, temporary message. Where each name comes from and which one to use in your code.",
+        "headline": "توست در برابر اسنک‌بار",
+        "description": "توست و اسنک‌بار معمولاً یک عنصر رابط کاربری را توصیف می‌کنند: پیامی کوتاه و موقت. هر نام از کجا آمده و در کدتان کدام را به کار ببرید.",
         "url": "https://ding.yusufcengiz.dev/toast-vs-snackbar/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,24 +35,24 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>Toast vs snackbar</h1>
-      <p class="lead">Mostly no. Both words describe a short message that appears over the page, then goes away on its own. The difference is mainly which design tradition you learned the word from.</p>
-      <h2>Where the names come from</h2>
-      <p>Toast is the common word on the web and in a lot of component libraries, named after bread popping out of a toaster. Snackbar is the term Material Design uses, and libraries built on Material follow it.</p>
-      <h2>Where people draw a line</h2>
-      <p>Some teams use snackbar for a single message fixed to a screen edge, usually with one action, and toast for any floating message including ones that stack. That is a team convention, not a standard. If your design system already picked a word, use it everywhere, in code, docs and conversation.</p>
-      <h2>What to actually decide</h2>
-      <p>The name matters less than the behavior. Decide whether messages stack or replace each other, where they appear, how long they stay, and whether they can carry an action. Ding is a toast library that shows one message at a time and replaces it on the next call. The <a href="/toast-notification-ux/">UX guide</a> goes through those choices.</p>
+      <h1>توست در برابر اسنک‌بار</h1>
+      <p class="lead">بیشتر نه. هر دو واژه پیامی کوتاه را توصیف می‌کنند که روی صفحه ظاهر می‌شود و بعد خودش می‌رود. تفاوت عمدتاً در این است که واژه را از کدام سنت طراحی یاد گرفته‌اید.</p>
+      <h2>این نام‌ها از کجا آمده‌اند</h2>
+      <p>توست واژهٔ رایج در وب و در بسیاری از کتابخانه‌های کامپوننت است و نامش از بیرون پریدن نان از توستر گرفته شده است. اسنک‌بار اصطلاحی است که Material Design به کار می‌برد و کتابخانه‌هایی که بر پایهٔ Material ساخته شده‌اند از آن پیروی می‌کنند.</p>
+      <h2>مرزی که بعضی‌ها می‌کشند</h2>
+      <p>بعضی تیم‌ها اسنک‌بار را برای یک پیام تکی که به لبهٔ صفحه چسبیده است و معمولاً یک اقدام دارد به کار می‌برند و توست را برای هر پیام شناوری، از جمله پیام‌هایی که روی هم چیده می‌شوند. این یک قرارداد تیمی است، نه استاندارد. اگر سیستم طراحی شما از قبل یک واژه را انتخاب کرده، همان را همه‌جا به کار ببرید: در کد، مستندات و گفت‌وگو.</p>
+      <h2>چه چیزی را باید واقعاً تصمیم گرفت</h2>
+      <p>نام از رفتار کم‌اهمیت‌تر است. تصمیم بگیرید پیام‌ها روی هم چیده شوند یا جای هم را بگیرند، کجا ظاهر شوند، چه مدت بمانند و آیا بتوانند یک اقدام داشته باشند. Ding یک کتابخانهٔ توست است که هر بار یک پیام نشان می‌دهد و با فراخوانی بعدی آن را جایگزین می‌کند. <a href="/toast-notification-ux/">راهنمای تجربهٔ کاربری</a> این انتخاب‌ها را مرور می‌کند.</p>
       <pre><code>import { toast } from '@yusufceng1z/ding-react';
 
       toast.success('Saved');</code></pre>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
   </body>
 </html>

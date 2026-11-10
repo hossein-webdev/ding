@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Undo toast: let users reverse an action instead of confirming</title>
-    <meta name="description" content="Replace Are you sure? dialogs with an undo toast. Code for React, Svelte and plain JavaScript, plus how to make the undo trustworthy." />
+    <title>توست بازگردانی: به‌جای پرسیدن تأیید، به کاربر امکان برگرداندن کار را بدهید</title>
+    <meta name="description" content="به‌جای دیالوگ‌های «مطمئنید؟» از توست بازگردانی استفاده کنید. کد برای React، Svelte و جاوااسکریپت ساده، به‌علاوهٔ اینکه چطور بازگردانی را قابل‌اعتماد کنید." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/undo-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Undo toast: let users reverse an action instead of confirming" />
-    <meta property="og:description" content="Replace Are you sure? dialogs with an undo toast. Code for React, Svelte and plain JavaScript, plus how to make the undo trustworthy." />
+    <meta property="og:title" content="توست بازگردانی: به‌جای پرسیدن تأیید، به کاربر امکان برگرداندن کار را بدهید" />
+    <meta property="og:description" content="به‌جای دیالوگ‌های «مطمئنید؟» از توست بازگردانی استفاده کنید. کد برای React، Svelte و جاوااسکریپت ساده، به‌علاوهٔ اینکه چطور بازگردانی را قابل‌اعتماد کنید." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/undo-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "How to build an undo toast",
-        "description": "Replace Are you sure? dialogs with an undo toast. Code for React, Svelte and plain JavaScript, plus how to make the undo trustworthy.",
+        "headline": "چطور یک توست بازگردانی بسازیم",
+        "description": "به‌جای دیالوگ‌های «مطمئنید؟» از توست بازگردانی استفاده کنید. کد برای React، Svelte و جاوااسکریپت ساده، به‌علاوهٔ اینکه چطور بازگردانی را قابل‌اعتماد کنید.",
         "url": "https://ding.yusufcengiz.dev/undo-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,19 +35,19 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>How to build an undo toast</h1>
-      <p class="lead">A confirm dialog before every delete slows people down and they click through it anyway. Doing the action and offering Undo in a toast is faster, and safer if the undo actually works.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="undo">Undo</button>
+      <h1>چطور یک توست بازگردانی بسازیم</h1>
+      <p class="lead">دیالوگ تأیید پیش از هر حذف، کاربران را کند می‌کند و آن‌ها در هر صورت از آن رد می‌شوند. انجام فوری کار و ارائهٔ «بازگردانی» در یک توست سریع‌تر است، و اگر بازگردانی واقعاً کار کند، امن‌تر هم هست.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="undo">بازگردانی</button>
       </div>
-      <h2>The code</h2>
+      <h2>کد</h2>
       <pre><code>import { toast } from '@yusufceng1z/ding-react';
 
       toast.success('Message deleted', {
@@ -59,12 +59,12 @@
           },
         },
       });</code></pre>
-      <p>The click handler may return a patch. When it does, the toast changes in place to Restored instead of closing, so the person gets confirmation that the undo worked. The same code works with <code>@yusufceng1z/ding-svelte</code> and <code>@yusufceng1z/ding</code>, only the import differs.</p>
-      <h2>Making the undo real</h2>
-      <p>Do not delete for good when the button is shown. Mark the item as deleted first, and remove it only after the undo window has passed, or never, if you keep a trash. Otherwise Undo is a promise you cannot keep when the request has already finished.</p>
-      <p>A toast with a button stays until dismissed in Ding, so nobody is racing a timer. Still, keep a second way back, such as a trash view. A toast is easy to miss, and for some people it is hard to reach, see <a href="/toast-accessibility/">toast accessibility</a>.</p>
-      <p>More on when toasts are the right tool: <a href="/toast-notification-ux/">toast notification UX</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <p>تابع کلیک می‌تواند یک شیء به‌روزرسانی (patch) برگرداند. در این صورت توست به‌جای بسته شدن، درجا به پیام «بازگردانی شد» تغییر می‌کند و کاربر تأیید می‌گیرد که بازگردانی انجام شده است. همین کد با <code>@yusufceng1z/ding-svelte</code> و <code>@yusufceng1z/ding</code> هم کار می‌کند، فقط ایمپورت فرق دارد.</p>
+      <h2>بازگردانی را واقعی کنید</h2>
+      <p>وقتی دکمه نشان داده می‌شود، آیتم را برای همیشه حذف نکنید. اول آن را حذف‌شده علامت بزنید و فقط بعد از گذشتن مهلت بازگردانی پاکش کنید، یا اگر سطل زباله دارید اصلاً پاکش نکنید. وگرنه «بازگردانی» وعده‌ای است که وقتی درخواست از قبل تمام شده نمی‌توانید به آن عمل کنید.</p>
+      <p>در Ding توستی که دکمه دارد تا وقتی بسته نشود می‌ماند، پس کسی با تایمر مسابقه نمی‌دهد. با این حال راه برگشت دومی هم نگه دارید، مثل صفحهٔ سطل زباله. توست را ساده می‌شود از دست داد و برای بعضی افراد دسترسی به آن سخت است؛ <a href="/toast-accessibility/">دسترس‌پذیری توست</a> را ببینید.</p>
+      <p>برای اطلاعات بیشتر دربارهٔ اینکه توست چه زمانی ابزار درستی است: <a href="/toast-notification-ux/">تجربهٔ کاربری اعلان توست</a>.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

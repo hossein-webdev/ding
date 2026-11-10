@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Vanilla JavaScript toast notifications with no framework</title>
-    <meta name="description" content="Show toast notifications in plain JavaScript with Ding: mount the toaster once and call toast(). No framework, no dependencies, no CSS file." />
+    <title>اعلان‌های توست در جاوااسکریپت خالص و بدون فریم‌ورک</title>
+    <meta name="description" content="نمایش اعلان‌های توست در جاوااسکریپت ساده با Ding: Toaster را یک بار mount کنید و toast() را صدا بزنید. بدون فریم‌ورک، بدون وابستگی و بدون فایل CSS." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/javascript-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Vanilla JavaScript toast notifications with no framework" />
-    <meta property="og:description" content="Show toast notifications in plain JavaScript with Ding: mount the toaster once and call toast(). No framework, no dependencies, no CSS file." />
+    <meta property="og:title" content="اعلان‌های توست در جاوااسکریپت خالص و بدون فریم‌ورک" />
+    <meta property="og:description" content="نمایش اعلان‌های توست در جاوااسکریپت ساده با Ding: Toaster را یک بار mount کنید و toast() را صدا بزنید. بدون فریم‌ورک، بدون وابستگی و بدون فایل CSS." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/javascript-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "JavaScript toast notifications without a framework",
-        "description": "Show toast notifications in plain JavaScript with Ding: mount the toaster once and call toast(). No framework, no dependencies, no CSS file.",
+        "headline": "اعلان‌های توست در جاوااسکریپت بدون فریم‌ورک",
+        "description": "نمایش اعلان‌های توست در جاوااسکریپت ساده با Ding: Toaster را یک بار mount کنید و toast() را صدا بزنید. بدون فریم‌ورک، بدون وابستگی و بدون فایل CSS.",
         "url": "https://ding.yusufcengiz.dev/javascript-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,39 +35,39 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>JavaScript toast notifications without a framework</h1>
-      <p class="lead">The core of Ding does not need React or Svelte. If you have a plain JavaScript page, a Vue app, or any other setup, you can use the core package directly.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
-        <button type="button" data-demo="error">Error</button>
-        <button type="button" data-demo="progress">Progress</button>
+      <h1>اعلان‌های توست در جاوااسکریپت بدون فریم‌ورک</h1>
+      <p class="lead">هستهٔ Ding به React یا Svelte نیازی ندارد. اگر یک صفحهٔ جاوااسکریپت ساده، یک برنامهٔ Vue یا هر پروژهٔ دیگری دارید، می‌توانید مستقیم از پکیج هسته استفاده کنید.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
+        <button type="button" data-demo="error">خطا</button>
+        <button type="button" data-demo="progress">پیشرفت</button>
       </div>
-      <h2>Install</h2>
+      <h2>نصب</h2>
       <pre><code>npm i @yusufceng1z/ding</code></pre>
-      <h2>Mount and show</h2>
+      <h2>راه‌اندازی و نمایش</h2>
       <pre><code>import { mountToaster, toast } from '@yusufceng1z/ding';
 
       const unmount = mountToaster({ position: 'top-center' });
 
       toast.success('Saved');
       toast.error('Payment failed', { description: 'Card declined' });</code></pre>
-      <p><code>mountToaster</code> returns a function that removes the toaster again, useful if the page is torn down or the toaster should only exist on some routes.</p>
-      <h2>Updating a long task</h2>
-      <p><code>toast.loading</code> returns an id. Pass it to <code>toast.update</code> to move the same toast through progress and into a result.</p>
+      <p>تابع <code>mountToaster</code> تابعی برمی‌گرداند که Toaster را دوباره حذف می‌کند؛ این کار وقتی به درد می‌خورد که صفحه از بین می‌رود یا Toaster باید فقط روی بعضی مسیرها وجود داشته باشد.</p>
+      <h2>به‌روزرسانی یک کار طولانی</h2>
+      <p>تابع <code>toast.loading</code> یک شناسه برمی‌گرداند. آن را به <code>toast.update</code> بدهید تا همان توست مراحل پیشرفت را طی کند و به نتیجه برسد.</p>
       <pre><code>const id = toast.loading('Uploading photo…', { progress: 0 });
       toast.update(id, { progress: 0.6 });
       toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });</code></pre>
-      <h2>Options</h2>
-      <p>Position and theme are set on <code>mountToaster</code> or later with <code>toast.configure({ position, theme })</code>. The full list of options is in the <a href="/docs.html">docs</a>.</p>
-      <p>If you do use React or Svelte, the framework packages are thin wrappers over this one. See <a href="/react-toast/">React</a> or <a href="/svelte-toast/">Svelte</a>. The code is on <a href="https://github.com/YusufCeng1z/ding">GitHub</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <h2>گزینه‌ها</h2>
+      <p>جایگاه و پوسته روی <code>mountToaster</code> تنظیم می‌شوند یا بعداً با <code>toast.configure({ position, theme })</code>. فهرست کامل گزینه‌ها در <a href="/docs.html">مستندات</a> آمده است.</p>
+      <p>اگر از React یا Svelte استفاده می‌کنید، پکیج‌های مخصوص هر فریم‌ورک فقط یک لایهٔ نازک روی همین پکیج هستند. به <a href="/react-toast/">React</a> یا <a href="/svelte-toast/">Svelte</a> سر بزنید. کد در <a href="https://github.com/YusufCeng1z/ding">GitHub</a> است.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

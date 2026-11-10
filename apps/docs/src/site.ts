@@ -3,42 +3,44 @@ import { toast, chime } from '@yusufceng1z/ding';
 import { MASCOT } from './mascot';
 
 const wait = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
+// progress numbers in toast text use Persian digits
+const fa = (n: number) => n.toLocaleString('fa-IR');
 
 const avatar = (letters: string, bg: string) =>
   `data:image/svg+xml,${encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"><rect width="56" height="56" fill="${bg}"/><text x="28" y="35" font-family="system-ui,sans-serif" font-size="22" font-weight="600" text-anchor="middle" fill="#fff">${letters}</text></svg>`)}`;
 
 const demos = new Map<string, () => void>([
-  ['Save', () => void toast.success('Changes saved')],
-  ['Error', () => void toast.error('Payment failed', { description: 'Your card was declined. Try another card.' })],
-  ['Warning', () => void toast.warning('Storage almost full', { description: 'Free up space or upgrade your plan.' })],
-  ['Info', () => void toast.info('New version available')],
-  ['Promise', () => void toast.promise(wait(2000), { loading: 'Uploading photo…', success: 'Photo uploaded', error: 'Upload failed. Try again.' })],
-  ['Description', () => void toast.success('Deployment ready', { description: 'my-app is live at my-app.vercel.app' })],
-  ['Message', () => void toast.info('Sarah Chen', {
-    image: avatar('SC', '#6d5dfc'),
-    meta: 'now',
-    description: 'Can you review the PR before standup?',
-    action: { label: 'Reply', onClick: () => ({ type: 'success', title: 'Reply sent', description: '', image: null }) },
-    secondary: { label: 'Later', onClick: () => undefined },
+  ['Save', () => void toast.success('تغییرات ذخیره شد')],
+  ['Error', () => void toast.error('پرداخت ناموفق بود', { description: 'کارت شما رد شد. کارت دیگری را امتحان کنید.' })],
+  ['Warning', () => void toast.warning('فضای ذخیره‌سازی رو به پایان است', { description: 'فضا آزاد کنید یا طرح خود را ارتقا دهید.' })],
+  ['Info', () => void toast.info('نسخهٔ جدید در دسترس است')],
+  ['Promise', () => void toast.promise(wait(2000), { loading: 'در حال آپلود عکس…', success: 'عکس آپلود شد', error: 'آپلود ناموفق بود. دوباره تلاش کنید.' })],
+  ['Description', () => void toast.success('استقرار آماده است', { description: 'برنامهٔ my-app روی my-app.vercel.app آنلاین شد' })],
+  ['Message', () => void toast.info('سارا چن', {
+    image: avatar('س‌چ', '#6d5dfc'),
+    meta: 'الان',
+    description: 'قبل از استندآپ می‌شود PR را بررسی کنی؟',
+    action: { label: 'پاسخ', onClick: () => ({ type: 'success', title: 'پاسخ ارسال شد', description: '', image: null }) },
+    secondary: { label: 'بعداً', onClick: () => undefined },
   })],
-  ['Meeting', () => void toast.info('Design sync in 5 min', {
-    image: avatar('DS', '#0f9d6b'),
-    description: 'Room 4 · 6 attendees',
-    action: { label: 'Join', onClick: () => ({ type: 'success', title: 'Joining…', description: '', image: null }) },
-    secondary: { label: 'Snooze', onClick: () => ({ type: 'info', title: 'Snoozed for 10 min', description: '', image: null, action: null, secondary: null, duration: 3000 }) },
+  ['Meeting', () => void toast.info('جلسهٔ طراحی تا ۵ دقیقهٔ دیگر', {
+    image: avatar('ج‌ط', '#0f9d6b'),
+    description: 'اتاق ۴ · ۶ شرکت‌کننده',
+    action: { label: 'پیوستن', onClick: () => ({ type: 'success', title: 'در حال پیوستن…', description: '', image: null }) },
+    secondary: { label: 'به تعویق', onClick: () => ({ type: 'info', title: '۱۰ دقیقه به تعویق افتاد', description: '', image: null, action: null, secondary: null, duration: 3000 }) },
   })],
-  ['Copy', () => void toast.success('Link copied', { meta: '⌘V', duration: 2500 })],
+  ['Copy', () => void toast.success('لینک کپی شد', { meta: '⌘V', duration: 2500 })],
   ['Music', () => {
     const tracks: [string, string][] = [['Midnight City', 'M83 · Hurry Up, We’re Dreaming'], ['Intro', 'The xx · xx'], ['Kids', 'MGMT · Oracular Spectacular']];
     let i = 0, n = 0;
-    const stop = () => (clearInterval(tick), { type: 'info' as const, title: 'Playback stopped', description: '', meta: null, image: null, progress: null, action: null, secondary: null, duration: 2500 });
+    const stop = () => (clearInterval(tick), { type: 'info' as const, title: 'پخش متوقف شد', description: '', meta: null, image: null, progress: null, action: null, secondary: null, duration: 2500 });
     // a patch that keeps both buttons: act() removes buttons unless the patch names them
     const next = () => {
       i = (i + 1) % tracks.length;
       n = 0;
-      return { title: tracks[i]![0], description: tracks[i]![1], progress: 0, action: { label: 'Next', onClick: next }, secondary: { label: 'Stop', onClick: stop } };
+      return { title: tracks[i]![0], description: tracks[i]![1], progress: 0, action: { label: 'بعدی', onClick: next }, secondary: { label: 'توقف', onClick: stop } };
     };
-    const id = toast.info(tracks[0]![0], { image: avatar('♪', '#1d1d22'), description: tracks[0]![1], meta: 'now playing', progress: 0, duration: 0, action: { label: 'Next', onClick: next }, secondary: { label: 'Stop', onClick: stop } });
+    const id = toast.info(tracks[0]![0], { image: avatar('♪', '#1d1d22'), description: tracks[0]![1], meta: 'در حال پخش', progress: 0, duration: 0, action: { label: 'بعدی', onClick: next }, secondary: { label: 'توقف', onClick: stop } });
     const tick = setInterval(() => {
       n += 0.02;
       if (n < 1) return toast.update(id, { progress: n });
@@ -46,69 +48,77 @@ const demos = new Map<string, () => void>([
       toast.update(id, { title, description, progress: 0 });
     }, 300);
   }],
-  ['Update', () => void toast.info('Update available', {
-    description: 'Version 2.4 is ready to install.',
-    action: { label: 'Restart', onClick: () => { const id = 'upd'; setTimeout(() => toast.update(id, { type: 'success', title: 'You’re up to date', description: 'Version 2.4' }), 2200); return { type: 'loading', title: 'Restarting…', description: 'This takes a few seconds', action: null, secondary: null }; } },
-    secondary: { label: 'Later', onClick: () => undefined },
+  ['Update', () => void toast.info('به‌روزرسانی در دسترس است', {
+    description: 'نسخهٔ 2.4 آمادهٔ نصب است.',
+    action: { label: 'راه‌اندازی مجدد', onClick: () => { const id = 'upd'; setTimeout(() => toast.update(id, { type: 'success', title: 'نسخهٔ شما به‌روز است', description: 'نسخهٔ 2.4' }), 2200); return { type: 'loading', title: 'در حال راه‌اندازی مجدد…', description: 'چند ثانیه طول می‌کشد', action: null, secondary: null }; } },
+    secondary: { label: 'بعداً', onClick: () => undefined },
     id: 'upd',
   })],
-  ['Offline', () => void toast.error('You’re offline', {
-    description: 'Changes will sync when you reconnect.',
+  ['Offline', () => void toast.error('اتصال شما قطع است', {
+    description: 'با اتصال دوباره، تغییرات همگام‌سازی می‌شود.',
     id: 'off',
-    action: { label: 'Retry', onClick: () => { setTimeout(() => toast.update('off', { type: 'success', title: 'Back online', description: 'All changes synced' }), 2000); return { type: 'loading', title: 'Reconnecting…', description: '' , action: null }; } },
+    action: { label: 'تلاش دوباره', onClick: () => { setTimeout(() => toast.update('off', { type: 'success', title: 'دوباره آنلاین شدید', description: 'همهٔ تغییرات همگام‌سازی شد' }), 2000); return { type: 'loading', title: 'در حال اتصال دوباره…', description: '' , action: null }; } },
   })],
-  ['Invite', () => void toast.info('Alex invited you to Atlas', {
-    image: avatar('AL', '#e5484d'),
-    description: 'Product design workspace · 12 members',
-    action: { label: 'Accept', onClick: () => ({ type: 'success', title: 'Joined Atlas', description: 'You can now see 12 members', image: null }) },
-    secondary: { label: 'Decline', onClick: () => undefined },
+  ['Invite', () => void toast.info('الکس شما را به Atlas دعوت کرد', {
+    image: avatar('ال', '#e5484d'),
+    description: 'فضای کاری طراحی محصول · ۱۲ عضو',
+    action: { label: 'پذیرفتن', onClick: () => ({ type: 'success', title: 'به Atlas پیوستید', description: 'حالا می‌توانید ۱۲ عضو را ببینید', image: null }) },
+    secondary: { label: 'رد کردن', onClick: () => undefined },
   })],
   ['Download', () => {
-    const id = toast.info('design-system.zip', { image: avatar('ZIP', '#3b3b44'), description: 'Downloading · 0%', progress: 0, secondary: { label: 'Cancel', onClick: () => { clearInterval(tick); return { type: 'error', title: 'Download canceled', description: '', image: null, progress: null, secondary: null, duration: 3000 }; } } });
+    const id = toast.info('design-system.zip', { image: avatar('ZIP', '#3b3b44'), description: 'در حال دانلود · ۰٪', progress: 0, secondary: { label: 'لغو', onClick: () => { clearInterval(tick); return { type: 'error', title: 'دانلود لغو شد', description: '', image: null, progress: null, secondary: null, duration: 3000 }; } } });
     let n = 0;
     const tick = setInterval(() => {
       n = Math.min(100, n + 2 + Math.floor(Math.random() * 7));
-      if (n < 100) return toast.update(id, { description: `Downloading · ${n}%`, progress: n / 100 });
+      if (n < 100) return toast.update(id, { description: `در حال دانلود · ${fa(n)}٪`, progress: n / 100 });
       clearInterval(tick);
-      toast.update(id, { type: 'success', title: 'Download complete', description: '84 MB · saved to Downloads', image: null, progress: null, secondary: null });
+      toast.update(id, { type: 'success', title: 'دانلود کامل شد', description: '۸۴ مگابایت · در پوشهٔ دانلودها ذخیره شد', image: null, progress: null, secondary: null });
     }, 120);
   }],
   ['Order', () => {
-    const id = toast.loading('Order confirmed', { description: 'Preparing your food' });
-    const steps: [string, string, string?][] = [['Preparing', 'The kitchen has your order'], ['On the way', 'Courier arrives in 8 min'], ['Delivered', 'Enjoy your meal', 'success']];
+    const id = toast.loading('سفارش تأیید شد', { description: 'غذای شما در حال آماده‌سازی است' });
+    const steps: [string, string, string?][] = [['در حال آماده‌سازی', 'آشپزخانه سفارش شما را دریافت کرد'], ['در راه است', 'پیک تا ۸ دقیقهٔ دیگر می‌رسد'], ['تحویل داده شد', 'نوش جان', 'success']];
     steps.forEach(([title, description, type], i) => setTimeout(() => toast.update(id, { title, description, ...(type && { type: type as 'success' }) }), (i + 1) * 2200));
   }],
-  ['Undo', () => void toast.success('Message deleted', { action: { label: 'Undo', onClick: () => ({ type: 'success', title: 'Message restored' }) }, duration: 8000 })],
-  ['Confirm', () => void toast.warning('Discard unsaved changes?', { action: { label: 'Discard', onClick: () => ({ type: 'error', title: 'Changes discarded' }) } })],
+  ['Undo', () => void toast.success('پیام حذف شد', { action: { label: 'بازگردانی', onClick: () => ({ type: 'success', title: 'پیام بازگردانی شد' }) }, duration: 8000 })],
+  ['Confirm', () => void toast.warning('تغییرات ذخیره‌نشده دور انداخته شود؟', { action: { label: 'دور انداختن', onClick: () => ({ type: 'error', title: 'تغییرات دور انداخته شد' }) } })],
   ['Sync', () => {
-    const id = toast.loading('Syncing 3 files…');
-    setTimeout(() => toast.update(id, { type: 'success', title: 'All files synced', description: 'Last sync just now' }), 2000);
+    const id = toast.loading('در حال همگام‌سازی ۳ فایل…');
+    setTimeout(() => toast.update(id, { type: 'success', title: 'همهٔ فایل‌ها همگام شد', description: 'آخرین همگام‌سازی: همین الان' }), 2000);
   }],
   ['Upload', () => {
-    const id = toast.loading('Uploading 0%', { progress: 0 });
+    const id = toast.loading('در حال آپلود ۰٪', { progress: 0 });
     let n = 0;
     const tick = setInterval(() => {
       n = Math.min(100, n + 1 + Math.floor(Math.random() * 6));
-      if (n < 100) return toast.update(id, { title: `Uploading ${n}%`, progress: n / 100 });
+      if (n < 100) return toast.update(id, { title: `در حال آپلود ${fa(n)}٪`, progress: n / 100 });
       clearInterval(tick);
-      toast.update(id, { type: 'success', title: 'Upload complete', description: 'photo-2026.raw · 24.1 MB', progress: null });
+      toast.update(id, { type: 'success', title: 'آپلود کامل شد', description: 'photo-2026.raw · ۲۴٫۱ مگابایت', progress: null });
     }, 110);
   }],
-  ['Sequence', () => [() => toast.loading('Uploading photo…'), () => toast.success('Photo uploaded'), () => toast.error('Sync failed', { description: 'Check your connection' }), () => toast.info('Retrying in 3s')].forEach((f, i) => setTimeout(f, i * 1300))],
+  ['Sequence', () => [() => toast.loading('در حال آپلود عکس…'), () => toast.success('عکس آپلود شد'), () => toast.error('همگام‌سازی ناموفق بود', { description: 'اتصال خود را بررسی کنید' }), () => toast.info('تلاش دوباره تا ۳ ثانیه دیگر')].forEach((f, i) => setTimeout(f, i * 1300))],
 ]);
 
 const GROUPS: [string, string, string[]][] = [
-  ['Status', 'Quick feedback', ['Save', 'Error', 'Warning', 'Info', 'Description']],
-  ['Progress', 'One toast that updates in place', ['Promise', 'Sync', 'Upload', 'Download', 'Order', 'Sequence']],
-  ['Content', 'Avatars, buttons and details', ['Message', 'Meeting', 'Invite', 'Music', 'Copy']],
-  ['Actions', 'Undo, confirm and retry', ['Undo', 'Confirm', 'Update', 'Offline']],
-  ['Sound', 'Hear each cue. Turn on your volume.', ['Success', 'Error', 'Warning', 'Info']],
+  ['Status', 'بازخورد سریع', ['Save', 'Error', 'Warning', 'Info', 'Description']],
+  ['Progress', 'یک توست که درجا به‌روز می‌شود', ['Promise', 'Sync', 'Upload', 'Download', 'Order', 'Sequence']],
+  ['Content', 'آواتار، دکمه و جزئیات', ['Message', 'Meeting', 'Invite', 'Music', 'Copy']],
+  ['Actions', 'بازگردانی، تأیید و تلاش دوباره', ['Undo', 'Confirm', 'Update', 'Offline']],
+  ['Sound', 'صدای هر نوع را بشنوید. صدای دستگاه را روشن کنید.', ['Success', 'Error', 'Warning', 'Info']],
 ];
+// the English names above are lookup keys; this is what the buttons and headings show ("Promise" stays as the API name)
+const LABEL: Record<string, string> = {
+  Status: 'وضعیت', Progress: 'پیشرفت', Content: 'محتوا', Actions: 'اقدام‌ها', Sound: 'صدا',
+  Save: 'ذخیره', Error: 'خطا', Warning: 'هشدار', Info: 'اطلاع', Success: 'موفق', Description: 'توضیح',
+  Sync: 'همگام‌سازی', Upload: 'آپلود', Download: 'دانلود', Order: 'سفارش', Sequence: 'توالی',
+  Message: 'پیام', Meeting: 'جلسه', Invite: 'دعوت', Music: 'موسیقی', Copy: 'کپی',
+  Undo: 'بازگردانی', Confirm: 'تأیید', Update: 'به‌روزرسانی', Offline: 'آفلاین',
+};
 const SOUND_TYPES = { Success: 'success', Error: 'error', Warning: 'warning', Info: 'info' } as const;
 const POSITIONS = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'] as const;
 const NAMES: Record<(typeof POSITIONS)[number], string> = {
-  'top-left': 'Top left', 'top-center': 'Top', 'top-right': 'Top right',
-  'bottom-left': 'Bottom left', 'bottom-center': 'Bottom', 'bottom-right': 'Bottom right',
+  'top-left': 'بالا چپ', 'top-center': 'بالا', 'top-right': 'بالا راست',
+  'bottom-left': 'پایین چپ', 'bottom-center': 'پایین', 'bottom-right': 'پایین راست',
 };
 const INSTALL = { React: 'npm i @yusufceng1z/ding-react', Svelte: 'npm i @yusufceng1z/ding-svelte', Vue: 'npm i @yusufceng1z/ding-vue', Vanilla: 'npm i @yusufceng1z/ding', shadcn: 'npx shadcn@latest add @ding/ding' } as const;
 const GITHUB = 'https://github.com/YusufCeng1z/ding';
@@ -152,19 +162,19 @@ const link = (href: string, text: string, cls = '') => h('a', { href: href.start
 
 export function mountSite(root: HTMLElement, _adapter?: string) {
   (window as unknown as { toast: typeof toast }).toast = toast; // for console experiments
-  toast.configure({ theme: 'dark', sound: true });
+  toast.configure({ theme: 'dark', sound: true, labels: { region: 'اعلان‌ها', dismiss: 'بستن اعلان' } });
 
   // top bar
   const gh = link(GITHUB, '', 'gh');
-  gh.innerHTML = `${GH_ICON}<span>Star on GitHub</span>`;
-  const bar = h('div', { className: 'bar' }, h('nav', { className: 'nav', ariaLabel: 'Site' }, link('/docs.html', 'Docs', 'navlink'), link('/changelog/', 'What\'s new', 'navlink'), gh));
+  gh.innerHTML = `${GH_ICON}<span>ستاره در GitHub</span>`;
+  const bar = h('div', { className: 'bar' }, h('nav', { className: 'nav', ariaLabel: 'ناوبری سایت' }, link('/docs.html', 'مستندات', 'navlink'), link('/changelog/', 'تازه‌ها', 'navlink'), gh));
 
   // install: pick a framework, copy the command
   let fw: keyof typeof INSTALL = 'React';
   // all three commands share one cell, so the pill never changes width and the swap is a cross-fade
   const codes = (Object.keys(INSTALL) as (keyof typeof INSTALL)[]).map((k) => h('code', { textContent: INSTALL[k], className: k === fw ? 'on' : '' }));
   const code = h('span', { className: 'codes' }, ...codes);
-  const copy = h('button', { type: 'button', className: 'copy', textContent: 'Copy' });
+  const copy = h('button', { type: 'button', className: 'copy', textContent: 'کپی' });
   copy.onclick = async () => {
     try {
       try {
@@ -178,23 +188,23 @@ export function mountSite(root: HTMLElement, _adapter?: string) {
         t.remove();
         if (!ok) throw new Error('copy failed');
       }
-      void toast.success('Copied to clipboard', { id: 'copy', meta: INSTALL[fw], duration: 2500 });
-      copy.textContent = 'Copied';
-      setTimeout(() => (copy.textContent = 'Copy'), 1600);
+      void toast.success('در کلیپ‌بورد کپی شد', { id: 'copy', meta: INSTALL[fw], duration: 2500 });
+      copy.textContent = 'کپی شد';
+      setTimeout(() => (copy.textContent = 'کپی'), 1600);
     } catch {
-      void toast.error('Couldn’t copy', { id: 'copy', description: 'Select the command and copy it manually.' });
+      void toast.error('کپی نشد', { id: 'copy', description: 'دستور را انتخاب کنید و دستی کپی کنید.' });
     }
   };
-  const fwSeg = makeSeg('Framework', Object.keys(INSTALL), fw, (k) => {
+  const fwSeg = makeSeg('فریم‌ورک', Object.keys(INSTALL), fw, (k) => {
     fw = k as keyof typeof INSTALL;
     (Object.keys(INSTALL) as (keyof typeof INSTALL)[]).forEach((n, i) => {
       codes[i]!.classList.toggle('on', n === fw);
       codes[i]!.ariaHidden = String(n !== fw);
     });
   });
-  const tryIt = h('button', { type: 'button', className: 'primary', textContent: 'Try it' });
+  const tryIt = h('button', { type: 'button', className: 'primary', textContent: 'امتحان کنید' });
   tryIt.onclick = demos.get('Order')!;
-  const mascot = h('button', { type: 'button', className: 'mascot', ariaLabel: 'Ring Ding' });
+  const mascot = h('button', { type: 'button', className: 'mascot', ariaLabel: 'دینگ را به صدا درآورید' });
   mascot.innerHTML = MASCOT;
   // the eyes follow the pointer (skipped under reduced motion)
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -223,12 +233,12 @@ export function mountSite(root: HTMLElement, _adapter?: string) {
     mascot.classList.remove('ring');
     void mascot.offsetWidth;
     mascot.classList.add('ring');
-    void toast.success('Ding!', { id: 'ding', duration: 1800 });
+    void toast.success('دینگ!', { id: 'ding', duration: 1800 });
   };
   const hero = h('div', { className: 'hero' },
     mascot,
-    h('h1', { textContent: 'Toasts with real spring physics.' }),
-    h('p', { className: 'tag', textContent: 'One toast that morphs in place. No dependencies. React, Svelte, Vue or plain DOM.' }),
+    h('h1', { textContent: 'توست‌هایی با فیزیک فنری واقعی.' }),
+    h('p', { className: 'tag', textContent: 'یک توست که درجا تغییر شکل می‌دهد. بدون وابستگی. برای React، Svelte، Vue یا DOM ساده.' }),
     h('div', { className: 'actions' }, tryIt),
     h('div', { className: 'install' }, fwSeg, h('div', { className: 'cmd' }, code, copy)),
     link('/llms.txt', 'llms.txt', 'quiet'),
@@ -246,28 +256,28 @@ export function mountSite(root: HTMLElement, _adapter?: string) {
     };
     return b;
   });
-  const themeSeg = makeSeg('Toast theme', ['Light', 'Dark'], 'Dark', (t) => {
-    toast.configure({ theme: t === 'Dark' ? 'dark' : 'light' });
-    void toast.info(`${t} toasts`, { id: 'theme', duration: 2500 });
+  const themeSeg = makeSeg('پوستهٔ توست', ['روشن', 'تیره'], 'تیره', (t) => {
+    toast.configure({ theme: t === 'تیره' ? 'dark' : 'light' });
+    void toast.info(`توست ${t}`, { id: 'theme', duration: 2500 });
   });
-  const soundSeg = makeSeg('Sound', ['Off', 'On'], 'On', (v) => {
-    toast.configure({ sound: v === 'On' });
+  const soundSeg = makeSeg('صدا', ['خاموش', 'روشن'], 'روشن', (v) => {
+    toast.configure({ sound: v === 'روشن' });
     // the click that turns sound on also unlocks audio, so this toast can be heard
-    void toast.info(v === 'On' ? 'Sound on' : 'Sound off', { id: 'sound', duration: 2500 });
+    void toast.info(v === 'روشن' ? 'صدا روشن شد' : 'صدا خاموش شد', { id: 'sound', duration: 2500 });
   });
-  const dismiss = h('button', { type: 'button', className: 'quiet', textContent: 'Dismiss all' });
+  const dismiss = h('button', { type: 'button', className: 'quiet', textContent: 'بستن همه' });
   dismiss.onclick = () => toast.dismiss();
   const field = (label: string, ...kids: Node[]) => h('div', { className: 'field' }, h('span', { className: 'lbl', textContent: label }), ...kids);
   const settings = h('section', { className: 'settings' },
-    field('Position', h('div', { className: 'picker', role: 'group', ariaLabel: 'Toast position' }, ...dots)),
-    field('Sound', soundSeg),
-    field('Theme', themeSeg),
+    field('جایگاه', h('div', { className: 'picker', role: 'group', ariaLabel: 'جایگاه توست' }, ...dots)),
+    field('صدا', soundSeg),
+    field('پوسته', themeSeg),
     dismiss,
   );
 
   const groups = GROUPS.map(([name, , items]) =>
-    h('section', { className: 'group' }, h('h2', { textContent: name }), h('div', { className: 'row' }, ...items.map((n) => {
-      const b = h('button', { type: 'button', textContent: n });
+    h('section', { className: 'group' }, h('h2', { textContent: LABEL[name] }), h('div', { className: 'row' }, ...items.map((n) => {
+      const b = h('button', { type: 'button', textContent: LABEL[n] ?? n });
       const fire = name === 'Sound' ? () => chime(SOUND_TYPES[n as keyof typeof SOUND_TYPES]) : demos.get(n)!;
       b.onclick = () => {
         fire();
@@ -278,6 +288,6 @@ export function mountSite(root: HTMLElement, _adapter?: string) {
       return b;
     }))),
   );
-  const foot = h('footer', {}, 'Made by ', link('https://yusufcengiz.dev', 'yusufcengiz.dev'));
-  root.replaceChildren(h('div', { className: 'page' }, h('a', { className: 'skip', href: '#main', textContent: 'Skip to demos' }), bar, h('main', { id: 'main' }, hero, settings, ...groups), foot));
+  const foot = h('footer', {}, 'ساختهٔ ', link('https://yusufcengiz.dev', 'yusufcengiz.dev'));
+  root.replaceChildren(h('div', { className: 'page' }, h('a', { className: 'skip', href: '#main', textContent: 'پرش به نمونه‌ها' }), bar, h('main', { id: 'main' }, hero, settings, ...groups), foot));
 }

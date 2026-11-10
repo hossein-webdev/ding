@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>react-hot-toast alternative: spring-physics toasts, no dependencies</title>
-    <meta name="description" content="Ding is a small React toast library with a similar API to react-hot-toast, but it shows one toast at a time and animates changes with spring physics." />
+    <title>جایگزین react-hot-toast: توست با فیزیک فنری و بدون وابستگی</title>
+    <meta name="description" content="کتابخانهٔ توست کوچک Ding برای React، با API مشابه react-hot-toast، با این تفاوت که هر بار فقط یک توست نشان می‌دهد و تغییرها را با فیزیک فنری انیمیت می‌کند." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/react-hot-toast-alternative/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="react-hot-toast alternative: spring-physics toasts, no dependencies" />
-    <meta property="og:description" content="Ding is a small React toast library with a similar API to react-hot-toast, but it shows one toast at a time and animates changes with spring physics." />
+    <meta property="og:title" content="جایگزین react-hot-toast: توست با فیزیک فنری و بدون وابستگی" />
+    <meta property="og:description" content="کتابخانهٔ توست کوچک Ding برای React، با API مشابه react-hot-toast، با این تفاوت که هر بار فقط یک توست نشان می‌دهد و تغییرها را با فیزیک فنری انیمیت می‌کند." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/react-hot-toast-alternative/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "A react-hot-toast alternative",
-        "description": "Ding is a small React toast library with a similar API to react-hot-toast, but it shows one toast at a time and animates changes with spring physics.",
+        "headline": "جایگزینی برای react-hot-toast",
+        "description": "کتابخانهٔ توست کوچک Ding برای React، با API مشابه react-hot-toast، با این تفاوت که هر بار فقط یک توست نشان می‌دهد و تغییرها را با فیزیک فنری انیمیت می‌کند.",
         "url": "https://ding.yusufcengiz.dev/react-hot-toast-alternative/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,33 +35,33 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>A react-hot-toast alternative</h1>
-      <p class="lead">react-hot-toast has a small, friendly API, and Ding keeps that feel. The difference is that Ding keeps one toast on screen and morphs it, where react-hot-toast keeps several.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
+      <h1>جایگزینی برای react-hot-toast</h1>
+      <p class="lead">کتابخانهٔ react-hot-toast یک API کوچک و دوستانه دارد و Ding همین حس را حفظ کرده است. تفاوت در این است که Ding فقط یک توست روی صفحه نگه می‌دارد و آن را درجا تغییر شکل می‌دهد، ولی react-hot-toast چند توست را هم‌زمان نگه می‌دارد.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
         <button type="button" data-demo="promise">Promise</button>
       </div>
-      <h2>Same kind of API</h2>
+      <h2>همان نوع API</h2>
       <pre><code>import { toast } from '@yusufceng1z/ding-react';
 
       toast.success('Saved');
       toast.error('Payment failed');
       toast.promise(save(), { loading: 'Saving…', success: 'Saved', error: 'Failed' });</code></pre>
-      <p>Render <code>&lt;Toaster /&gt;</code> once near the root, the same way you do today.</p>
-      <h2>What changes</h2>
-      <p>A second call does not add a second toast. The visible one changes into the new message. You can also update a toast yourself with <code>toast.update(id, patch)</code>, which makes progress bars and multi-step jobs easy, and sound is available if you want it (off by default).</p>
-      <p>Ding also ships a Svelte 5 package and a framework-free one, in case you work in more than one stack.</p>
-      <h2>Install</h2>
+      <p>کامپوننت <code>&lt;Toaster /&gt;</code> را همان‌طور که الان انجام می‌دهید، یک بار نزدیک ریشه رندر کنید.</p>
+      <h2>چه چیزی عوض می‌شود</h2>
+      <p>فراخوانی دوم توست دومی اضافه نمی‌کند؛ توستی که روی صفحه است به پیام جدید تبدیل می‌شود. می‌توانید خودتان هم با <code>toast.update(id, patch)</code> توست را به‌روزرسانی کنید، که ساختن نوار پیشرفت و کارهای چندمرحله‌ای را آسان می‌کند. اگر بخواهید، صدا هم در دسترس است (به‌طور پیش‌فرض خاموش).</p>
+      <p>برای کسانی که با بیش از یک استک کار می‌کنند، Ding یک پکیج Svelte 5 و یک پکیج بدون فریم‌ورک هم دارد.</p>
+      <h2>نصب</h2>
       <pre><code>npm i @yusufceng1z/ding-react</code></pre>
-      <p>Full setup is on the <a href="/react-toast/">React toast page</a>, and a comparison with a stacking alternative is on the <a href="/sonner-alternative/">Sonner page</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <p>راه‌اندازی کامل در <a href="/react-toast/">صفحهٔ توست React</a> آمده است و مقایسه با یک جایگزین پشته‌ای در <a href="/sonner-alternative/">صفحهٔ Sonner</a>.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Toast notification UX: when to use one and how long it should stay</title>
-    <meta name="description" content="When to use a toast notification, when to use something else, how long it should stay, and how to word it. Practical rules from building a toast library." />
+    <title>تجربهٔ کاربری اعلان توست: چه زمانی از آن استفاده کنیم و چه مدت بماند</title>
+    <meta name="description" content="چه زمانی از اعلان توست استفاده کنیم، چه زمانی سراغ چیز دیگری برویم، چه مدت بماند و متنش را چطور بنویسیم. قواعدی عملی از تجربهٔ ساخت یک کتابخانهٔ توست." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/toast-notification-ux/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Toast notification UX: when to use one and how long it should stay" />
-    <meta property="og:description" content="When to use a toast notification, when to use something else, how long it should stay, and how to word it. Practical rules from building a toast library." />
+    <meta property="og:title" content="تجربهٔ کاربری اعلان توست: چه زمانی از آن استفاده کنیم و چه مدت بماند" />
+    <meta property="og:description" content="چه زمانی از اعلان توست استفاده کنیم، چه زمانی سراغ چیز دیگری برویم، چه مدت بماند و متنش را چطور بنویسیم. قواعدی عملی از تجربهٔ ساخت یک کتابخانهٔ توست." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/toast-notification-ux/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Toast notification UX: when a toast is the right tool",
-        "description": "When to use a toast notification, when to use something else, how long it should stay, and how to word it. Practical rules from building a toast library.",
+        "headline": "تجربهٔ کاربری اعلان توست: چه زمانی توست ابزار درستی است",
+        "description": "چه زمانی از اعلان توست استفاده کنیم، چه زمانی سراغ چیز دیگری برویم، چه مدت بماند و متنش را چطور بنویسیم. قواعدی عملی از تجربهٔ ساخت یک کتابخانهٔ توست.",
         "url": "https://ding.yusufcengiz.dev/toast-notification-ux/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,26 +35,26 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>Toast notification UX: when a toast is the right tool</h1>
-      <p class="lead">A toast is a short message that shows up after something happened and leaves by itself. That makes it good for small confirmations and bad for anything a person has to see.</p>
-      <h2>Good uses</h2>
-      <p>Confirm something the user just did: saved, copied, sent. Offer a quick way back, like Undo after a delete. Report that background work finished, for example an export that was running while the user did something else.</p>
-      <h2>Bad uses</h2>
-      <p>Errors the user has to fix belong next to the field that failed, where they stay visible. Anything critical, legal or about money should not disappear after a few seconds. And a toast is one sentence with at most one button. If you need a paragraph or two choices, use a dialog or an inline message.</p>
-      <h2>How long it should stay</h2>
-      <p>Five seconds is a reasonable default for a short sentence. A toast with a button needs longer, because the person has to notice it and then move to it. Hover and keyboard focus should pause the timer so reading is never a race. In Ding, errors, loading toasts and toasts with a button do not time out at all.</p>
-      <h2>One toast or a stack</h2>
-      <p>A stack keeps history but covers the page when many things happen quickly. A single toast that changes in place keeps attention on the latest message and loses the older ones. I think that trade is right for most apps, which is why Ding works that way, but if your users need to see several messages together, stack.</p>
-      <h2>Wording</h2>
-      <p>Say what happened in a few words: Saved, Link copied. For an error say what failed and what to try: Could not save. Check your connection and try again. Leave out exclamation marks and the word successfully, they add length and no information.</p>
-      <p>Two related pages: <a href="/undo-toast/">the undo pattern</a> and <a href="/toast-accessibility/">making toasts accessible</a>. If you are choosing a name or a library, see <a href="/toast-vs-snackbar/">toast vs snackbar</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <h1>تجربهٔ کاربری اعلان توست: چه زمانی توست ابزار درستی است</h1>
+      <p class="lead">توست پیامی کوتاه است که بعد از اتفاقی ظاهر می‌شود و خودش می‌رود. به همین دلیل برای تأییدهای کوچک خوب است و برای هر چیزی که کاربر حتماً باید ببیند بد.</p>
+      <h2>کاربردهای مناسب</h2>
+      <p>کاری را که کاربر همین الان انجام داده تأیید کنید: ذخیره شد، کپی شد، ارسال شد. راهی سریع برای برگشت بدهید، مثل «بازگردانی» بعد از حذف. تمام شدن یک کار پس‌زمینه را اطلاع بدهید، مثلاً گرفتن خروجی که هم‌زمان با کار دیگر کاربر در جریان بوده است.</p>
+      <h2>کاربردهای نامناسب</h2>
+      <p>خطاهایی که کاربر باید رفعشان کند جایشان کنار فیلدی است که خطا داده، جایی که همچنان دیده می‌شوند. هر چیز حیاتی، حقوقی یا مربوط به پول نباید بعد از چند ثانیه ناپدید شود. توست هم یک جمله است با حداکثر یک دکمه. اگر یک پاراگراف یا دو گزینه لازم دارید، از یک دیالوگ یا پیام درون‌خطی استفاده کنید.</p>
+      <h2>چه مدت باید بماند</h2>
+      <p>پنج ثانیه برای یک جملهٔ کوتاه پیش‌فرض معقولی است. توستی که دکمه دارد زمان بیشتری لازم دارد، چون کاربر باید ابتدا آن را ببیند و بعد سراغش برود. قرار گرفتن ماوس روی توست و فوکوس صفحه‌کلید باید تایمر را متوقف کنند تا خواندن هیچ‌وقت به یک مسابقه تبدیل نشود. در Ding توست‌های خطا و بارگذاری و توست‌هایی که دکمه دارند اصلاً با تایمر بسته نمی‌شوند.</p>
+      <h2>یک توست یا یک پشته</h2>
+      <p>پشته تاریخچه را نگه می‌دارد، اما وقتی چیزهای زیادی سریع اتفاق می‌افتند صفحه را می‌پوشاند. یک توست تکی که درجا تغییر می‌کند توجه را روی آخرین پیام نگه می‌دارد و پیام‌های قدیمی‌تر را از دست می‌دهد. فکر می‌کنم این بده‌بستان برای بیشتر برنامه‌ها درست است و به همین دلیل Ding این‌طور کار می‌کند، اما اگر کاربران شما باید چند پیام را کنار هم ببینند، از پشته استفاده کنید.</p>
+      <h2>متن پیام</h2>
+      <p>در چند کلمه بگویید چه اتفاقی افتاد: «ذخیره شد»، «پیوند کپی شد». برای خطا بگویید چه چیزی شکست خورد و چه کاری می‌شود کرد: «ذخیره نشد. اتصال اینترنت را بررسی کنید و دوباره امتحان کنید.» علامت تعجب و عبارت «با موفقیت» را کنار بگذارید؛ طول را زیاد می‌کنند و اطلاعاتی اضافه نمی‌کنند.</p>
+      <p>دو صفحهٔ مرتبط: <a href="/undo-toast/">الگوی بازگردانی</a> و <a href="/toast-accessibility/">دسترس‌پذیر کردن توست‌ها</a>. اگر دنبال انتخاب نام یا کتابخانه هستید، <a href="/toast-vs-snackbar/">توست در برابر اسنک‌بار</a> را ببینید.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
   </body>
 </html>

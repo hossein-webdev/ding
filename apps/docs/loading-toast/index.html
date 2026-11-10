@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Loading toast: show progress, then success or error</title>
-    <meta name="description" content="Show a loading toast that turns into a success or error toast when the work finishes. Promise and manual progress examples with Ding." />
+    <title>توست بارگذاری: نمایش پیشرفت و سپس موفقیت یا خطا</title>
+    <meta name="description" content="نمایش توست بارگذاری که با تمام شدن کار، به توست موفقیت یا خطا تبدیل می‌شود. مثال‌های promise و پیشرفت دستی با Ding." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/loading-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Loading toast: show progress, then success or error" />
-    <meta property="og:description" content="Show a loading toast that turns into a success or error toast when the work finishes. Promise and manual progress examples with Ding." />
+    <meta property="og:title" content="توست بارگذاری: نمایش پیشرفت و سپس موفقیت یا خطا" />
+    <meta property="og:description" content="نمایش توست بارگذاری که با تمام شدن کار، به توست موفقیت یا خطا تبدیل می‌شود. مثال‌های promise و پیشرفت دستی با Ding." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/loading-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Loading toasts: from Saving… to Saved",
-        "description": "Show a loading toast that turns into a success or error toast when the work finishes. Promise and manual progress examples with Ding.",
+        "headline": "توست‌های بارگذاری: از «در حال ذخیره…» تا «ذخیره شد»",
+        "description": "نمایش توست بارگذاری که با تمام شدن کار، به توست موفقیت یا خطا تبدیل می‌شود. مثال‌های promise و پیشرفت دستی با Ding.",
         "url": "https://ding.yusufcengiz.dev/loading-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,21 +35,21 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>Loading toasts: from Saving… to Saved</h1>
-      <p class="lead">A loading toast says that work started, then becomes the result. With one toast on screen, the message goes from Saving… to Saved in the same place, rather than a second toast appearing next to it.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
+      <h1>توست‌های بارگذاری: از «در حال ذخیره…» تا «ذخیره شد»</h1>
+      <p class="lead">توست بارگذاری می‌گوید کاری شروع شده و بعد خودش به نتیجه تبدیل می‌شود. وقتی فقط یک توست روی صفحه است، پیام در همان جا از «در حال ذخیره…» به «ذخیره شد» تغییر می‌کند، نه اینکه توست دومی کنارش ظاهر شود.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
         <button type="button" data-demo="promise">Promise</button>
-        <button type="button" data-demo="progress">Progress</button>
+        <button type="button" data-demo="progress">پیشرفت</button>
       </div>
-      <h2>Wrap a promise</h2>
-      <p>This is the shortest version. Pass the promise and the three messages.</p>
+      <h2>سپردن promise به توست</h2>
+      <p>این کوتاه‌ترین روش است: یک promise و سه پیام را بدهید.</p>
       <pre><code>import { toast } from '@yusufceng1z/ding-react';
 
       toast.promise(save(), {
@@ -57,15 +57,15 @@
         success: 'Saved',
         error: (err) =&gt; `Could not save: ${err.message}`,
       });</code></pre>
-      <h2>Update it by hand</h2>
-      <p>For uploads and other jobs with steps, keep the id and update the toast as you go. <code>progress</code> runs from 0 to 1 and draws a thin bar at the bottom of the toast.</p>
+      <h2>به‌روزرسانی دستی</h2>
+      <p>برای آپلودها و کارهای مرحله‌دار دیگر، شناسه را نگه دارید و توست را در حین کار به‌روزرسانی کنید. مقدار <code>progress</code> از ۰ تا ۱ است و نواری باریک در پایین توست نشان می‌دهد.</p>
       <pre><code>const id = toast.loading('Uploading photo…', { progress: 0 });
       toast.update(id, { progress: 0.6 });
       toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });</code></pre>
-      <h2>Good to know</h2>
-      <p>A loading toast stays until you update or dismiss it, so make sure every code path ends in one of those. Only the newest caller can update the shared toast. If a slow request finishes after you have shown something newer, its update is ignored instead of overwriting the newer message.</p>
-      <p>For work that takes minutes, also show progress on the page itself. A toast is a poor place for long-running status. See <a href="/toast-notification-ux/">toast notification UX</a> for when to use which.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <h2>نکته‌های مهم</h2>
+      <p>توست بارگذاری تا وقتی آن را به‌روزرسانی نکنید یا نبندید روی صفحه می‌ماند، پس مطمئن شوید هر مسیر کد به یکی از این دو ختم می‌شود. فقط جدیدترین فراخواننده می‌تواند توستِ مشترک را به‌روزرسانی کند. اگر درخواستی کند باشد و بعد از نمایش پیام جدیدتر تمام شود، به‌روزرسانی‌اش نادیده گرفته می‌شود و پیام جدیدتر را بازنویسی نمی‌کند.</p>
+      <p>برای کارهایی که چند دقیقه طول می‌کشند، پیشرفت را روی خود صفحه هم نشان بدهید. توست جای مناسبی برای وضعیت کارهای طولانی نیست. برای اینکه بدانید کی از کدام استفاده کنید، <a href="/toast-notification-ux/">تجربهٔ کاربری (UX) اعلان‌های توست</a> را ببینید.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

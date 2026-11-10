@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Sonner alternative: a toast library that shows one toast at a time</title>
-    <meta name="description" content="Ding is a React and Svelte toast library for people who want one toast on screen that morphs in place, not a stack. When it fits, and when Sonner is the better pick." />
+    <title>جایگزین Sonner: کتابخانهٔ توستی که هر بار یک توست نشان می‌دهد</title>
+    <meta name="description" content="کتابخانهٔ توست Ding برای React و Svelte، برای کسانی که یک توست روی صفحه می‌خواهند که درجا تغییر شکل بدهد، نه یک پشته. کی مناسب است و کی Sonner انتخاب بهتری است." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/sonner-alternative/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Sonner alternative: a toast library that shows one toast at a time" />
-    <meta property="og:description" content="Ding is a React and Svelte toast library for people who want one toast on screen that morphs in place, not a stack. When it fits, and when Sonner is the better pick." />
+    <meta property="og:title" content="جایگزین Sonner: کتابخانهٔ توستی که هر بار یک توست نشان می‌دهد" />
+    <meta property="og:description" content="کتابخانهٔ توست Ding برای React و Svelte، برای کسانی که یک توست روی صفحه می‌خواهند که درجا تغییر شکل بدهد، نه یک پشته. کی مناسب است و کی Sonner انتخاب بهتری است." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/sonner-alternative/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "A Sonner alternative that shows one toast at a time",
-        "description": "Ding is a React and Svelte toast library for people who want one toast on screen that morphs in place, not a stack. When it fits, and when Sonner is the better pick.",
+        "headline": "جایگزینی برای Sonner که هر بار یک توست نشان می‌دهد",
+        "description": "کتابخانهٔ توست Ding برای React و Svelte، برای کسانی که یک توست روی صفحه می‌خواهند که درجا تغییر شکل بدهد، نه یک پشته. کی مناسب است و کی Sonner انتخاب بهتری است.",
         "url": "https://ding.yusufcengiz.dev/sonner-alternative/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,35 +35,35 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>A Sonner alternative that shows one toast at a time</h1>
-      <p class="lead">Sonner is a good library and it stacks toasts. Ding makes a different choice: one toast on screen, and a new message turns the current toast into the new one. Which you want depends on your app.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
-        <button type="button" data-demo="error">Error</button>
+      <h1>جایگزینی برای Sonner که هر بار یک توست نشان می‌دهد</h1>
+      <p class="lead">Sonner کتابخانهٔ خوبی است و توست‌ها را روی هم می‌چیند. Ding انتخاب دیگری کرده است: یک توست روی صفحه، و پیام جدید توست فعلی را به توست جدید تبدیل می‌کند. اینکه کدام را بخواهید به برنامه‌تان بستگی دارد.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
+        <button type="button" data-demo="error">خطا</button>
         <button type="button" data-demo="promise">Promise</button>
       </div>
-      <h2>Why I made one toast at a time</h2>
-      <p>In the apps I work on, a burst of events (save, then sync, then a failed request) produced a stack that covered the page and was harder to read than a single message. I wanted the latest message to win, with a visible transition so the user sees that it changed.</p>
-      <h2>Pick Ding if</h2>
-      <p>You want one message at a time. You update the same toast through loading, success and undo. You want zero dependencies and no CSS import. Or you use Svelte 5 or plain JavaScript as well as React.</p>
-      <h2>Pick Sonner if</h2>
-      <p>You need several toasts visible together, or you want a larger ecosystem and track record. Ding does not stack, and that is not going to change.</p>
-      <h2>Switching</h2>
-      <p>The calls look familiar. Render one <code>Toaster</code>, then:</p>
+      <h2>چرا هر بار فقط یک توست ساختم</h2>
+      <p>در برنامه‌هایی که رویشان کار می‌کنم، پشت‌سرهم آمدن چند رویداد (ذخیره، بعد همگام‌سازی، بعد یک درخواست ناموفق) پشته‌ای می‌ساخت که صفحه را می‌پوشاند و خواندنش از یک پیام تکی سخت‌تر بود. می‌خواستم آخرین پیام برنده شود و انتقالی دیده شود تا کاربر بفهمد پیام عوض شده است.</p>
+      <h2>چه زمانی Ding را انتخاب کنید</h2>
+      <p>هر بار یک پیام می‌خواهید. همان توست را در حالت‌های بارگذاری، موفقیت و بازگردانی به‌روزرسانی می‌کنید. بدون وابستگی و بدون ایمپورت CSS می‌خواهید. یا علاوه بر React از Svelte 5 یا جاوااسکریپت ساده هم استفاده می‌کنید.</p>
+      <h2>چه زمانی Sonner را انتخاب کنید</h2>
+      <p>چند توست را هم‌زمان لازم دارید، یا اکوسیستم بزرگ‌تر و سابقهٔ بیشتری می‌خواهید. Ding توست‌ها را روی هم نمی‌چیند و این قرار نیست تغییر کند.</p>
+      <h2>تعویض کتابخانه</h2>
+      <p>فراخوانی‌ها آشنا به نظر می‌رسند. یک <code>Toaster</code> رندر کنید، سپس:</p>
       <pre><code>import { toast } from '@yusufceng1z/ding-react';
 
       toast.success('Saved');
       toast.promise(save(), { loading: 'Saving…', success: 'Saved', error: 'Failed' });</code></pre>
-      <p>Check the options you use against the <a href="/docs.html">docs</a> before swapping, since not every option exists. Setup details are in <a href="/react-toast/">React toast notifications</a>. If you use Svelte, see the <a href="/svelte-sonner-alternative/">svelte-sonner alternative</a>.</p>
-      <p>Ding is open source on <a href="https://github.com/YusufCeng1z/ding">GitHub</a>. A star is the easiest way to say it was useful.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <p>پیش از تعویض، گزینه‌هایی را که استفاده می‌کنید با <a href="/docs.html">مستندات</a> مقایسه کنید، چون همهٔ گزینه‌ها وجود ندارند. جزئیات راه‌اندازی در <a href="/react-toast/">اعلان‌های توست در React</a> است. اگر از Svelte استفاده می‌کنید، <a href="/svelte-sonner-alternative/">جایگزین svelte-sonner</a> را ببینید.</p>
+      <p>کد Ding در <a href="https://github.com/YusufCeng1z/ding">GitHub</a> به‌صورت متن‌باز در دسترس است. یک ستاره ساده‌ترین راه برای گفتن این است که به کارتان آمده.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

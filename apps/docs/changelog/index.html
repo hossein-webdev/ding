@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>What's new in Ding 0.0.4: Vue, Next.js without a wrapper, CSP nonce</title>
-    <meta name="description" content="Ding 0.0.4 adds a Vue 3 and Nuxt package, works in Next.js server layouts without a wrapper, supports a CSP nonce, and stops progress toasts from flickering." />
+    <title>تازه‌های Ding 0.0.4: Vue، Next.js بدون کامپوننت واسط، nonce برای CSP</title>
+    <meta name="description" content="Ding 0.0.4 پکیج Vue 3 و Nuxt را اضافه می‌کند، در لی‌اوت‌های سمت سرور Next.js بدون کامپوننت واسط کار می‌کند، از nonce برای CSP پشتیبانی می‌کند و جلوی سوسو زدن توست‌های پیشرفت را می‌گیرد." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/changelog/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -16,8 +16,8 @@
     <link rel="stylesheet" href="/changelog.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="What's new in Ding 0.0.4" />
-    <meta property="og:description" content="A Vue 3 and Nuxt package, Next.js server layouts without a wrapper, a CSP nonce and calmer progress toasts." />
+    <meta property="og:title" content="تازه‌های Ding 0.0.4" />
+    <meta property="og:description" content="پکیج Vue 3 و Nuxt، لی‌اوت سمت سرور Next.js بدون کامپوننت واسط، nonce برای CSP و توست‌های پیشرفت بدون سوسو زدن." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/changelog/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -25,8 +25,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "What's new in Ding 0.0.4",
-        "description": "A Vue 3 and Nuxt package, Next.js server layouts without a wrapper, a CSP nonce and calmer progress toasts.",
+        "headline": "تازه‌های Ding 0.0.4",
+        "description": "پکیج Vue 3 و Nuxt، لی‌اوت سمت سرور Next.js بدون کامپوننت واسط، nonce برای CSP و توست‌های پیشرفت بدون سوسو زدن.",
         "url": "https://ding.yusufcengiz.dev/changelog/",
         "datePublished": "2026-11-10",
         "dateModified": "2026-11-10",
@@ -36,21 +36,21 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="ناوبری سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
-      <a href="/changelog/" aria-current="page">What's new</a>
+      <a href="/docs.html">مستندات</a>
+      <a href="/changelog/" aria-current="page">تازه‌ها</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>What's new in Ding 0.0.4</h1>
-      <p class="version">A Vue package, Next.js and CSP support, and calmer toasts. No breaking changes.</p>
-      <p class="lead">Most of this release came from people using Ding. The two fixes have live demos below, so you can try them yourself.</p>
+      <h1>تازه‌های Ding 0.0.4</h1>
+      <p class="version">یک پکیج Vue، پشتیبانی از Next.js و CSP، و توست‌هایی آرام‌تر. بدون تغییرات ناسازگار با نسخه‌های قبل.</p>
+      <p class="lead">بیشتر تغییرات این نسخه از طرف کاربران Ding آمده است. دو رفع اشکال زیر نمونهٔ زنده دارند تا خودتان امتحانشان کنید.</p>
       <pre><code>npm i @yusufceng1z/ding@latest</code></pre>
 
       <section class="entry" aria-labelledby="vue">
-        <h2 id="vue">Vue 3 and Nuxt <span class="tag">New</span></h2>
-        <p>There is a new package, <code>@yusufceng1z/ding-vue</code>. It has the same props as the React and Svelte ones: <code>position</code>, <code>theme</code>, <code>labels</code> and <code>nonce</code>.</p>
+        <h2 id="vue">Vue 3 و Nuxt <span class="tag">جدید</span></h2>
+        <p>پکیج تازه‌ای به نام <code>@yusufceng1z/ding-vue</code> اضافه شده است. پراپ‌هایش همان پراپ‌های نسخه‌های React و Svelte است: <code>position</code>، <code>theme</code>، <code>labels</code> و <code>nonce</code>.</p>
         <pre><code>npm i @yusufceng1z/ding-vue</code></pre>
         <pre><code>&lt;script setup&gt;
 import { Toaster, toast } from '@yusufceng1z/ding-vue';
@@ -60,13 +60,13 @@ import { Toaster, toast } from '@yusufceng1z/ding-vue';
   &lt;Toaster position="top-center" theme="system" /&gt;
   &lt;button @click="toast.success('Saved')"&gt;Save&lt;/button&gt;
 &lt;/template&gt;</code></pre>
-        <p><code>Toaster</code> draws nothing where you put it and starts after the page has loaded, so server rendering is safe. In Nuxt, put it in <code>app.vue</code> and call <code>toast</code> from client code, like a click handler. We ran it in Vue with Vite and in Nuxt 4, in development and in a production build.</p>
-        <p class="credit">Asked for by <a href="https://github.com/reslear">reslear</a> in <a href="https://github.com/YusufCeng1z/ding/issues/7">issue 7</a>.</p>
+        <p><code>Toaster</code> در جایی که می‌گذارید چیزی نمایش نمی‌دهد و بعد از بارگذاری صفحه شروع به کار می‌کند، پس رندر سمت سرور مشکلی ندارد. در Nuxt آن را در <code>app.vue</code> بگذارید و <code>toast</code> را از کد سمت کلاینت صدا بزنید، مثلاً از یک کنترل‌کنندهٔ کلیک. ما آن را در Vue با Vite و در Nuxt 4 آزموده‌ایم، هم در حالت توسعه و هم در بیلد نهایی.</p>
+        <p class="credit">این قابلیت را <a href="https://github.com/reslear">reslear</a> در <a href="https://github.com/YusufCeng1z/ding/issues/7">ایشوی ۷</a> خواسته بود.</p>
       </section>
 
       <section class="entry" aria-labelledby="next">
-        <h2 id="next">Next.js without a wrapper</h2>
-        <p>The React build now starts with <code>"use client"</code>. Until now, importing <code>Toaster</code> in a server layout failed, so you needed your own client component around it. You don't any more.</p>
+        <h2 id="next">Next.js بدون کامپوننت واسط</h2>
+        <p>بیلد React حالا با <code>"use client"</code> شروع می‌شود. تا پیش از این، وارد کردن <code>Toaster</code> در یک لی‌اوت سمت سرور خطا می‌داد و باید یک کامپوننت کلاینتیِ خودتان را دورش می‌گذاشتید. دیگر لازم نیست.</p>
         <pre><code>// app/layout.tsx, a server component
 import { Toaster } from '@yusufceng1z/ding-react';
 
@@ -80,53 +80,53 @@ export default function RootLayout({ children }) {
     &lt;/html&gt;
   );
 }</code></pre>
-        <p>Call <code>toast</code> from client components only. See the <a href="/nextjs-toast/">Next.js guide</a>.</p>
-        <p class="credit">Suggested and built by <a href="https://github.com/tcisse">Amidou Cissé</a>, see <a href="https://github.com/YusufCeng1z/ding/pull/10">pull request 10</a>.</p>
+        <p><code>toast</code> را فقط در کامپوننت‌های کلاینتی صدا بزنید. <a href="/nextjs-toast/">راهنمای Next.js</a> را ببینید.</p>
+        <p class="credit">پیشنهاد و پیاده‌سازی از <a href="https://github.com/tcisse">Amidou Cissé</a> است؛ <a href="https://github.com/YusufCeng1z/ding/pull/10">پول‌ریکوئست ۱۰</a> را ببینید.</p>
       </section>
 
       <section class="entry" aria-labelledby="csp">
-        <h2 id="csp">Works with a strict CSP</h2>
-        <p>Ding puts its styles in one <code>&lt;style&gt;</code> element. If your <code>style-src</code> blocks inline styles, give it your page's nonce. Only that element needs it, because the per-toast values are set through the DOM, which CSP allows.</p>
+        <h2 id="csp">سازگار با CSP سخت‌گیرانه</h2>
+        <p>Ding استایل‌هایش را در یک عنصر <code>&lt;style&gt;</code> می‌گذارد. اگر <code>style-src</code> شما استایل‌های درون‌خطی را مسدود می‌کند، nonce صفحهٔ خودتان را به آن بدهید. فقط همین عنصر به nonce نیاز دارد، چون مقدارهای مخصوص هر توست از راه DOM تنظیم می‌شود و CSP این را مجاز می‌داند.</p>
         <pre><code>&lt;Toaster nonce={nonce} /&gt;     {/* React, Svelte */}
 &lt;Toaster :nonce="nonce" /&gt;    &lt;!-- Vue --&gt;
 
 mountToaster({ nonce });        // plain DOM</code></pre>
-        <p class="credit">Suggested and built by <a href="https://github.com/tcisse">Amidou Cissé</a>, see <a href="https://github.com/YusufCeng1z/ding/pull/11">pull request 11</a>.</p>
+        <p class="credit">پیشنهاد و پیاده‌سازی از <a href="https://github.com/tcisse">Amidou Cissé</a> است؛ <a href="https://github.com/YusufCeng1z/ding/pull/11">پول‌ریکوئست ۱۱</a> را ببینید.</p>
       </section>
 
       <section class="entry" aria-labelledby="flicker">
-        <h2 id="flicker">Progress toasts don't flicker <span class="tag">Fixed</span></h2>
-        <p>When a toast changed its own text while it ran, like a download with a moving percentage, the text animation played again on every update and the title looked like it was shaking. Now the animation only plays when the title really becomes something new, such as "Download complete".</p>
-        <div class="demo" role="group" aria-label="Progress demo">
-          <p>Watch the title while the numbers change. It should stay still until the end.</p>
+        <h2 id="flicker">توست‌های پیشرفت دیگر سوسو نمی‌زنند <span class="tag">رفع شد</span></h2>
+        <p>وقتی توستی در حین اجرا متن خودش را عوض می‌کرد، مثل دانلودی که درصدش جلو می‌رود، انیمیشن متن در هر به‌روزرسانی دوباره پخش می‌شد و عنوان انگار می‌لرزید. حالا انیمیشن فقط وقتی پخش می‌شود که عنوان واقعاً چیز تازه‌ای شود، مثلاً «دانلود کامل شد».</p>
+        <div class="demo" role="group" aria-label="نمونهٔ پیشرفت">
+          <p>وقتی عددها عوض می‌شوند، عنوان را زیر نظر بگیرید. باید تا آخر ثابت بماند.</p>
           <div class="row">
-            <button type="button" id="runDownload">Download</button>
-            <button type="button" id="runUpload">Upload</button>
+            <button type="button" id="runDownload">دانلود</button>
+            <button type="button" id="runUpload">آپلود</button>
           </div>
         </div>
-        <p class="credit">Reported by <a href="https://github.com/MathiasWP">MathiasWP</a> in <a href="https://github.com/YusufCeng1z/ding/issues/5">issue 5</a>. A screen recording from <a href="https://github.com/IsaacHatilima">IsaacHatilima</a> helped find it.</p>
+        <p class="credit"><a href="https://github.com/MathiasWP">MathiasWP</a> این مشکل را در <a href="https://github.com/YusufCeng1z/ding/issues/5">ایشوی ۵</a> گزارش داد. ضبط صفحهٔ <a href="https://github.com/IsaacHatilima">IsaacHatilima</a> هم در پیدا کردن علت کمک کرد.</p>
       </section>
 
       <section class="entry" aria-labelledby="order">
-        <h2 id="order">The close button stays last <span class="tag">Fixed</span></h2>
-        <p>In the plain DOM renderer, which Vue and Nuxt use, an error toast has a close button. If it then turned into a toast with an action, like Undo, the close button ended up in front of the action. It now stays at the end. React and Svelte were not affected.</p>
-        <div class="demo" role="group" aria-label="Button order demo">
-          <p>Open the error, then press Undo. The buttons should read Undo, then close.</p>
+        <h2 id="order">دکمهٔ بستن همیشه آخر می‌ماند <span class="tag">رفع شد</span></h2>
+        <p>در رندرر DOM ساده، که Vue و Nuxt از آن استفاده می‌کنند، توست خطا یک دکمهٔ بستن دارد. اگر این توست بعداً به توستی با دکمهٔ اقدام، مثل «بازگردانی»، تبدیل می‌شد، دکمهٔ بستن پیش از دکمهٔ اقدام قرار می‌گرفت. حالا همیشه در انتها می‌ماند. React و Svelte این مشکل را نداشتند.</p>
+        <div class="demo" role="group" aria-label="نمونهٔ ترتیب دکمه‌ها">
+          <p>خطا را باز کنید و بعد «بازگردانی» را بزنید. ترتیب دکمه‌ها باید این باشد: بازگردانی، بستن.</p>
           <div class="row">
-            <button type="button" id="openErr">1. Open an error</button>
-            <button type="button" id="openUndo">2. Then Undo</button>
+            <button type="button" id="openErr">۱. باز کردن یک خطا</button>
+            <button type="button" id="openUndo">۲. سپس بازگردانی</button>
           </div>
-          <pre class="out" id="orderOut" role="status">Buttons: -</pre>
+          <pre class="out" id="orderOut" role="status">دکمه‌ها: -</pre>
         </div>
       </section>
 
       <section class="entry" aria-labelledby="dev">
-        <h2 id="dev">For contributors</h2>
-        <p>The React, Svelte, Vue and plain DOM renderers now each have render tests, and CI runs them on every pull request. Thanks to <a href="https://github.com/tcisse">Amidou Cissé</a> for <a href="https://github.com/YusufCeng1z/ding/pull/13">pull request 13</a> and the three before it.</p>
-        <p><a href="/changelog/0-0-3/">What's new in 0.0.3</a></p>
+        <h2 id="dev">برای مشارکت‌کنندگان</h2>
+        <p>رندررهای React، Svelte، Vue و DOM ساده حالا هرکدام تست رندر دارند و CI آن‌ها را روی هر پول‌ریکوئست اجرا می‌کند. از <a href="https://github.com/tcisse">Amidou Cissé</a> برای <a href="https://github.com/YusufCeng1z/ding/pull/13">پول‌ریکوئست ۱۳</a> و سه پول‌ریکوئست قبل از آن سپاسگزاریم.</p>
+        <p><a href="/changelog/0-0-3/">تازه‌های 0.0.3</a></p>
       </section>
 
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <footer>Ding ساختهٔ <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> است. با مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/changelog.ts"></script>
   </body>

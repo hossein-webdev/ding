@@ -2,11 +2,13 @@ import { mountToaster, toast } from '@yusufceng1z/ding';
 
 // Live demos for the What's new page. "Before" switches the old click area and the old Esc rule back on
 // so the difference can be felt. It is a simulation: the shipped library only has the new behaviour.
-mountToaster({ position: 'top-center', theme: 'system' });
+mountToaster({ position: 'top-center', theme: 'system', labels: { region: 'اعلان‌ها', dismiss: 'بستن اعلان' } });
 
 const $ = <T extends HTMLElement>(sel: string) => document.querySelector<T>(sel)!;
 const count = () => document.querySelectorAll('.tst-slot').length;
 const later = (fn: () => void, ms = 60) => setTimeout(fn, ms);
+// counts in on-page text use Persian digits
+const fa = (n: number) => n.toLocaleString('fa-IR');
 
 // Before / After
 let before = false;
@@ -19,7 +21,7 @@ const setMode = (b: boolean) => {
 modeButtons.forEach((m) => m.addEventListener('click', () => setMode(m.dataset.mode === 'before')));
 setMode(false);
 
-// Labels
+// Labels (the strings in each language are the demo data, so they stay as they are)
 const LANGS: Record<string, { region?: string; dismiss?: string }> = {
   en: { region: 'Notifications', dismiss: 'Dismiss notification' },
   tr: { region: 'Bildirimler', dismiss: 'Bildirimi kapat' },
@@ -32,7 +34,7 @@ const showLabels = () => {
 };
 document.querySelectorAll<HTMLButtonElement>('[data-lang]').forEach((b) =>
   b.addEventListener('click', () => {
-    toast.error('Could not save', { id: 'labels', duration: 0 });
+    toast.error('ذخیره نشد', { id: 'labels', duration: 0 });
     toast.configure({ labels: LANGS[b.dataset.lang ?? 'en'] });
     document.querySelectorAll<HTMLButtonElement>('[data-lang]').forEach((o) => o.setAttribute('aria-pressed', String(o === b)));
     later(showLabels, 120);
@@ -45,10 +47,10 @@ $('#openHit').addEventListener('click', () => {
   toast.dismiss();
   later(
     () =>
-      toast.error('Upload failed', {
-        description: 'The file is larger than 25 MB.',
+      toast.error('آپلود ناموفق بود', {
+        description: 'حجم فایل بیشتر از ۲۵ مگابایت است.',
         duration: 0,
-        action: { label: 'Retry', onClick: () => void ($('#hitOut').textContent = `Retry clicked ${++retries} time${retries === 1 ? '' : 's'}`) },
+        action: { label: 'تلاش دوباره', onClick: () => void ($('#hitOut').textContent = `«تلاش دوباره» ${fa(++retries)} بار کلیک شد`) },
       }),
     400,
   );
@@ -61,19 +63,19 @@ $('#showHit').addEventListener('click', () => {
 // Alt+T
 $('#openPlain').addEventListener('click', () => {
   toast.dismiss();
-  later(() => toast.success('Changes saved'), 400);
+  later(() => toast.success('تغییرات ذخیره شد'), 400);
 });
 document.addEventListener('focusin', (e) => {
-  if ((e.target as Element).classList?.contains('tst-slot')) $('#focusOut').textContent = 'Focus is on the toast. Its timer is paused.';
+  if ((e.target as Element).classList?.contains('tst-slot')) $('#focusOut').textContent = 'فوکوس روی توست است. زمان‌سنج آن متوقف شده است.';
 });
 document.addEventListener('focusout', (e) => {
-  if ((e.target as Element).classList?.contains('tst-slot')) $('#focusOut').textContent = 'Focus left the toast. The timer runs again.';
+  if ((e.target as Element).classList?.contains('tst-slot')) $('#focusOut').textContent = 'فوکوس از توست خارج شد. زمان‌سنج دوباره کار می‌کند.';
 });
 
 // Esc
 $('#openSticky').addEventListener('click', () => {
   toast.dismiss();
-  later(() => toast.error('Connection lost', { duration: 0 }), 400);
+  later(() => toast.error('اتصال قطع شد', { duration: 0 }), 400);
 });
 $('#openDlg').addEventListener('click', () => $<HTMLDialogElement>('#dlg').showModal());
 document.addEventListener(
@@ -81,7 +83,7 @@ document.addEventListener(
   (e) => {
     if (e.key !== 'Escape') return;
     if (before) toast.dismiss(); // the old rule: Esc always dismissed
-    later(() => ($('#escOut').textContent = `Toasts on screen: ${count()}`), 300);
+    later(() => ($('#escOut').textContent = `توست‌های روی صفحه: ${fa(count())}`), 300);
   },
   true,
 );

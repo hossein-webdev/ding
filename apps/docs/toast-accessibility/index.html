@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Accessible toast notifications: live regions, timing, keyboard</title>
-    <meta name="description" content="How to build accessible toasts: announce them with live regions, give people enough time, make buttons reachable by keyboard and respect reduced motion." />
+    <title>اعلان‌های توست دسترس‌پذیر: ناحیه‌های زنده، زمان‌بندی، صفحه‌کلید</title>
+    <meta name="description" content="چطور توست دسترس‌پذیر بسازیم: با ناحیهٔ زنده (live region) اعلامش کنیم، به کاربر زمان کافی بدهیم، دکمه‌ها را با صفحه‌کلید در دسترس بگذاریم و کاهش حرکت را رعایت کنیم." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/toast-accessibility/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Accessible toast notifications: live regions, timing, keyboard" />
-    <meta property="og:description" content="How to build accessible toasts: announce them with live regions, give people enough time, make buttons reachable by keyboard and respect reduced motion." />
+    <meta property="og:title" content="اعلان‌های توست دسترس‌پذیر: ناحیه‌های زنده، زمان‌بندی، صفحه‌کلید" />
+    <meta property="og:description" content="چطور توست دسترس‌پذیر بسازیم: با ناحیهٔ زنده (live region) اعلامش کنیم، به کاربر زمان کافی بدهیم، دکمه‌ها را با صفحه‌کلید در دسترس بگذاریم و کاهش حرکت را رعایت کنیم." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/toast-accessibility/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Making toast notifications accessible",
-        "description": "How to build accessible toasts: announce them with live regions, give people enough time, make buttons reachable by keyboard and respect reduced motion.",
+        "headline": "دسترس‌پذیر کردن اعلان‌های توست",
+        "description": "چطور توست دسترس‌پذیر بسازیم: با ناحیهٔ زنده (live region) اعلامش کنیم، به کاربر زمان کافی بدهیم، دکمه‌ها را با صفحه‌کلید در دسترس بگذاریم و کاهش حرکت را رعایت کنیم.",
         "url": "https://ding.yusufcengiz.dev/toast-accessibility/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,25 +35,25 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="ناوبری سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>Making toast notifications accessible</h1>
-      <p class="lead">A toast that a screen reader never announces, or that disappears before a keyboard user can reach its button, does not work. These are the four things to check.</p>
-      <h2>Announce it</h2>
-      <p>Put the text in a live region so screen readers read it without moving focus. <code>role="status"</code> is polite and fits most messages. <code>role="alert"</code> interrupts, so keep it for urgent errors. Ding announces errors assertively and everything else politely. Live-region support varies between screen readers, so test with the ones your users have.</p>
-      <h2>Give people time</h2>
-      <p>A message on a timer is a problem for anyone who reads slowly or needs longer to react. Pause the timer on hover and on keyboard focus, keep toasts with buttons on screen longer, and do not auto-dismiss errors. In Ding, errors, loading toasts and toasts with a button stay until dismissed.</p>
-      <h2>Keyboard access</h2>
-      <p>If a toast has a button, keyboard users need a way to reach it. In Ding, <kbd>Alt</kbd> + <kbd>T</kbd> moves focus into the toast and <kbd>Esc</kbd> dismisses it.</p>
-      <h2>Reduced motion</h2>
-      <p>Spring animation looks good and some people turn motion off. Ding follows <code>prefers-reduced-motion</code>.</p>
-      <h2>What a library cannot do for you</h2>
-      <p>Do not let a toast be the only place a critical message or an Undo lives. Keep the text short and plain. See <a href="/toast-notification-ux/">toast notification UX</a> for when a toast is the right choice, and <a href="/undo-toast/">undo toast</a> for a pattern that needs a second way back.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <h1>دسترس‌پذیر کردن اعلان‌های توست</h1>
+      <p class="lead">توستی که صفحه‌خوان هرگز اعلامش نکند، یا پیش از آنکه کاربر صفحه‌کلید به دکمه‌اش برسد ناپدید شود، کار نمی‌کند. این چهار چیز را بررسی کنید.</p>
+      <h2>اعلام کردن</h2>
+      <p>متن را در یک ناحیهٔ زنده (live region) بگذارید تا صفحه‌خوان‌ها آن را بدون جابه‌جا کردن فوکوس بخوانند. <code>role="status"</code> ملایم (polite) است و برای بیشتر پیام‌ها مناسب است. <code>role="alert"</code> صحبت صفحه‌خوان را قطع می‌کند، پس آن را برای خطاهای فوری نگه دارید. Ding خطاها را با اولویت بالا (assertive) و بقیه را ملایم اعلام می‌کند. پشتیبانی از ناحیهٔ زنده در صفحه‌خوان‌های مختلف فرق دارد، پس با همان‌هایی آزمون کنید که کاربرانتان دارند.</p>
+      <h2>به کاربر زمان بدهید</h2>
+      <p>پیامی که زمان‌سنج دارد برای هر کسی که آهسته می‌خواند یا برای واکنش به زمان بیشتری نیاز دارد مشکل ایجاد می‌کند. زمان‌سنج را با قرار گرفتن نشانگر روی توست و با فوکوس صفحه‌کلید متوقف کنید، توست‌های دارای دکمه را مدت بیشتری روی صفحه نگه دارید و خطاها را خودکار نبندید. در Ding خطاها، توست‌های در حال بارگذاری و توست‌های دارای دکمه ماندگارند و تا بسته نشوند می‌مانند.</p>
+      <h2>دسترسی با صفحه‌کلید</h2>
+      <p>اگر توست دکمه دارد، کاربران صفحه‌کلید باید راهی برای رسیدن به آن داشته باشند. در Ding، <kbd>Alt</kbd> + <kbd>T</kbd> فوکوس را به توست می‌برد و <kbd>Esc</kbd> آن را می‌بندد.</p>
+      <h2>کاهش حرکت</h2>
+      <p>انیمیشن فنری ظاهر خوبی دارد، اما بعضی‌ها حرکت را در سیستم خود خاموش می‌کنند. Ding از <code>prefers-reduced-motion</code> پیروی می‌کند.</p>
+      <h2>کارهایی که کتابخانه نمی‌تواند برایتان انجام دهد</h2>
+      <p>اجازه ندهید توست تنها جایی باشد که یک پیام حیاتی یا دکمهٔ بازگردانی در آن قرار دارد. متن را کوتاه و ساده نگه دارید. برای اینکه چه زمانی توست انتخاب درستی است، <a href="/toast-notification-ux/">تجربهٔ کاربری اعلان توست</a> را ببینید، و برای الگویی که به راه بازگشت دومی نیاز دارد، <a href="/undo-toast/">توست بازگردانی</a> را.</p>
+      <footer>Ding ساختهٔ <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> است. با مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
   </body>
 </html>

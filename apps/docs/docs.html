@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Ding docs: install and use spring-physics toasts in React, Svelte, Vue and JS</title>
-    <meta name="description" content="Install and use Ding, spring-physics toasts for React, Svelte, Vue and plain DOM. Setup, updating a toast in place, actions, options, sound and accessibility." />
+    <title>مستندات Ding: نصب و استفاده از توست با فیزیک فنری در React، Svelte، Vue و JS</title>
+    <meta name="description" content="نصب و استفاده از Ding، توست‌هایی با فیزیک فنری برای React، Svelte، Vue و DOM خالص. راه‌اندازی، به‌روزرسانی درجای توست، دکمه‌های اقدام، گزینه‌ها، صدا و دسترس‌پذیری." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/docs.html" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <meta name="theme-color" content="#121211" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Ding docs" />
-    <meta property="og:description" content="Install and use Ding: setup, updating a toast in place, actions, options, sound and accessibility." />
+    <meta property="og:title" content="مستندات Ding" />
+    <meta property="og:description" content="نصب و استفاده از Ding: راه‌اندازی، به‌روزرسانی درجای توست، دکمه‌های اقدام، گزینه‌ها، صدا و دسترس‌پذیری." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/docs.html" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,45 +24,45 @@
   </head>
   <body class="docs" data-fw="react">
     <div class="page">
-      <a class="skip" href="#main">Skip to content</a>
+      <a class="skip" href="#main">پرش به محتوا</a>
       <header class="bar">
-        <nav class="nav" aria-label="Site">
-          <a class="navlink" href="/">Demos</a>
-          <a class="navlink" href="/docs.html" aria-current="page">Docs</a>
-          <a class="navlink" href="/changelog/">What's new</a>
-          <a class="gh" href="https://github.com/YusufCeng1z/ding" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Star on GitHub</a>
+        <nav class="nav" aria-label="سایت">
+          <a class="navlink" href="/">دموها</a>
+          <a class="navlink" href="/docs.html" aria-current="page">مستندات</a>
+          <a class="navlink" href="/changelog/">تازه‌ها</a>
+          <a class="gh" href="https://github.com/YusufCeng1z/ding" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>ستاره در GitHub</a>
         </nav>
       </header>
 
       <div class="shell">
         <aside class="side">
-          <div class="fwpick"><span class="lbl">Framework</span><div id="fw"></div></div>
-          <nav aria-label="On this page">
-            <a href="#install">Install</a>
-            <a href="#setup">Setup</a>
+          <div class="fwpick"><span class="lbl">فریم‌ورک</span><div id="fw"></div></div>
+          <nav aria-label="در این صفحه">
+            <a href="#install">نصب</a>
+            <a href="#setup">راه‌اندازی</a>
             <a href="#nextjs" data-for="react">Next.js</a>
-            <a href="#show">Show a toast</a>
-            <a href="#update">Update in place</a>
-            <a href="#actions">Actions</a>
-            <a href="#options">Options</a>
-            <a href="#configure">Configure</a>
-            <a href="#styling">Styling</a>
-            <a href="#sound">Sound</a>
-            <a href="#a11y">Accessibility</a>
+            <a href="#show">نمایش توست</a>
+            <a href="#update">به‌روزرسانی درجا</a>
+            <a href="#actions">دکمه‌های اقدام</a>
+            <a href="#options">گزینه‌ها</a>
+            <a href="#configure">پیکربندی</a>
+            <a href="#styling">استایل‌دهی</a>
+            <a href="#sound">صدا</a>
+            <a href="#a11y">دسترس‌پذیری</a>
           </nav>
         </aside>
 
         <main id="main">
           <div class="hero">
-            <h1>Docs</h1>
-            <p class="tag">Press <b>Run</b> on any example to see the real toast. Prefer plain text? <a href="/llms.txt">llms.txt</a></p>
+            <h1>مستندات</h1>
+            <p class="tag">روی هر مثال دکمهٔ <b>اجرا</b> را بزنید تا توست واقعی را ببینید. متن ساده می‌خواهید؟ <a href="/llms.txt">llms.txt</a></p>
           </div>
 
           <section id="install">
-            <h2>Install</h2>
-            <p>There is no stylesheet to import: styles are injected from JavaScript.</p>
+            <h2>نصب</h2>
+            <p>فایل استایلی برای ایمپورت کردن وجود ندارد: استایل‌ها از داخل جاوااسکریپت تزریق می‌شوند.</p>
             <pre data-for="react"><code>npm i @yusufceng1z/ding-react</code></pre>
-            <p data-for="react">Using shadcn/ui? This installs the package and adds a <code>ding-toaster.tsx</code> wrapper:</p>
+            <p data-for="react">از shadcn/ui استفاده می‌کنید؟ این دستور پکیج را نصب می‌کند و یک wrapper به نام <code>ding-toaster.tsx</code> هم اضافه می‌کند:</p>
             <pre data-for="react"><code>npx shadcn@latest add @ding/ding</code></pre>
             <pre data-for="svelte"><code>npm i @yusufceng1z/ding-svelte</code></pre>
             <pre data-for="vue"><code>npm i @yusufceng1z/ding-vue</code></pre>
@@ -70,8 +70,8 @@
           </section>
 
           <section id="setup">
-            <h2>Setup</h2>
-            <p>Render the toaster once, near the root of your app.</p>
+            <h2>راه‌اندازی</h2>
+            <p>فقط یک بار، نزدیک ریشهٔ برنامه، Toaster را رندر کنید.</p>
             <pre data-for="react"><code>import { Toaster } from '@yusufceng1z/ding-react';
 
 export default function App() {
@@ -99,7 +99,7 @@ import { Toaster } from '@yusufceng1z/ding-vue';
 
 const unmount = mountToaster({ position: 'top-center' });</code></pre>
             <h3 data-for="vue" id="nuxt">Nuxt</h3>
-            <p data-for="vue"><code>Toaster</code> draws nothing in place and starts after the page has loaded, so server rendering is safe. Put it in <code>app.vue</code> and call <code>toast</code> from client code, like a click handler or <code>onMounted</code>:</p>
+            <p data-for="vue">کامپوننت <code>Toaster</code> در رندر سرور چیزی تولید نمی‌کند و بعد از بارگذاری صفحه شروع به کار می‌کند، پس رندر سمت سرور مشکلی ندارد. آن را در <code>app.vue</code> قرار دهید و <code>toast</code> را از کد سمت کلاینت صدا بزنید، مثلاً در یک رویداد کلیک یا <code>onMounted</code>:</p>
             <pre data-for="vue"><code>&lt;!-- app.vue --&gt;
 &lt;template&gt;
   &lt;Toaster position="top-center" theme="system" /&gt;
@@ -110,7 +110,7 @@ const unmount = mountToaster({ position: 'top-center' });</code></pre>
 import { Toaster } from '@yusufceng1z/ding-vue';
 &lt;/script&gt;</code></pre>
             <h3 data-for="react" id="nextjs">Next.js</h3>
-            <p data-for="react">The package is marked <code>"use client"</code>, so <code>Toaster</code> goes straight into <code>app/layout.tsx</code>, which stays a server component:</p>
+            <p data-for="react">این پکیج با <code>"use client"</code> علامت‌گذاری شده است، پس <code>Toaster</code> را می‌توان مستقیم در <code>app/layout.tsx</code> گذاشت و این فایل همچنان یک server component باقی می‌ماند:</p>
             <pre data-for="react"><code>import { Toaster } from '@yusufceng1z/ding-react';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -123,39 +123,39 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     &lt;/html&gt;
   );
 }</code></pre>
-            <p data-for="react">Call <code>toast</code> from client components only. The <a href="/nextjs-toast/">Next.js guide</a> covers server actions. With the Pages Router, render <code>&lt;Toaster /&gt;</code> in <code>pages/_app.tsx</code>.</p>
+            <p data-for="react">تابع <code>toast</code> را فقط از کامپوننت‌های کلاینتی صدا بزنید. در <a href="/nextjs-toast/">راهنمای Next.js</a> دربارهٔ server actions هم توضیح داده شده است. اگر از Pages Router استفاده می‌کنید، <code>&lt;Toaster /&gt;</code> را در <code>pages/_app.tsx</code> رندر کنید.</p>
           </section>
 
           <section id="show">
-            <h2>Show a toast</h2>
-            <p>Import <code>toast</code> from the same package and call it from anywhere. Every call returns the toast id. <code>toast.loading(title)</code> works the same and stays until you update or dismiss it.</p>
+            <h2>نمایش توست</h2>
+            <p>تابع <code>toast</code> را از همان پکیج ایمپورت کنید و هر جا که خواستید صدایش بزنید. هر فراخوانی شناسهٔ توست را برمی‌گرداند. <code>toast.loading(title)</code> هم همین‌طور کار می‌کند و تا وقتی آن را به‌روزرسانی نکنید یا نبندید، روی صفحه می‌ماند.</p>
             <pre data-run="show"><code>import { toast } from '<span data-for="react">@yusufceng1z/ding-react</span><span data-for="svelte">@yusufceng1z/ding-svelte</span><span data-for="vue">@yusufceng1z/ding-vue</span><span data-for="vanilla">@yusufceng1z/ding</span>';
 
 toast.success('Saved');
 toast.error('Payment failed', { description: 'Card declined' });
 toast.warning('Storage almost full');
 toast.info('New version available');</code></pre>
-            <p>Only one toast is visible at a time. A new call morphs the toast on screen instead of stacking a second one. Repeating the same toast adds a counter (×2).</p>
+            <p>هر زمان فقط یک توست دیده می‌شود. فراخوانی جدید به‌جای روی هم چیدن توست دوم، همان توستِ روی صفحه را درجا تغییر شکل می‌دهد. اگر همان توست تکرار شود، شمارنده‌ای (×۲) به آن اضافه می‌شود.</p>
           </section>
 
           <section id="update">
-            <h2>Update in place</h2>
-            <p>Wrap a promise and one toast moves from loading to the result:</p>
+            <h2>به‌روزرسانی درجا</h2>
+            <p>یک promise را به توست بدهید تا همان یک توست از حالت «در حال بارگذاری» به نتیجه برسد:</p>
             <pre data-run="promise"><code>toast.promise(save(), {
   loading: 'Saving…',
   success: 'Saved',
   error: (err) =&gt; `Could not save: ${err.message}`,
 });</code></pre>
-            <p>Or update by hand, for progress and other long jobs:</p>
+            <p>یا برای نمایش پیشرفت و کارهای طولانی دیگر، به‌روزرسانی را دستی انجام دهید:</p>
             <pre data-run="progress"><code>const id = toast.loading('Uploading photo…', { progress: 0 });
 toast.update(id, { progress: 0.6 });
 toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });</code></pre>
-            <p>Only the newest caller can update the shared toast, so a slow request that finishes late cannot overwrite a newer message.</p>
+            <p>فقط جدیدترین فراخواننده می‌تواند توستِ مشترک را به‌روزرسانی کند، پس درخواست کندی که دیر تمام شود نمی‌تواند پیام جدیدتر را بازنویسی کند.</p>
           </section>
 
           <section id="actions">
-            <h2>Actions</h2>
-            <p>An <code>onClick</code> may return a patch. The toast then morphs in place instead of closing. A returned patch removes the buttons unless it names them again.</p>
+            <h2>دکمه‌های اقدام</h2>
+            <p>تابع <code>onClick</code> می‌تواند یک شیء به‌روزرسانی (patch) برگرداند. در این صورت توست بسته نمی‌شود و درجا تغییر شکل می‌دهد. شیء برگشتی دکمه‌ها را حذف می‌کند، مگر اینکه دوباره در آن به دکمه‌ها اشاره کنید.</p>
             <pre data-run="undo"><code>toast.success('Message deleted', {
   action: {
     label: 'Undo',
@@ -168,22 +168,22 @@ toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });<
           </section>
 
           <section id="options">
-            <h2>Options</h2>
+            <h2>گزینه‌ها</h2>
             <dl class="opts">
-              <dt><code>description</code></dt><dd>Second line of text.</dd>
-              <dt><code>action</code></dt><dd><code>{ label, onClick }</code>. The main button.</dd>
-              <dt><code>secondary</code></dt><dd><code>{ label, onClick }</code>. A quieter button beside the action.</dd>
-              <dt><code>image</code></dt><dd>Avatar or thumbnail URL. Replaces the status icon.</dd>
-              <dt><code>meta</code></dt><dd>Small trailing text, such as “now” or “⌘V”.</dd>
-              <dt><code>progress</code></dt><dd>0 to 1. Draws a thin bar at the bottom of the toast.</dd>
-              <dt><code>duration</code></dt><dd>Milliseconds before it closes. <code>0</code> keeps it until dismissed. Default 5000.</dd>
-              <dt><code>id</code></dt><dd>Reuse an id so repeated calls from one place stay one caller.</dd>
+              <dt><code>description</code></dt><dd>خط دوم متن.</dd>
+              <dt><code>action</code></dt><dd><code>{ label, onClick }</code>. دکمهٔ اصلی.</dd>
+              <dt><code>secondary</code></dt><dd><code>{ label, onClick }</code>. دکمه‌ای کم‌رنگ‌تر در کنار دکمهٔ اقدام.</dd>
+              <dt><code>image</code></dt><dd>نشانی (URL) آواتار یا تصویر بندانگشتی. جایگزین آیکون وضعیت می‌شود.</dd>
+              <dt><code>meta</code></dt><dd>متن کوچک انتهایی، مثل «الان» یا «⌘V».</dd>
+              <dt><code>progress</code></dt><dd>عددی از ۰ تا ۱. نواری باریک در پایین توست نشان می‌دهد.</dd>
+              <dt><code>duration</code></dt><dd>مدت نمایش به میلی‌ثانیه تا بسته شدن توست. مقدار <code>0</code> آن را تا زمانی که بسته نشود نگه می‌دارد. پیش‌فرض: <code>5000</code>.</dd>
+              <dt><code>id</code></dt><dd>یک شناسه را دوباره استفاده کنید تا فراخوانی‌های تکراری از یک نقطه، یک فراخواننده حساب شوند.</dd>
             </dl>
-            <p>Errors, loading toasts and toasts with a button stay until dismissed, so nobody misses something they need to act on. Hover and keyboard focus pause the timer.</p>
+            <p>توست‌های خطا و بارگذاری و توست‌هایی که دکمه دارند ماندگارند و تا وقتی بسته نشوند روی صفحه می‌مانند، تا کسی چیزی را که باید رویش اقدام کند از دست ندهد. قرار گرفتن ماوس روی توست و فوکوس صفحه‌کلید، تایمر را متوقف می‌کنند.</p>
           </section>
 
           <section id="configure">
-            <h2>Configure</h2>
+            <h2>پیکربندی</h2>
             <pre><code>toast.configure({
   position: 'bottom-right', // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
   theme: 'dark',            // system, light, dark
@@ -194,20 +194,20 @@ toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });<
 
 toast.dismiss(id);  // one toast
 toast.dismiss();    // all</code></pre>
-            <p>Position, theme and labels can also be set as props on the toaster. The toast follows reading direction, so right-to-left pages mirror automatically.</p>
-            <p><code>labels</code> sets the names screen readers announce for the notifications region (<code>region</code>) and the close button (<code>dismiss</code>). Keys you leave out keep their English default, so a non-English page only needs to translate what it uses.</p>
-            <h3 id="csp">Content Security Policy</h3>
-            <p>Styles are injected as one <code>&lt;style&gt;</code> element. If your CSP blocks inline styles (<code>style-src</code> without <code>'unsafe-inline'</code>), pass the page's nonce. Per-toast values are set through the DOM, which CSP allows, so the stylesheet is the only thing that needs it.</p>
+            <p>جایگاه، پوسته و برچسب‌ها را می‌توان به‌صورت prop روی Toaster هم تنظیم کرد. توست جهت خواندن صفحه را دنبال می‌کند، پس در صفحه‌های راست‌به‌چپ به‌صورت خودکار قرینه می‌شود.</p>
+            <p>گزینهٔ <code>labels</code> نام‌هایی را تعیین می‌کند که صفحه‌خوان‌ها برای ناحیهٔ اعلان‌ها (<code>region</code>) و دکمهٔ بستن (<code>dismiss</code>) می‌خوانند. کلیدهایی که نیاورید مقدار پیش‌فرض انگلیسی خود را نگه می‌دارند، پس صفحه‌ای که انگلیسی نیست فقط باید همان‌هایی را ترجمه کند که به کار می‌برد.</p>
+            <h3 id="csp">سیاست امنیت محتوا (CSP)</h3>
+            <p>استایل‌ها به‌صورت یک عنصر <code>&lt;style&gt;</code> تزریق می‌شوند. اگر CSP شما استایل‌های درون‌خطی را مسدود می‌کند (یعنی <code>style-src</code> بدون <code>'unsafe-inline'</code>)، مقدار nonce صفحه را به آن بدهید. مقدارهای مخصوص هر توست از طریق DOM تنظیم می‌شوند که CSP اجازه‌اش را می‌دهد، پس تنها چیزی که به nonce نیاز دارد خودِ شیت استایل است.</p>
             <pre data-for="react"><code>&lt;Toaster nonce={nonce} /&gt;</code></pre>
             <pre data-for="svelte"><code>&lt;Toaster nonce={nonce} /&gt;</code></pre>
             <pre data-for="vue"><code>&lt;Toaster :nonce="nonce" /&gt;</code></pre>
             <pre data-for="vanilla"><code>mountToaster({ nonce });</code></pre>
-            <p data-for="react">In Next.js, read the nonce your proxy sets with <code>(await headers()).get('x-nonce')</code> in a server component and pass it down.</p>
+            <p data-for="react">در Next.js، مقدار nonce را که proxy شما تنظیم کرده است با <code>(await headers()).get('x-nonce')</code> در یک server component بخوانید و آن را به پایین بدهید.</p>
           </section>
 
           <section id="styling">
-            <h2>Styling</h2>
-            <p>Colors and corner radius are CSS variables. Set them in your own stylesheet and they apply to every toast, whatever framework you use.</p>
+            <h2>استایل‌دهی</h2>
+            <p>رنگ‌ها و شعاع گوشه‌ها متغیرهای CSS هستند. آن‌ها را در فایل استایل خودتان تنظیم کنید تا روی همهٔ توست‌ها اعمال شوند، با هر فریم‌ورکی که استفاده می‌کنید.</p>
             <pre><code>.tst-viewport {
   --tst-radius: 8px;
   --tst-bg: #1e3a8a;
@@ -215,41 +215,41 @@ toast.dismiss();    // all</code></pre>
   --tst-success: #16a34a;
 }</code></pre>
             <table>
-              <thead><tr><th>Variable</th><th>Default</th><th>Controls</th></tr></thead>
+              <thead><tr><th>متغیر</th><th>پیش‌فرض</th><th>کاربرد</th></tr></thead>
               <tbody>
-                <tr><td><code>--tst-radius</code></td><td><code>22px</code></td><td>Corner radius. The default makes a pill</td></tr>
-                <tr><td><code>--tst-bg</code></td><td><code>light-dark(#fff, #0c0c0d)</code></td><td>Background</td></tr>
-                <tr><td><code>--tst-fg</code></td><td><code>light-dark(#0f0f13, #fafafa)</code></td><td>Text</td></tr>
-                <tr><td><code>--tst-success</code></td><td><code>light-dark(#12a36b, #4ade80)</code></td><td>Success icon</td></tr>
-                <tr><td><code>--tst-error</code></td><td><code>light-dark(#e5484d, #f87171)</code></td><td>Error icon</td></tr>
-                <tr><td><code>--tst-warning</code></td><td><code>light-dark(#c77d00, #fbbf24)</code></td><td>Warning icon</td></tr>
-                <tr><td><code>--tst-info</code></td><td><code>light-dark(#2f7de1, #60a5fa)</code></td><td>Info icon</td></tr>
+                <tr><td><code>--tst-radius</code></td><td><code>22px</code></td><td>شعاع گوشه. مقدار پیش‌فرض شکل کپسول می‌سازد</td></tr>
+                <tr><td><code>--tst-bg</code></td><td><code>light-dark(#fff, #0c0c0d)</code></td><td>پس‌زمینه</td></tr>
+                <tr><td><code>--tst-fg</code></td><td><code>light-dark(#0f0f13, #fafafa)</code></td><td>متن</td></tr>
+                <tr><td><code>--tst-success</code></td><td><code>light-dark(#12a36b, #4ade80)</code></td><td>آیکون موفقیت</td></tr>
+                <tr><td><code>--tst-error</code></td><td><code>light-dark(#e5484d, #f87171)</code></td><td>آیکون خطا</td></tr>
+                <tr><td><code>--tst-warning</code></td><td><code>light-dark(#c77d00, #fbbf24)</code></td><td>آیکون هشدار</td></tr>
+                <tr><td><code>--tst-info</code></td><td><code>light-dark(#2f7de1, #60a5fa)</code></td><td>آیکون اطلاع</td></tr>
               </tbody>
             </table>
-            <p>The defaults follow the theme through <code>light-dark()</code>. A single value applies to both themes. To keep them apart, write your own: <code>--tst-bg: light-dark(#fff, #111)</code>.</p>
+            <p>مقدارهای پیش‌فرض از طریق <code>light-dark()</code> پوسته را دنبال می‌کنند. اگر فقط یک مقدار بدهید، برای هر دو پوسته اعمال می‌شود. برای اینکه این دو از هم جدا بمانند، خودتان بنویسید: <code>--tst-bg: light-dark(#fff, #111)</code>.</p>
           </section>
 
           <section id="sound">
-            <h2>Sound</h2>
-            <p>Off by default. Turn it on and each status gets its own soft tone: success rises, error falls, warning double-taps, info is a single note. Loading is silent, and progress updates never make a sound.</p>
+            <h2>صدا</h2>
+            <p>به‌طور پیش‌فرض خاموش است. آن را روشن کنید تا هر وضعیت نوای ملایم خودش را داشته باشد: موفق صعودی است، خطا نزولی، هشدار دو ضربهٔ کوتاه دارد و اطلاع فقط یک نت است. حالت بارگذاری بی‌صداست و به‌روزرسانی‌های پیشرفت هرگز صدایی ندارند.</p>
             <pre data-run="sound"><code>toast.configure({ sound: true, volume: 0.5 });</code></pre>
-            <p>Browsers keep audio locked until a click or key press, so the first sound has to follow one. To use your own sounds or a sound library, pass a function. It receives <code>success</code>, <code>error</code>, <code>warning</code>, <code>info</code> or <code>loading</code>, once per new toast and once per status change.</p>
+            <p>مرورگرها تا قبل از کلیک یا فشردن یک کلید، پخش صدا را قفل نگه می‌دارند، پس اولین صدا باید بعد از یکی از این دو بیاید. برای استفاده از صدای خودتان یا یک کتابخانهٔ صدا، یک تابع بدهید. این تابع یکی از مقدارهای <code>success</code>، <code>error</code>، <code>warning</code>، <code>info</code> یا <code>loading</code> را دریافت می‌کند، یک بار برای هر توست جدید و یک بار برای هر تغییر وضعیت.</p>
             <pre><code>toast.configure({ sound: (type) =&gt; mySounds.play(type) });</code></pre>
           </section>
 
           <section id="a11y">
-            <h2>Accessibility</h2>
+            <h2>دسترس‌پذیری</h2>
             <ul class="plain">
-              <li>Messages go through persistent live regions: errors are announced assertively, everything else politely.</li>
-              <li><kbd>Esc</kbd> dismisses. <kbd>Alt</kbd> + <kbd>T</kbd> moves focus into the toast.</li>
-              <li>Respects <code>prefers-reduced-motion</code>.</li>
-              <li>Buttons stay out of the tab order until the toast has opened.</li>
+              <li>پیام‌ها از طریق ناحیه‌های زندهٔ دائمی (live region) اعلام می‌شوند: خطاها با اولویت بالا (assertive) و بقیه با اولویت عادی (polite).</li>
+              <li>با <kbd>Esc</kbd> توست بسته می‌شود. با <kbd>Alt</kbd> + <kbd>T</kbd> فوکوس به توست می‌رود.</li>
+              <li>از تنظیم «کاهش حرکت» (<code>prefers-reduced-motion</code>) پیروی می‌کند.</li>
+              <li>دکمه‌ها تا وقتی توست کامل باز نشده باشد، در ترتیب Tab قرار نمی‌گیرند.</li>
             </ul>
           </section>
         </main>
       </div>
 
-      <footer>Made by <a href="https://yusufcengiz.dev">yusufcengiz.dev</a></footer>
+      <footer>ساختهٔ <a href="https://yusufcengiz.dev">yusufcengiz.dev</a></footer>
     </div>
   </body>
 </html>

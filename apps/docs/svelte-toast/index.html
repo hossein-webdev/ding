@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Svelte 5 toast notifications: install and use Ding</title>
-    <meta name="description" content="Add toast notifications to a Svelte 5 or SvelteKit app with Ding. Mount one Toaster in the root layout, call toast() from any component or module." />
+    <title>اعلان توست در Svelte 5: نصب و استفاده از Ding</title>
+    <meta name="description" content="با Ding به برنامهٔ Svelte 5 یا SvelteKit توست اضافه کنید. یک Toaster در لی‌اوت ریشه بگذارید و toast() را از هر کامپوننت یا ماژول صدا بزنید." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/svelte-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Svelte 5 toast notifications: install and use Ding" />
-    <meta property="og:description" content="Add toast notifications to a Svelte 5 or SvelteKit app with Ding. Mount one Toaster in the root layout, call toast() from any component or module." />
+    <meta property="og:title" content="اعلان توست در Svelte 5: نصب و استفاده از Ding" />
+    <meta property="og:description" content="با Ding به برنامهٔ Svelte 5 یا SvelteKit توست اضافه کنید. یک Toaster در لی‌اوت ریشه بگذارید و toast() را از هر کامپوننت یا ماژول صدا بزنید." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/svelte-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Svelte 5 toast notifications",
-        "description": "Add toast notifications to a Svelte 5 or SvelteKit app with Ding. Mount one Toaster in the root layout, call toast() from any component or module.",
+        "headline": "اعلان توست در Svelte 5",
+        "description": "با Ding به برنامهٔ Svelte 5 یا SvelteKit توست اضافه کنید. یک Toaster در لی‌اوت ریشه بگذارید و toast() را از هر کامپوننت یا ماژول صدا بزنید.",
         "url": "https://ding.yusufcengiz.dev/svelte-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,26 +35,26 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="ناوبری سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>Svelte 5 toast notifications</h1>
-      <p class="lead">Ding has a Svelte package built for Svelte 5. It has no dependencies, needs no stylesheet, and the <code>toast</code> function works from components and from plain modules.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
-        <button type="button" data-demo="error">Error</button>
+      <h1>اعلان توست در Svelte 5</h1>
+      <p class="lead">Ding پکیجی دارد که مخصوص Svelte 5 ساخته شده است. وابستگی ندارد، به فایل CSS جدا نیاز ندارد و تابع <code>toast</code> هم در کامپوننت‌ها کار می‌کند و هم در ماژول‌های ساده.</p>
+      <div class="try" role="group" aria-label="توست را امتحان کنید">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
+        <button type="button" data-demo="error">خطا</button>
         <button type="button" data-demo="promise">Promise</button>
-        <button type="button" data-demo="undo">Undo</button>
+        <button type="button" data-demo="undo">بازگردانی</button>
       </div>
-      <h2>Install</h2>
+      <h2>نصب</h2>
       <pre><code>npm i @yusufceng1z/ding-svelte</code></pre>
-      <p>It targets Svelte 5 only. If you are still on Svelte 4, this package will not work for you.</p>
-      <h2>Mount it in the root layout</h2>
-      <p>In SvelteKit that is <code>src/routes/+layout.svelte</code>. In a plain Svelte app, use your top-level component.</p>
+      <p>فقط Svelte 5 را هدف گرفته است. اگر هنوز روی Svelte 4 هستید، این پکیج برایتان کار نمی‌کند.</p>
+      <h2>افزودن به لی‌اوت ریشه</h2>
+      <p>در SvelteKit این فایل <code>src/routes/+layout.svelte</code> است. در یک برنامهٔ Svelte ساده، از کامپوننت سطح بالای خودتان استفاده کنید.</p>
       <pre><code>&lt;script&gt;
         import { Toaster } from '@yusufceng1z/ding-svelte';
         let { children } = $props();
@@ -62,16 +62,16 @@
 
       {@render children()}
       &lt;Toaster position="top-center" theme="system" /&gt;</code></pre>
-      <h2>Show a toast</h2>
+      <h2>نمایش یک توست</h2>
       <pre><code>import { toast } from '@yusufceng1z/ding-svelte';
 
       toast.success('Saved');
       toast.error('Payment failed', { description: 'Card declined' });</code></pre>
-      <p>You can call it from a <code>+page.ts</code> load function, a store, an event handler, anywhere that runs in the browser. Call it on the server and nothing happens, since there is no page to show it on.</p>
-      <h2>Behavior to know about</h2>
-      <p>There is only ever one toast on screen. A new call changes the visible toast into the new message with a spring animation instead of adding a second one. That is the main difference from stacking libraries such as svelte-sonner, which I compare on the <a href="/svelte-sonner-alternative/">svelte-sonner alternative</a> page.</p>
-      <p>Errors, loading toasts and toasts that have a button stay until dismissed. Everything else closes after five seconds. For loading states see <a href="/loading-toast/">loading toast</a>, and for undo buttons see <a href="/undo-toast/">undo toast</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <p>می‌توانید آن را از تابع load در <code>+page.ts</code>، از یک store، از یک کنترل‌کنندهٔ رویداد و از هر جای دیگری که در مرورگر اجرا می‌شود صدا بزنید. اگر روی سرور صدایش بزنید اتفاقی نمی‌افتد، چون صفحه‌ای برای نشان دادن آن وجود ندارد.</p>
+      <h2>رفتارهایی که باید بدانید</h2>
+      <p>همیشه فقط یک توست روی صفحه هست. فراخوانی تازه، به‌جای افزودن توست دوم، توست نمایان را با انیمیشن فنری به پیام جدید تبدیل می‌کند. این تفاوت اصلی با کتابخانه‌هایی است که توست‌ها را روی هم می‌چینند، مثل svelte-sonner، که در صفحهٔ <a href="/svelte-sonner-alternative/">جایگزین svelte-sonner</a> مقایسه‌شان کرده‌ام.</p>
+      <p>خطاها، توست‌های در حال بارگذاری و توست‌هایی که دکمه دارند ماندگارند و تا وقتی بسته نشوند روی صفحه می‌مانند. بقیه بعد از پنج ثانیه بسته می‌شوند. برای حالت بارگذاری <a href="/loading-toast/">توست بارگذاری</a> و برای دکمهٔ بازگردانی <a href="/undo-toast/">توست بازگردانی</a> را ببینید.</p>
+      <footer>Ding ساختهٔ <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> است. با مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

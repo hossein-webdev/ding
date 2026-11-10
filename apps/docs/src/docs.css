@@ -2,8 +2,8 @@
 .docs h1{font-size:clamp(28px,6vw,36px)}
 .docs section{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;justify-items:start}
 .docs section>*{max-width:100%}
-.docs h2{padding:0;font-size:20px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
-.docs h3{margin:16px 0 -4px;font-size:16px;font-weight:650;letter-spacing:-.01em;color:var(--ink)}
+.docs h2{padding:0;font-size:20px;font-weight:650;color:var(--ink)}
+.docs h3{margin:16px 0 -4px;font-size:16px;font-weight:650;color:var(--ink)}
 .docs p{margin:0;max-width:62ch;color:#333;text-wrap:pretty}
 .docs section[id]{scroll-margin-block-start:0}
 .docs table{width:100%;border-collapse:collapse;font-size:14px}
@@ -25,7 +25,7 @@ pre:hover .pcopy,pre:focus-within .pcopy{opacity:1}
 h2:hover .anchor,.anchor:focus-visible{opacity:1}
 @media (hover:none){.anchor{display:none}}
 .fwpick{display:grid;gap:8px;margin-bottom:24px}
-.fwpick .lbl{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.fwpick .lbl{font-size:12px;font-weight:600;}
 .fwpick .seg{display:flex}
 .fwpick .seg .ind{background:var(--ink);box-shadow:none}
 .fwpick .seg button{flex:1;padding:6px 8px;font-weight:550}

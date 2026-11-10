@@ -4,22 +4,23 @@ import './site.css';
 import './docs.css';
 
 // real toasts for the Run buttons
-mountToaster({ theme: 'dark' });
+const labels = { region: 'اعلان‌ها', dismiss: 'بستن اعلان' };
+mountToaster({ theme: 'dark', labels });
 // pending steps of the last example are cancelled when another one starts, so they never fight over the toast
 const timers: ReturnType<typeof setTimeout>[] = [];
 const later = (f: () => void, ms: number) => void timers.push(setTimeout(f, ms));
 const RUN: Record<string, () => void> = {
-  show: () => [() => toast.success('Saved'), () => toast.error('Payment failed', { description: 'Card declined' }), () => toast.warning('Storage almost full'), () => toast.info('New version available')].forEach((f, i) => later(f, i * 1500)),
-  promise: () => void toast.promise(new Promise((r) => setTimeout(r, 1800)), { loading: 'Saving…', success: 'Saved', error: 'Could not save' }),
+  show: () => [() => toast.success('ذخیره شد'), () => toast.error('پرداخت ناموفق بود', { description: 'کارت رد شد' }), () => toast.warning('فضای ذخیره‌سازی تقریباً پر است'), () => toast.info('نسخهٔ جدید در دسترس است')].forEach((f, i) => later(f, i * 1500)),
+  promise: () => void toast.promise(new Promise((r) => setTimeout(r, 1800)), { loading: 'در حال ذخیره…', success: 'ذخیره شد', error: 'ذخیره نشد' }),
   progress: () => {
-    const id = toast.loading('Uploading photo…', { progress: 0 });
+    const id = toast.loading('در حال بارگذاری عکس…', { progress: 0 });
     later(() => toast.update(id, { progress: 0.6 }), 800);
-    later(() => toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null }), 1800);
+    later(() => toast.update(id, { type: 'success', title: 'عکس بارگذاری شد', progress: null }), 1800);
   },
-  undo: () => void toast.success('Message deleted', { action: { label: 'Undo', onClick: () => ({ type: 'info', title: 'Restored' }) } }),
+  undo: () => void toast.success('پیام حذف شد', { action: { label: 'بازگردانی', onClick: () => ({ type: 'info', title: 'بازگردانی شد' }) } }),
   sound: () => {
-    toast.configure({ sound: true, volume: 0.5 });
-    void toast.success('Sound is on');
+    toast.configure({ sound: true, volume: 0.5, labels });
+    void toast.success('صدا روشن شد');
   },
 };
 
@@ -33,7 +34,7 @@ try {
 }
 document.body.dataset.fw = saved;
 document.getElementById('fw')!.append(
-  makeSeg('Framework', FW, FW.find((n) => n.toLowerCase() === saved) ?? 'React', (n) => {
+  makeSeg('فریم‌ورک', FW, FW.find((n) => n.toLowerCase() === saved) ?? 'React', (n) => {
     document.body.dataset.fw = n.toLowerCase();
     try {
       localStorage.setItem('ding-fw', n.toLowerCase());
@@ -48,31 +49,31 @@ document.querySelectorAll('pre').forEach((pre) => {
   const bar = Object.assign(document.createElement('div'), { className: 'pbar' });
   const run = pre.dataset.run;
   if (run && RUN[run]) {
-    const r = Object.assign(document.createElement('button'), { type: 'button', className: 'prun', textContent: 'Run' });
+    const r = Object.assign(document.createElement('button'), { type: 'button', className: 'prun', textContent: 'اجرا' });
     r.onclick = () => {
       timers.splice(0).forEach(clearTimeout);
       RUN[run]!();
     };
     bar.append(r);
   }
-  const b = Object.assign(document.createElement('button'), { type: 'button', className: 'pcopy', textContent: 'Copy' });
+  const b = Object.assign(document.createElement('button'), { type: 'button', className: 'pcopy', textContent: 'کپی' });
   b.onclick = async () => {
     const code = pre.querySelector('code')!;
     try {
       await navigator.clipboard.writeText(code.innerText);
-      b.textContent = 'Copied';
+      b.textContent = 'کپی شد';
     } catch {
-      b.textContent = 'Press Ctrl+C';
+      b.textContent = 'کلیدهای Ctrl+C را بزنید';
       getSelection()?.selectAllChildren(code);
     }
-    setTimeout(() => (b.textContent = 'Copy'), 1600);
+    setTimeout(() => (b.textContent = 'کپی'), 1600);
   };
   bar.append(b);
   pre.append(bar);
 });
 document.querySelectorAll<HTMLElement>('main section[id] > h2').forEach((h2) => {
   const a = Object.assign(document.createElement('a'), { className: 'anchor', href: `#${h2.parentElement!.id}`, textContent: '#' });
-  a.setAttribute('aria-label', `Link to ${h2.textContent}`);
+  a.setAttribute('aria-label', `پیوند به ${h2.textContent}`);
   h2.append(a);
 });
 

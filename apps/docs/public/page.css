@@ -5,8 +5,8 @@ body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.65 'Vazi
 main { max-width: 44rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
 nav { max-width: 44rem; margin: 0 auto; padding: 1.25rem 1.25rem 0; font-size: 15px; }
 nav a { display: inline-block; padding: 0.5rem 0; margin-inline-end: 1.1rem; }
-h1 { font-size: 2.1rem; line-height: 1.2; letter-spacing: -0.02em; margin: 0 0 1rem; text-wrap: balance; }
-h2 { font-size: 1.3rem; margin: 2.4rem 0 0.5rem; letter-spacing: -0.01em; }
+h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 1rem; text-wrap: balance; }
+h2 { font-size: 1.3rem; margin: 2.4rem 0 0.5rem; }
 p, li { max-width: 40rem; text-wrap: pretty; }
 a { color: var(--link); }
 code { font: 0.92em ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--code); padding: 0.1em 0.35em; border-radius: 4px; }

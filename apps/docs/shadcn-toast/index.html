@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>shadcn/ui toast: add Ding with one CLI command</title>
-    <meta name="description" content="Ding is available as a shadcn registry item. One command installs the package and adds a small wrapper component to your project." />
+    <title>توست shadcn/ui: افزودن Ding با یک دستور CLI</title>
+    <meta name="description" content="کتابخانهٔ Ding به‌صورت یک registry item برای shadcn منتشر شده است. با یک دستور، پکیج نصب می‌شود و یک کامپوننت wrapper کوچک به پروژهٔ شما اضافه می‌شود." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/shadcn-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="shadcn/ui toast: add Ding with one CLI command" />
-    <meta property="og:description" content="Ding is available as a shadcn registry item. One command installs the package and adds a small wrapper component to your project." />
+    <meta property="og:title" content="توست shadcn/ui: افزودن Ding با یک دستور CLI" />
+    <meta property="og:description" content="کتابخانهٔ Ding به‌صورت یک registry item برای shadcn منتشر شده است. با یک دستور، پکیج نصب می‌شود و یک کامپوننت wrapper کوچک به پروژهٔ شما اضافه می‌شود." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/shadcn-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "A shadcn/ui toast you can add with the CLI",
-        "description": "Ding is available as a shadcn registry item. One command installs the package and adds a small wrapper component to your project.",
+        "headline": "توستی برای shadcn/ui که با CLI اضافه می‌شود",
+        "description": "کتابخانهٔ Ding به‌صورت یک registry item برای shadcn منتشر شده است. با یک دستور، پکیج نصب می‌شود و یک کامپوننت wrapper کوچک به پروژهٔ شما اضافه می‌شود.",
         "url": "https://ding.yusufcengiz.dev/shadcn-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-06",
@@ -35,24 +35,24 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>A shadcn/ui toast you can add with the CLI</h1>
-      <p class="lead">Ding publishes a registry item, so the shadcn CLI can install it like any other component.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
-        <button type="button" data-demo="error">Error</button>
+      <h1>توستی برای shadcn/ui که با CLI اضافه می‌شود</h1>
+      <p class="lead">کتابخانهٔ Ding یک registry item منتشر می‌کند، پس CLI مربوط به shadcn می‌تواند آن را مثل هر کامپوننت دیگری نصب کند.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
+        <button type="button" data-demo="error">خطا</button>
       </div>
-      <h2>Add it</h2>
+      <h2>افزودن</h2>
       <pre><code>npx shadcn@latest add @ding/ding</code></pre>
-      <p>Ding is listed in the shadcn registry directory, so the <code>@ding</code> namespace works without any setup. The full URL works too: <code>npx shadcn@latest add https://ding.yusufcengiz.dev/r/ding.json</code>.</p>
-      <p>This installs <code>@yusufceng1z/ding-react</code> and writes <code>components/ding-toaster.tsx</code>. The file is tiny: it re-exports the Toaster as <code>DingToaster</code>, plus <code>toast</code>, and marks itself <code>"use client"</code> so it works in the Next.js App Router.</p>
-      <h2>Use it</h2>
+      <p>کتابخانهٔ Ding در دایرکتوری registry مربوط به shadcn فهرست شده است، پس فضای نام <code>@ding</code> بدون هیچ تنظیمی کار می‌کند. نشانی کامل هم جواب می‌دهد: <code>npx shadcn@latest add https://ding.yusufcengiz.dev/r/ding.json</code>.</p>
+      <p>این دستور <code>@yusufceng1z/ding-react</code> را نصب می‌کند و فایل <code>components/ding-toaster.tsx</code> را می‌نویسد. این فایل بسیار کوچک است: Toaster را با نام <code>DingToaster</code> دوباره export می‌کند، همراه با <code>toast</code>، و خودش را با <code>"use client"</code> علامت‌گذاری می‌کند تا در App Router در Next.js کار کند.</p>
+      <h2>استفاده</h2>
       <pre><code>import { DingToaster } from '@/components/ding-toaster';
 
       // once, in your root layout
@@ -61,10 +61,10 @@
 
       toast.success('Saved');
       toast.error('Payment failed', { description: 'Card declined' });</code></pre>
-      <h2>How it differs from the stock shadcn toast</h2>
-      <p>It shows one toast at a time and morphs it when you call again. The styles come from JavaScript, so it does not depend on Tailwind or add CSS to your project. If you need several toasts visible together, the stacking toast that shadcn ships is the better fit.</p>
-      <p>Not on shadcn? The same package works anywhere, see <a href="/react-toast/">React toast notifications</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <h2>تفاوت آن با توست پیش‌فرض shadcn</h2>
+      <p>این کتابخانه هر بار یک توست نشان می‌دهد و با فراخوانی بعدی آن را درجا تغییر شکل می‌دهد. استایل‌ها از جاوااسکریپت می‌آیند، پس به Tailwind وابسته نیست و CSS هم به پروژهٔ شما اضافه نمی‌کند. اگر لازم دارید چند توست هم‌زمان دیده شوند، توستی که shadcn عرضه می‌کند و توست‌ها را روی هم می‌چیند، انتخاب بهتری است.</p>
+      <p>از shadcn استفاده نمی‌کنید؟ همین پکیج همه‌جا کار می‌کند؛ <a href="/react-toast/">اعلان‌های توست در React</a> را ببینید.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

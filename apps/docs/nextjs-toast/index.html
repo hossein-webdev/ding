@@ -1,13 +1,13 @@
 <!doctype html>
-<html lang="en" dir="rtl">
+<html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" />
-    <title>Next.js toast notifications in the App Router (Ding)</title>
-    <meta name="description" content="Set up toast notifications in a Next.js App Router project with Ding: the Toaster goes straight into the root layout, toast() is called from client components." />
+    <title>اعلان‌های توست در Next.js با App Router (Ding)</title>
+    <meta name="description" content="راه‌اندازی اعلان‌های توست در یک پروژهٔ Next.js با App Router و Ding: Toaster مستقیم در layout ریشه قرار می‌گیرد و toast() از کامپوننت‌های کلاینتی صدا زده می‌شود." />
     <link rel="canonical" href="https://ding.yusufcengiz.dev/nextjs-toast/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/page.css" />
     <meta property="og:type" content="article" />
     <meta property="og:site_name" content="Ding" />
-    <meta property="og:title" content="Next.js toast notifications in the App Router (Ding)" />
-    <meta property="og:description" content="Set up toast notifications in a Next.js App Router project with Ding: the Toaster goes straight into the root layout, toast() is called from client components." />
+    <meta property="og:title" content="اعلان‌های توست در Next.js با App Router (Ding)" />
+    <meta property="og:description" content="راه‌اندازی اعلان‌های توست در یک پروژهٔ Next.js با App Router و Ding: Toaster مستقیم در layout ریشه قرار می‌گیرد و toast() از کامپوننت‌های کلاینتی صدا زده می‌شود." />
     <meta property="og:url" content="https://ding.yusufcengiz.dev/nextjs-toast/" />
     <meta property="og:image" content="https://ding.yusufcengiz.dev/social-preview.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,8 +24,8 @@
       {
         "@context": "https://schema.org",
         "@type": "TechArticle",
-        "headline": "Next.js toast notifications",
-        "description": "Set up toast notifications in a Next.js App Router project with Ding: the Toaster goes straight into the root layout, toast() is called from client components.",
+        "headline": "اعلان‌های توست در Next.js",
+        "description": "راه‌اندازی اعلان‌های توست در یک پروژهٔ Next.js با App Router و Ding: Toaster مستقیم در layout ریشه قرار می‌گیرد و toast() از کامپوننت‌های کلاینتی صدا زده می‌شود.",
         "url": "https://ding.yusufcengiz.dev/nextjs-toast/",
         "datePublished": "2026-11-06",
         "dateModified": "2026-11-09",
@@ -35,24 +35,24 @@
     </script>
   </head>
   <body>
-    <nav aria-label="Site">
+    <nav aria-label="سایت">
       <a href="/">Ding</a>
-      <a href="/docs.html">Docs</a>
+      <a href="/docs.html">مستندات</a>
       <a href="https://github.com/YusufCeng1z/ding">GitHub</a>
     </nav>
     <main>
-      <h1>Next.js toast notifications</h1>
-      <p class="lead">The package is marked <code>"use client"</code>, so the Toaster goes straight into your root layout. The one rule: call <code>toast</code> from client code. Everything else is the same as plain React.</p>
-      <div class="try" role="group" aria-label="Try the toast">
-        <span>Try it:</span>
-        <button type="button" data-demo="success">Success</button>
-        <button type="button" data-demo="error">Error</button>
+      <h1>اعلان‌های توست در Next.js</h1>
+      <p class="lead">این پکیج با <code>"use client"</code> علامت‌گذاری شده است، پس Toaster مستقیم در layout ریشهٔ شما قرار می‌گیرد. تنها قاعده این است: <code>toast</code> را از کد سمت کلاینت صدا بزنید. بقیهٔ کار مثل React ساده است.</p>
+      <div class="try" role="group" aria-label="امتحان توست">
+        <span>امتحان کنید:</span>
+        <button type="button" data-demo="success">موفق</button>
+        <button type="button" data-demo="error">خطا</button>
         <button type="button" data-demo="promise">Promise</button>
       </div>
-      <h2>Install</h2>
+      <h2>نصب</h2>
       <pre><code>npm i @yusufceng1z/ding-react</code></pre>
-      <h2>Add the Toaster to the layout</h2>
-      <p>Render it once in <code>app/layout.tsx</code>. The layout stays a server component, no wrapper file needed.</p>
+      <h2>افزودن Toaster به layout</h2>
+      <p>آن را فقط یک بار در <code>app/layout.tsx</code> رندر کنید. layout همچنان یک server component می‌ماند و به فایل wrapper نیازی نیست.</p>
       <pre><code>import { Toaster } from '@yusufceng1z/ding-react';
 
       export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -65,7 +65,7 @@
           &lt;/html&gt;
         );
       }</code></pre>
-      <h2>Call toast from client code</h2>
+      <h2>صدا زدن toast از کد کلاینت</h2>
       <pre><code>"use client";
 
       import { toast } from '@yusufceng1z/ding-react';
@@ -73,15 +73,15 @@
       export function SaveButton() {
         return &lt;button onClick={() =&gt; toast.success('Saved')}&gt;Save&lt;/button&gt;;
       }</code></pre>
-      <h2>Server actions</h2>
-      <p><code>toast</code> runs in the browser, so it cannot be called inside a server action. Call it from the client code that triggers the action and pass the action's promise:</p>
+      <h2>اکشن‌های سرور (Server Actions)</h2>
+      <p>تابع <code>toast</code> در مرورگر اجرا می‌شود، پس نمی‌توان آن را داخل یک server action صدا زد. آن را از کد سمت کلاینتی که اکشن را فعال می‌کند صدا بزنید و promise مربوط به اکشن را به آن بدهید:</p>
       <pre><code>toast.promise(saveAction(formData), {
         loading: 'Saving…',
         success: 'Saved',
         error: 'Could not save',
       });</code></pre>
-      <p>With the Pages Router, render <code>&lt;Toaster /&gt;</code> in <code>pages/_app.tsx</code>. If the project uses shadcn/ui, the <a href="/shadcn-toast/">shadcn install</a> also works. For the non-Next parts see <a href="/react-toast/">React toast notifications</a>.</p>
-      <footer>Ding is made by <a href="https://yusufcengiz.dev">Yusuf Cengiz</a>. MIT licensed, <a href="https://github.com/YusufCeng1z/ding">source on GitHub</a>.</footer>
+      <p>اگر از Pages Router استفاده می‌کنید، <code>&lt;Toaster /&gt;</code> را در <code>pages/_app.tsx</code> رندر کنید. اگر پروژه از shadcn/ui استفاده می‌کند، <a href="/shadcn-toast/">نصب shadcn</a> هم جواب می‌دهد. برای بخش‌هایی که به Next ربطی ندارند، <a href="/react-toast/">اعلان‌های توست در React</a> را ببینید.</p>
+      <footer>پروژهٔ Ding را <a href="https://yusufcengiz.dev">Yusuf Cengiz</a> ساخته است. دارای مجوز MIT، <a href="https://github.com/YusufCeng1z/ding">کد منبع در GitHub</a>.</footer>
     </main>
     <script type="module" src="/src/page-demo.ts"></script>
   </body>

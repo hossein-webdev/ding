@@ -28,7 +28,7 @@ main{display:grid;gap:40px;padding-top:56px;flex:1}
 .m-eye{transform-origin:50% 50%;translate:var(--ex,0) var(--ey,0);transition:translate .18s ease-out}
 .m-bell{transform-origin:55% 90%}
 @media (min-width:640px){.mascot{position:absolute;inset-inline-end:0;top:0;width:230px;height:199px;inset-block-start:-12px}.hero>:not(.mascot){max-width:calc(100% - 250px)}.hero>:not(.mascot):is(.install,.actions){max-width:none}}
-h1{margin:0;font-size:clamp(28px,5.5vw,38px);line-height:1.1;font-weight:700;letter-spacing:-.03em;text-wrap:balance}
+h1{margin:0;font-size:clamp(28px,5.5vw,38px);line-height:1.1;font-weight:700;text-wrap:balance}
 .tag{margin:0;max-width:40ch;color:var(--mute);font-size:15px;line-height:1.55;text-wrap:balance}
 .hero h1+.tag{margin-top:-4px}
 .hero{gap:20px}
