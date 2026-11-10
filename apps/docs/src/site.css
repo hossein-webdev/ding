@@ -1,7 +1,10 @@
 :root{color-scheme:light;--ink:#111;--mute:#666;--line:#e6e6e6;--soft:#f4f4f4;--r:999px;--ease:cubic-bezier(.2,0,0,1)}
 *{box-sizing:border-box}
 html{scroll-padding-block-start:72px}
-body{margin:0;background:#fff;color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{margin:0;background:#fff;color:var(--ink);font:15px/1.5 "Vazirmatn",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+/* the page is RTL, code is not: code reads left to right and never reorders the sentence around it */
+pre,code,kbd{direction:ltr;unicode-bidi:isolate}
+pre{text-align:start}
 .page{max-width:720px;margin:0 auto;padding:0 20px 48px;min-height:100dvh;display:flex;flex-direction:column}
 main{display:grid;gap:40px;padding-top:56px;flex:1}
 .skip{position:absolute;inset-inline-start:12px;top:-60px;padding:8px 14px;background:var(--ink);color:#fff;border-radius:var(--r);font-size:13px;text-decoration:none;z-index:2}
@@ -32,15 +35,16 @@ h1{margin:0;font-size:clamp(28px,5.5vw,38px);line-height:1.1;font-weight:700;let
 .hero .actions{margin-top:4px}
 .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
 .install{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
-.cmd{display:flex;align-items:center;gap:12px;padding:4px 4px 4px 16px;border:1px solid var(--line);border-radius:var(--r);font:13px ui-monospace,SFMono-Regular,Menlo,monospace}
+.cmd{display:flex;align-items:center;gap:12px;padding:4px;padding-inline-start:16px;border:1px solid var(--line);border-radius:var(--r);font:13px ui-monospace,SFMono-Regular,Menlo,monospace}
 .codes{display:grid}
-.codes code{grid-area:1/1;opacity:0;translate:0 4px;filter:blur(3px);transition:opacity .25s ease-out,translate .25s var(--ease),filter .25s ease-out;pointer-events:none}
+.codes code{grid-area:1/1;justify-self:start;opacity:0;translate:0 4px;filter:blur(3px);transition:opacity .25s ease-out,translate .25s var(--ease),filter .25s ease-out;pointer-events:none}
 .codes code.on{opacity:1;translate:0;filter:none;pointer-events:auto}
 .copy{transition:background-color .2s ease-out,scale .15s ease-out}
 .primary{padding:10px 22px;font-weight:600;background:var(--ink);border-color:var(--ink);color:#fff}
 .copy{padding:6px 14px;font-size:12px;font-weight:600;min-width:68px;background:var(--ink);border-color:var(--ink);color:#fff}
 .quiet{color:var(--mute);font-size:13px;border:0;background:transparent;padding:4px 0;text-underline-offset:3px}
 .seg{position:relative;display:inline-flex;padding:3px;background:var(--soft);border-radius:var(--r)}
+/* left:0 stays physical: makeSeg() positions the pill with offsetLeft, which is physical in RTL too */
 .seg .ind{position:absolute;top:3px;bottom:3px;left:0;width:var(--w,0);translate:var(--x,0) 0;background:#fff;border-radius:var(--r);box-shadow:0 0 0 1px var(--line),0 1px 2px rgb(0 0 0/.06)}
 .seg.ready .ind{transition:translate .32s var(--ease),width .32s var(--ease),background-color .2s ease-out}
 .seg button{position:relative;border:0;background:transparent;color:var(--mute);padding:5px 12px;font-size:13px;transition:color .2s ease-out,scale .15s ease-out}
@@ -51,7 +55,8 @@ h1{margin:0;font-size:clamp(28px,5.5vw,38px);line-height:1.1;font-weight:700;let
 .settings .seg button[aria-pressed=true]{color:#fff}
 .field{display:flex;align-items:center;gap:10px}
 .lbl{font-size:13px;color:var(--mute)}
-.picker{display:grid;grid-template-columns:repeat(3,22px);gap:4px;padding:5px;background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:10px}
+/* the 3x2 grid maps to physical screen corners (top-left, ...), so it must not mirror */
+.picker{direction:ltr;display:grid;grid-template-columns:repeat(3,22px);gap:4px;padding:5px;background:#fff;box-shadow:0 0 0 1px var(--line);border-radius:10px}
 .dot{width:22px;height:22px;padding:0;border-radius:5px;border:0;background:var(--soft)}
 .dot[aria-pressed=true]{background:var(--ink)}
 .settings .quiet{margin-inline-start:auto}

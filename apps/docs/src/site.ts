@@ -144,9 +144,10 @@ export function makeSeg(label: string, names: string[], initial: string, onPick:
     requestAnimationFrame(() => el.classList.add('ready'));
   });
   addEventListener('resize', place);
+  document.fonts?.addEventListener('loadingdone', place); // Vazirmatn swaps in after first paint and changes the button widths
   return el;
 }
-const link = (href: string, text: string, cls = '') => h('a', { href, className: cls, textContent: text, ...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' }) });
+const link = (href: string, text: string, cls = '') => h('a', { href: href.startsWith('/') ? import.meta.env.BASE_URL + href.slice(1) : href, className: cls, textContent: text, ...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' }) });
 
 
 export function mountSite(root: HTMLElement, _adapter?: string) {
