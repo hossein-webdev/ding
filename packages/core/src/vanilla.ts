@@ -2,7 +2,7 @@ import { toast } from './store';
 import { injectStyles } from './styles';
 import { bindToast } from './bind';
 import { ICONS } from './icons';
-import type { Position, Theme, ToastItem, ToastLabels } from './types';
+import type { Dir, Position, Theme, ToastItem, ToastLabels } from './types';
 
 // Escape belongs to what the user is working in: a dialog, menu or text field closes or clears itself first.
 const BUSY = 'dialog,[role=dialog],[aria-modal=true],[role=menu],[role=listbox],input,textarea,select,[contenteditable]';
@@ -44,7 +44,7 @@ const svg = (cls: string, paths: readonly string[], size: number) => {
 
 /** Framework-free renderer. Returns an unmount function. */
 export function mountToaster(
-  opts: { position?: Position; theme?: Theme; labels?: Partial<ToastLabels>; nonce?: string } = {},
+  opts: { position?: Position; theme?: Theme; dir?: Dir; labels?: Partial<ToastLabels>; nonce?: string } = {},
 ): () => void {
   if (typeof document === 'undefined') return () => {}; // server render: nothing to mount
   const { nonce, ...config } = opts;
@@ -75,6 +75,8 @@ export function mountToaster(
     const s = toast.getState();
     vp.dataset.position = s.position;
     vp.dataset.theme = s.theme;
+    if (s.dir) vp.dir = s.dir;
+    else vp.removeAttribute('dir'); // unset: inherit from the page
     vp.setAttribute('aria-label', s.labels.region);
     status.textContent = s.status;
     alert.textContent = s.alert;

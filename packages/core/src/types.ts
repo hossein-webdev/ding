@@ -1,10 +1,13 @@
 export type ToastType = 'success' | 'error' | 'warning' | 'info' | 'loading';
 /** enter: shape only · open: pill expanded · closing: text erased, pill shrinking · exit: shape leaves */
 export type Phase = 'enter' | 'open' | 'closing' | 'exit';
+/** `*-start` / `*-end` follow the reading direction; `*-left` / `*-right` are physical. */
 export type Position =
-  | 'top-center' | 'top-left' | 'top-right'
-  | 'bottom-center' | 'bottom-left' | 'bottom-right';
+  | 'top-center' | 'top-left' | 'top-right' | 'top-start' | 'top-end'
+  | 'bottom-center' | 'bottom-left' | 'bottom-right' | 'bottom-start' | 'bottom-end';
 export type Theme = 'system' | 'light' | 'dark';
+/** Reading direction of the viewport. Leave unset to inherit it from the page. */
+export type Dir = 'ltr' | 'rtl';
 /** Accessible names read by screen readers. Pass your own strings to localize them. */
 export interface ToastLabels {
   /** Name of the notifications region. Default `Notifications` */
@@ -68,6 +71,7 @@ export interface ToasterState {
   toasts: ToastItem[];
   position: Position;
   theme: Theme;
+  dir?: Dir;
   labels: ToastLabels;
   /** text for the persistent polite live region (role=status) */
   status: string;

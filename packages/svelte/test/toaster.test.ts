@@ -14,6 +14,7 @@ afterEach(() => {
   toast.configure({
     position: 'top-center',
     theme: 'system',
+    dir: undefined,
     labels: { region: 'Notifications', dismiss: 'Dismiss notification' },
   });
   document.querySelector('style[data-toast]')?.remove();
@@ -36,6 +37,27 @@ describe('Svelte Toaster', () => {
     expect(toast.getState().position).toBe('bottom-right');
     expect(viewport(container).dataset.position).toBe('bottom-right');
     expect(viewport(container).dataset.theme).toBe('dark');
+  });
+
+  it.each(['top-start', 'top-end', 'bottom-start', 'bottom-end'] as const)('accepts the logical position %s', (position) => {
+    const { container } = render(Toaster, { position });
+    expect(toast.getState().position).toBe(position);
+    expect(viewport(container).dataset.position).toBe(position);
+  });
+
+  // Svelte re-assigns `el.dir` on every update (a Chromium workaround), which leaves an empty dir="" that still inherits
+  const dirOf = (c: HTMLElement) => viewport(c).getAttribute('dir') ?? '';
+
+  it('leaves dir unset by default so the page direction applies', () => {
+    const { container } = render(Toaster);
+    expect(dirOf(container)).toBe('');
+  });
+
+  it('sets dir on the viewport and drops it when the prop is removed', async () => {
+    const { container, rerender } = render(Toaster, { dir: 'rtl' });
+    expect(viewport(container).getAttribute('dir')).toBe('rtl');
+    await rerender({ dir: undefined });
+    expect(dirOf(container)).toBe('');
   });
 
   it('uses the labels prop for the region and the close button', () => {

@@ -2,7 +2,7 @@ import { test, mock } from 'node:test';
 import assert from 'node:assert/strict';
 import { springEasing } from './spring.ts';
 import { createToaster, TIMING } from './store.ts';
-import { injectStyles } from './styles.ts';
+import { buildCss, injectStyles } from './styles.ts';
 
 test('spring easing starts at 0, ends at 1, finite duration', () => {
   const { easing, duration } = springEasing({ stiffness: 260, damping: 17 });
@@ -157,4 +157,39 @@ test('injectStyles sets the CSP nonce on the style element, and only once', () =
   assert.equal(added.length, 1);
   assert.equal(added[0]?.nonce, 'abc123');
   assert.equal('data-toast' in (added[0]?.attrs ?? {}), true);
+});
+
+test('dir is unset by default; configure() sets it, other options keep it, an explicit undefined clears it', () => {
+  const t = createToaster();
+  assert.equal(t.getState().dir, undefined);
+  t.configure({ dir: 'rtl' });
+  assert.equal(t.getState().dir, 'rtl');
+  t.configure({ theme: 'dark', position: 'top-start' });
+  assert.equal(t.getState().dir, 'rtl', 'other options leave dir alone');
+  assert.equal(t.getState().position, 'top-start');
+  t.configure({ dir: undefined });
+  assert.equal(t.getState().dir, undefined);
+});
+
+test('css: start/end positions anchor logically, with their transform origin swapped under rtl', () => {
+  const css = buildCss();
+  for (const rule of [
+    '[data-position$=start]{--tst-ox:0%;--tx:0px}',
+    '[data-position$=end]{--tst-ox:100%;--tx:0px}',
+    ':dir(rtl)[data-position$=start]{--tst-ox:100%}',
+    ':dir(rtl)[data-position$=end]{--tst-ox:0%}',
+    '[data-position$=start] .tst-slot{inset-inline-start:var(--tst-pad)}',
+    '[data-position$=end] .tst-slot{inset-inline-end:var(--tst-pad)}',
+    '[data-position^=top]{--tst-dir:-1}', // top-start / top-end keep the vertical rules
+  ]) assert.ok(css.includes(rule), rule);
+});
+
+test('css: direction-dependent motion and origins flip under rtl', () => {
+  const css = buildCss();
+  for (const rule of [
+    ':dir(rtl){--tst-flip:-1}',
+    ':dir(rtl) .tst-timer{transform-origin:right}',
+    ':dir(rtl) .tst-progress::after{transform-origin:right}',
+    '@keyframes tst-shake{20%{translate:calc(-2.5px*var(--tst-flip,1)) 0}45%{translate:calc(2.5px*var(--tst-flip,1)) 0}', // head-shake mirrors
+  ]) assert.ok(css.includes(rule), rule);
 });

@@ -27,7 +27,7 @@
 - **One toast at a time.** A new call morphs the toast on screen instead of stacking a second one.
 - **Real springs.** Size, shape and text move on a spring solver, so interrupting an animation keeps its momentum.
 - **No stylesheet.** Styles are injected from JavaScript. Nothing to import.
-- **Light, dark and system themes**, six positions, right-to-left support.
+- **Light, dark and system themes**, ten positions, full right-to-left support.
 - **Easy to restyle.** Colors and corner radius are [CSS variables](#styling).
 - **Rich content.** Description, avatar, buttons, progress bar, a countdown line, small trailing text.
 - **Accessible by default.** Persistent live regions, keyboard dismiss, `prefers-reduced-motion`.
@@ -170,14 +170,29 @@ Errors, loading toasts and toasts with a button stay until dismissed. Hover and 
 
 ```ts
 toast.configure({
-  position: 'bottom-right', // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
+  position: 'bottom-right', // top- or bottom- + left, center, right, start, end
   theme: 'dark',            // system, light, dark
+  dir: 'rtl',               // ltr, rtl. Leave it out to follow the page
   sound: true,
   volume: 0.5,
 });
 
 toast.dismiss(id); // one toast
 toast.dismiss();   // all
+```
+
+## Right-to-left
+
+Toasts mirror on right-to-left pages: the icon, the text reveal, the countdown line and the error shake all flip. `top-start`, `top-end`, `bottom-start` and `bottom-end` follow the reading direction (`start` is the right edge in RTL), while `*-left` and `*-right` always mean the physical edge.
+
+The plain DOM and Vue toasters live in `document.body`, so they only see `<html dir>`. If you set `dir` on an inner container instead, pass it yourself:
+
+```tsx
+<Toaster position="top-end" dir="rtl" />  {/* React, Svelte, Vue */}
+```
+
+```ts
+mountToaster({ position: 'top-end', dir: 'rtl' }); // plain DOM
 ```
 
 ## Styling

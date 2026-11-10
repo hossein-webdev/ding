@@ -18,6 +18,7 @@ afterEach(() => {
   toast.configure({
     position: 'top-center',
     theme: 'system',
+    dir: undefined,
     labels: { region: 'Notifications', dismiss: 'Dismiss notification' },
   });
   document.querySelector('style[data-toast]')?.remove();
@@ -48,6 +49,24 @@ describe('Vue Toaster', () => {
     expect(viewport().dataset.position).toBe('bottom-left');
     expect(viewport().dataset.theme).toBe('dark');
     expect(viewport().getAttribute('aria-label')).toBe('Alertes');
+  });
+
+  it.each(['top-start', 'top-end', 'bottom-start', 'bottom-end'] as const)('accepts the logical position %s', (position) => {
+    mountToaster({ position });
+    expect(toast.getState().position).toBe(position);
+    expect(viewport().dataset.position).toBe(position);
+  });
+
+  it('leaves dir off by default so the page direction applies', () => {
+    mountToaster();
+    expect(viewport().hasAttribute('dir')).toBe(false);
+  });
+
+  it('sets dir on the viewport and drops it when the prop is removed', async () => {
+    mountToaster({ dir: 'rtl' });
+    expect(viewport().getAttribute('dir')).toBe('rtl');
+    await wrapper!.setProps({ dir: undefined });
+    expect(viewport().hasAttribute('dir')).toBe(false);
   });
 
   it('uses the labels prop for the region and the close button', () => {

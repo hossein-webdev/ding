@@ -27,6 +27,8 @@ export default function App() {
 
 Works in the Next.js App Router as is: the package ships `"use client"`, so `Toaster` can go straight into `app/layout.tsx`. See the [Next.js guide](https://ding.yusufcengiz.dev/nextjs-toast/).
 
+Right-to-left pages mirror automatically. `<Toaster dir="rtl" />` sets the direction yourself, and the `top-start`, `top-end`, `bottom-start` and `bottom-end` positions follow it.
+
 Options, actions, progress, sound and accessibility are covered in the [docs](https://ding.yusufcengiz.dev/docs.html).
 
 ## Links

@@ -1,5 +1,5 @@
 import type {
-  Position, PromiseMessages, Theme, ToastItem, ToastLabels, ToasterState, ToastOptions, ToastPatch, ToastType,
+  Dir, Position, PromiseMessages, Theme, ToastItem, ToastLabels, ToasterState, ToastOptions, ToastPatch, ToastType,
 } from './types';
 import { chime } from './sound.ts';
 
@@ -230,6 +230,8 @@ export function createToaster() {
     configure(c: {
       position?: Position;
       theme?: Theme;
+      /** Sets `dir` on the viewport. Unlike the other options, an explicit `undefined` clears it so the page's direction applies again. */
+      dir?: Dir;
       /** Partial: keys you leave out keep their current value. */
       labels?: Partial<ToastLabels>;
       sound?: boolean | ((type: ToastType) => void);
@@ -241,6 +243,7 @@ export function createToaster() {
         ...state,
         ...(c.position && { position: c.position }),
         ...(c.theme && { theme: c.theme }),
+        ...('dir' in c && { dir: c.dir }), // unset (undefined) is meaningful: inherit from the page
         // undefined keys are skipped so `{ region: undefined }` keeps the current label
         ...(c.labels && { labels: { ...state.labels, ...definedOnly(c.labels) } }),
       };

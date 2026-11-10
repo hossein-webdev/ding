@@ -1,5 +1,5 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { mountToaster, toast } from '../src/index.ts';
+import { mountToaster, TIMING, toast } from '../src/index.ts';
 
 let unmount: (() => void) | undefined;
 
@@ -15,6 +15,7 @@ afterEach(() => {
   toast.configure({
     position: 'top-center',
     theme: 'system',
+    dir: undefined,
     labels: { region: 'Notifications', dismiss: 'Dismiss notification' },
   });
   document.querySelector('style[data-toast]')?.remove();
@@ -38,6 +39,42 @@ describe('mountToaster', () => {
     expect(viewport().dataset.position).toBe('bottom-right');
     expect(viewport().dataset.theme).toBe('dark');
   });
+
+  it.each(['top-start', 'top-end', 'bottom-start', 'bottom-end'] as const)('accepts the logical position %s', (position) => {
+    mount({ position });
+    expect(toast.getState().position).toBe(position);
+    expect(viewport().dataset.position).toBe(position);
+  });
+
+  it('leaves dir off by default so the page direction applies', () => {
+    mount();
+    expect(viewport().hasAttribute('dir')).toBe(false);
+  });
+
+  it('sets dir on the viewport, follows later changes and drops it when unset', () => {
+    mount({ dir: 'rtl' });
+    expect(viewport().getAttribute('dir')).toBe('rtl');
+    toast.configure({ dir: 'ltr' });
+    expect(viewport().getAttribute('dir')).toBe('ltr');
+    toast.configure({ dir: undefined });
+    expect(viewport().hasAttribute('dir')).toBe(false);
+  });
+
+  // happy-dom does not derive `direction` from the dir attribute, so set the CSS property the motion code reads
+  const shake = (direction: 'ltr' | 'rtl') => {
+    mount();
+    viewport().style.direction = direction;
+    toast.info('Saved');
+    vi.advanceTimersByTime(TIMING.openDelay + 50);
+    toast.error('Boom');
+    vi.advanceTimersByTime(32);
+    const x = parseFloat(document.querySelector<HTMLElement>('.tst')!.style.translate);
+    vi.advanceTimersByTime(5000); // let the spring settle so the shared frame loop goes idle for the next test
+    return x;
+  };
+
+  it('starts the error head-shake rightward in LTR', () => expect(shake('ltr')).toBeGreaterThan(0));
+  it('mirrors the error head-shake in RTL', () => expect(shake('rtl')).toBeLessThan(0));
 
   it('uses the labels option for the region and the close button', () => {
     mount({ labels: { region: 'Alertes', dismiss: 'Fermer' } });

@@ -25,6 +25,8 @@ import { Toaster, toast } from '@yusufceng1z/ding-vue';
 
 `Toaster` renders nothing in place. It mounts in `onMounted`, so it is safe to server-render. In Nuxt, put it in `app.vue` and call `toast` from client code (event handlers, `onMounted`).
 
+Right-to-left pages mirror automatically. `<Toaster dir="rtl" />` sets the direction yourself, and the `top-start`, `top-end`, `bottom-start` and `bottom-end` positions follow it.
+
 Options, actions, progress, sound and accessibility are covered in the [docs](https://ding.yusufcengiz.dev/docs.html).
 
 ## Links

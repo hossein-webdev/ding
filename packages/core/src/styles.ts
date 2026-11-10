@@ -45,6 +45,10 @@ position:fixed;inset:0;z-index:2147483647;pointer-events:none;font:500 14px/1.3 
 .tst-viewport[data-position$=center]{--tst-ox:50%;--tx:-50%}
 .tst-viewport[data-position$=left]{--tst-ox:0%;--tx:0px}
 .tst-viewport[data-position$=right]{--tst-ox:100%;--tx:0px}
+.tst-viewport[data-position$=start]{--tst-ox:0%;--tx:0px}
+.tst-viewport[data-position$=end]{--tst-ox:100%;--tx:0px}
+.tst-viewport:dir(rtl)[data-position$=start]{--tst-ox:100%}
+.tst-viewport:dir(rtl)[data-position$=end]{--tst-ox:0%}
 .tst-sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
 .tst-slot{position:absolute;pointer-events:auto;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;cursor:grab;--tst-i:0;
 --y:calc(var(--tst-dir)*-1*var(--tst-i)*var(--tst-stack-offset));--s:calc(1 - var(--tst-i)*var(--tst-stack-scale));
@@ -59,6 +63,8 @@ transition-property:transform,opacity;transition-duration:var(--tst-stack-dur),.
 .tst-viewport[data-position$=center] .tst-slot{left:50%}
 .tst-viewport[data-position$=left] .tst-slot{left:var(--tst-pad)}
 .tst-viewport[data-position$=right] .tst-slot{right:var(--tst-pad)}
+.tst-viewport[data-position$=start] .tst-slot{inset-inline-start:var(--tst-pad)}
+.tst-viewport[data-position$=end] .tst-slot{inset-inline-end:var(--tst-pad)}
 /* --c: status color for the glyph · --fill/--on: status surface + its text (used by filled styles) */
 .tst{--c:var(--tst-fg);--fill:var(--tst-bg);--on:var(--tst-fg);--tp:0;--ap:0;position:relative;box-sizing:border-box;width:var(--tst-size);height:var(--tst-size);border:1px solid transparent;
 border-radius:var(--r,min(var(--tst-radius),calc(var(--tst-size)/2)));overflow:hidden;color:var(--on);background:var(--fill);box-shadow:var(--tst-shadow);
@@ -135,7 +141,7 @@ transition-property:background-color,scale;transition-duration:.15s;transition-t
 @keyframes tst-draw{to{stroke-dashoffset:0}}
 @keyframes tst-pulse{40%{transform:scale(1.14)}}
 @keyframes tst-ripple{from{opacity:.55;transform:scale(1)}to{opacity:0;transform:scale(1.9)}}
-@keyframes tst-shake{20%{translate:-2.5px 0}45%{translate:2.5px 0}70%{translate:-1.5px 0}to{translate:0}}
+@keyframes tst-shake{20%{translate:calc(-2.5px*var(--tst-flip,1)) 0}45%{translate:calc(2.5px*var(--tst-flip,1)) 0}70%{translate:calc(-1.5px*var(--tst-flip,1)) 0}to{translate:0}}
 @keyframes tst-drop{from{opacity:0;translate:0 -5px}}
 @keyframes tst-dot{from{opacity:0;scale:0}}
 @keyframes tst-fade{from{opacity:0}}

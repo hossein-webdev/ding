@@ -1,11 +1,11 @@
 import { useEffect, useRef, useSyncExternalStore, type CSSProperties } from 'react';
 import {
   toast, injectStyles, bindToast, onToastKey, ICONS,
-  type Position, type Theme, type ToastItem, type ToastLabels,
+  type Dir, type Position, type Theme, type ToastItem, type ToastLabels,
 } from '@yusufceng1z/ding';
 
 export { toast };
-export type { Position, Theme, ToastLabels };
+export type { Dir, Position, Theme, ToastLabels };
 
 function Item({ t, i, labels }: { t: ToastItem; i: number; labels: ToastLabels }) {
   const slot = useRef<HTMLDivElement>(null);
@@ -77,18 +77,21 @@ function Item({ t, i, labels }: { t: ToastItem; i: number; labels: ToastLabels }
 export function Toaster({
   position,
   theme,
+  dir,
   labels,
   nonce,
 }: {
   position?: Position;
   theme?: Theme;
+  /** Sets `dir` on the viewport. Leave unset to inherit the page's direction. */
+  dir?: Dir;
   labels?: Partial<ToastLabels>;
   /** CSP nonce for the injected stylesheet. */
   nonce?: string;
 }) {
   const state = useSyncExternalStore(toast.subscribe, toast.getState, toast.getState);
   useEffect(() => injectStyles(document, { nonce }), [nonce]);
-  useEffect(() => toast.configure({ position, theme }), [position, theme]);
+  useEffect(() => toast.configure({ position, theme, dir }), [position, theme, dir]);
   // Keyed on the strings, not the object, so an inline `labels={{ ... }}` does not reconfigure every render.
   const region = labels?.region;
   const dismiss = labels?.dismiss;
@@ -105,6 +108,7 @@ export function Toaster({
       aria-label={state.labels.region}
       data-position={state.position}
       data-theme={state.theme}
+      dir={state.dir}
       onPointerEnter={() => toast.pause()}
       onPointerLeave={() => toast.resume()}
       onFocus={(e) => e.target.matches(':focus-visible') && toast.pause()}

@@ -13,6 +13,7 @@ afterEach(() => {
     toast.configure({
       position: 'top-center',
       theme: 'system',
+      dir: undefined,
       labels: { region: 'Notifications', dismiss: 'Dismiss notification' },
     });
   });
@@ -37,6 +38,24 @@ describe('React Toaster', () => {
     expect(toast.getState().position).toBe('bottom-right');
     expect(viewport(container).dataset.position).toBe('bottom-right');
     expect(viewport(container).dataset.theme).toBe('dark');
+  });
+
+  it.each(['top-start', 'top-end', 'bottom-start', 'bottom-end'] as const)('accepts the logical position %s', (position) => {
+    const { container } = render(<Toaster position={position} />);
+    expect(toast.getState().position).toBe(position);
+    expect(viewport(container).dataset.position).toBe(position);
+  });
+
+  it('leaves dir off by default so the page direction applies', () => {
+    const { container } = render(<Toaster />);
+    expect(viewport(container).hasAttribute('dir')).toBe(false);
+  });
+
+  it('sets dir on the viewport and drops it when the prop is removed', () => {
+    const { container, rerender } = render(<Toaster dir="rtl" />);
+    expect(viewport(container).getAttribute('dir')).toBe('rtl');
+    rerender(<Toaster />);
+    expect(viewport(container).hasAttribute('dir')).toBe(false);
   });
 
   it('uses the labels prop for the region and the close button', () => {

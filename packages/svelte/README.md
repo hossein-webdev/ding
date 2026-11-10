@@ -21,6 +21,8 @@ Render the toaster once, then call `toast` from anywhere.
 <button onclick={() => toast.success('Saved')}>Save</button>
 ```
 
+Right-to-left pages mirror automatically. `<Toaster dir="rtl" />` sets the direction yourself, and the `top-start`, `top-end`, `bottom-start` and `bottom-end` positions follow it.
+
 Options, actions, progress, sound and accessibility are covered in the [docs](https://ding.yusufcengiz.dev/docs.html).
 
 ## Links

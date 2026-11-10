@@ -1,14 +1,17 @@
 <script lang="ts">
-  import { toast, injectStyles, bindToast, onToastKey, ICONS, type Position, type Theme, type ToastLabels } from '@yusufceng1z/ding';
+  import { toast, injectStyles, bindToast, onToastKey, ICONS, type Dir, type Position, type Theme, type ToastLabels } from '@yusufceng1z/ding';
 
   let {
     position,
     theme,
+    dir,
     labels,
     nonce,
   }: {
     position?: Position;
     theme?: Theme;
+    /** Sets `dir` on the viewport. Leave unset to inherit the page's direction. */
+    dir?: Dir;
     labels?: Partial<ToastLabels>;
     /** CSP nonce for the injected stylesheet. */
     nonce?: string;
@@ -21,7 +24,7 @@
     state = toast.getState();
     return toast.subscribe(() => (state = toast.getState()));
   });
-  $effect(() => toast.configure({ position, theme }));
+  $effect(() => toast.configure({ position, theme, dir }));
   // Read the strings so the effect tracks them, not the object identity.
   $effect(() => toast.configure({ labels: { region: labels?.region, dismiss: labels?.dismiss } }));
 
@@ -38,6 +41,7 @@
   aria-label={state.labels.region}
   data-position={state.position}
   data-theme={state.theme}
+  dir={state.dir}
   onpointerenter={() => toast.pause()}
   onpointerleave={() => toast.resume()}
   onfocusin={(e) => (e.target as Element).matches(':focus-visible') && toast.pause()}

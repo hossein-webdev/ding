@@ -18,7 +18,7 @@ Render the toaster once, near the root.
 - React with the Next.js App Router: the package ships `"use client"`, so render `Toaster` directly in `app/layout.tsx` (a server component is fine). Call `toast` from client components only. Guide: /nextjs-toast/
 - Svelte 5: `import { Toaster, toast } from '@yusufceng1z/ding-svelte'` then `<Toaster position="top-center" theme="system" />`
 - Vue 3: `import { Toaster, toast } from '@yusufceng1z/ding-vue'` then `<Toaster position="top-center" theme="system" />`. In Nuxt render it in `app.vue`; it renders nothing on the server
-- Vanilla: `import { mountToaster, toast } from '@yusufceng1z/ding'` then `const unmount = mountToaster({ position, theme })`
+- Vanilla: `import { mountToaster, toast } from '@yusufceng1z/ding'` then `const unmount = mountToaster({ position, theme, dir })`
 - Strict CSP (`style-src` without `'unsafe-inline'`): pass the page's nonce, `<Toaster nonce={nonce} />` (Vue: `:nonce="nonce"`) or `mountToaster({ nonce })`. Only the injected stylesheet needs it
 
 ## API
@@ -29,13 +29,13 @@ All calls return the toast id. Import `toast` from the package.
 - `toast.promise(promise, { loading, success, error })` morphs one toast from loading to the result
 - `toast.update(id, patch)` changes a live toast in place. A patch may set title, description, type, duration, progress, action, secondary, meta, image. `null` removes action, secondary, meta, image and progress.
 - `toast.dismiss(id?)` closes one toast, or all
-- `toast.configure({ position, theme, labels, sound, volume })`. `labels: { region, dismiss }` sets the accessible names of the region and the close button (English by default)
+- `toast.configure({ position, theme, dir, labels, sound, volume })`. `labels: { region, dismiss }` sets the accessible names of the region and the close button (English by default). `dir: 'ltr' | 'rtl'` sets the direction of the toast viewport; leave it out to follow the page
 
 Options: `description`, `action { label, onClick }`, `secondary { label, onClick }`, `image` (avatar URL), `meta` (small trailing text), `progress` (0 to 1), `duration` (ms, 0 stays until dismissed), `id`.
 
 `onClick` may return a patch. The toast then morphs in place instead of closing. A returned patch removes the buttons unless it names them again.
 
-Positions: top-left, top-center, top-right, bottom-left, bottom-center, bottom-right. Themes: system, light, dark.
+Positions: top-left, top-center, top-right, top-start, top-end, bottom-left, bottom-center, bottom-right, bottom-start, bottom-end. `start` / `end` follow the reading direction (the right edge in RTL); `left` / `right` are always the physical edge. Themes: system, light, dark.
 
 ## Styling
 
@@ -54,4 +54,4 @@ To use another sound library, pass a function: `toast.configure({ sound: (type) 
 - Errors, loading and toasts with an action stay until dismissed. Other toasts close after 5 seconds. Hover and keyboard focus pause the timer.
 - Escape dismisses. Alt+T moves focus into the toast.
 - Messages go through persistent live regions: errors assertive, everything else polite.
-- Respects prefers-reduced-motion. Mirrors in right-to-left pages.
+- Respects prefers-reduced-motion. Mirrors in right-to-left pages (icon, text reveal, countdown line, error shake). The plain DOM and Vue toasters live in `document.body` and only see `<html dir>`; for a `dir` set on an inner container pass it yourself: `<Toaster dir="rtl" />` or `mountToaster({ dir: 'rtl' })`

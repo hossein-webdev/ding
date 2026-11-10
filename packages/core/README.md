@@ -27,7 +27,11 @@ toast.promise(save(), {
 });
 ```
 
-Only one toast shows at a time. A new call morphs the toast on screen instead of stacking a second one. Options, actions, progress, sound and accessibility are covered in the [docs](https://ding.yusufcengiz.dev/docs.html).
+Only one toast shows at a time. A new call morphs the toast on screen instead of stacking a second one.
+
+Right-to-left pages mirror automatically. `mountToaster({ dir: 'rtl' })` sets the direction yourself, and the `top-start`, `top-end`, `bottom-start` and `bottom-end` positions follow it.
+
+Options, actions, progress, sound and accessibility are covered in the [docs](https://ding.yusufcengiz.dev/docs.html).
 
 ## Links
 

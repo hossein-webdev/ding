@@ -99,7 +99,7 @@ function watchMotion(slot: HTMLElement, id: string, t: Toaster): () => void {
   // content-aware motion: an error shakes its head, a warning hops
   const react = (type: string) => {
     if (reduced()) return;
-    if (type === 'error') x.v = 380;
+    if (type === 'error') x.v = cs.direction === 'rtl' ? -380 : 380; // mirror the head-shake in RTL
     else if (type === 'warning') y.v = -dir * 200;
     else return;
     kick();
