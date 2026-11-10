@@ -6,8 +6,13 @@ import { fileURLToPath } from 'node:url';
 const src = (p: string) => fileURLToPath(new URL(p, import.meta.url));
 
 // Alias to package sources so dev needs no prior build and edits hot-reload.
+// BASE_PATH=/ding/ for a GitHub Pages project site; Vite rebases assets itself, but not <a href="/..."> links.
+const base = process.env.BASE_PATH ?? '/';
+const rebaseLinks = { name: 'rebase-links', transformIndexHtml: (html: string) => (base === '/' ? html : html.replace(/(<a\b[^>]*?\shref=")\/(?!\/)/g, `$1${base}`)) };
+
 export default defineConfig({
-  plugins: [react(), svelte()],
+  base,
+  plugins: [react(), svelte(), rebaseLinks],
   build: { rollupOptions: { input: { main: src('index.html'), docs: src('docs.html'), changelog: src('changelog/index.html'), changelog003: src('changelog/0-0-3/index.html'), javascriptToast: src('javascript-toast/index.html'), loadingToast: src('loading-toast/index.html'), nextjsToast: src('nextjs-toast/index.html'), reactHotToastAlternative: src('react-hot-toast-alternative/index.html'), reactToast: src('react-toast/index.html'), shadcnToast: src('shadcn-toast/index.html'), sonnerAlternative: src('sonner-alternative/index.html'), svelteSonnerAlternative: src('svelte-sonner-alternative/index.html'), svelteToast: src('svelte-toast/index.html'), toastAccessibility: src('toast-accessibility/index.html'), toastNotificationUx: src('toast-notification-ux/index.html'), toastVsSnackbar: src('toast-vs-snackbar/index.html'), undoToast: src('undo-toast/index.html') } } },
   resolve: {
     alias: {
