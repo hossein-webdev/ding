@@ -240,6 +240,7 @@ function watchDrag(slot: HTMLElement, id: string, t: Toaster): () => void {
 
   const down = (e: PointerEvent) => {
     if (e.button !== 0 || (e.target as Element).closest('button')) return;
+    if (t.getState().toasts.find((x) => x.id === id)?.dismissible === false) return;
     [sx, sy, t0, active] = [e.clientX, e.clientY, e.timeStamp, true];
     slot.setPointerCapture(e.pointerId);
     slot.setAttribute('data-dragging', '');

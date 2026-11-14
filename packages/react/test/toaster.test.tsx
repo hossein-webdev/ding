@@ -123,4 +123,16 @@ describe('React Toaster', () => {
     expect(container.querySelector('.tst-svg path')?.getAttribute('d')).toBe(original);
     act(() => void toast.configure({ icons: { success: before } }));
   });
+
+  it('a custom icon overrides the status icon, and icon: false shows none', () => {
+    const { container } = render(<Toaster />);
+    act(() => void toast.success('Custom', { icon: ['M0 0h1'] }));
+    expect(container.querySelector('.tst-svg path')?.getAttribute('d')).toBe('M0 0h1');
+    act(() => {
+      toast.dismiss(undefined, { immediate: true });
+      vi.advanceTimersByTime(1000);
+      toast.success('Hidden', { icon: false });
+    });
+    expect(container.querySelector('.tst-badge')).toBeNull();
+  });
 });

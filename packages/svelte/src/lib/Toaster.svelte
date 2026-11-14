@@ -33,8 +33,10 @@
   }
 
   // Snapshot once per type/image, not on every re-render: a later configure({ icons }) must not repaint a toast already on screen.
+  // A per-toast t.icon override bypasses the cache entirely, since it's never subject to that global config.
   const iconCache = new Map<string, { key: unknown; paths: string[] }>();
   function iconFor(t: ToastItem): string[] {
+    if (t.icon) return t.icon;
     const key = t.image ?? t.type;
     const cached = iconCache.get(t.id);
     if (!cached || cached.key !== key) iconCache.set(t.id, { key, paths: ICONS[t.type] });
@@ -77,7 +79,7 @@
         <div class="tst-icon">
           {#if t.image}
             <img class="tst-media" src={t.image} alt="" width="28" height="28" />
-          {:else}
+          {:else if t.icon !== false}
             <div class="tst-badge">
               <svg class="tst-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
                 {#each iconFor(t) as d (d)}

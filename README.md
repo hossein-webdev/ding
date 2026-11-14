@@ -161,7 +161,9 @@ toast.success('Message deleted', {
 | `image` | Avatar or thumbnail URL, replaces the status icon |
 | `meta` | Small trailing text, such as `now` or `⌘V` |
 | `progress` | `0` to `1`, draws a thin bar at the bottom |
-| `duration` | Milliseconds before it closes. `0` keeps it until dismissed. Default `5000` |
+| `duration` | Milliseconds before it closes. `0` keeps it until dismissed. Default `5000`, or `configure()`'s default |
+| `dismissible` | `false` blocks dragging or swiping it away. Its own buttons and Esc still work. Default `true` |
+| `icon` | Override the status icon with your own paths for this toast, or `false` for none |
 | `id` | Reuse an id so repeated calls from one place stay one caller |
 
 Errors, loading toasts and toasts with a button stay until dismissed. Hover and keyboard focus pause the timer. Repeating the same toast adds a counter (×2).
@@ -173,6 +175,7 @@ toast.configure({
   position: 'bottom-right', // top- or bottom- + left, center, right, start, end
   theme: 'dark',            // system, light, dark
   dir: 'rtl',               // ltr, rtl. Leave it out to follow the page
+  duration: 3000,           // default ms before auto-close, for toasts that don't set their own
   sound: true,
   volume: 0.5,
 });
@@ -252,16 +255,17 @@ The font comes from `.tst-viewport`, so set `font-family` and `font-size` there.
 toast.success('Saved', { className: 'big' });
 ```
 
-**Springs.** Retune the three motions. Each takes `{ stiffness, damping }`; leave one out to keep its default (enter 320/26, morph 340/27, stack 400/36). Applies to toasts shown afterwards.
+**Springs.** Retune the three motions. Each takes `{ stiffness, damping }`; leave one out to keep its default (enter 320/26, morph 340/27, stack 400/36). Applies to toasts shown afterwards. `configure({ springs: 'default' })` undoes it.
 
 ```ts
 toast.configure({ springs: { enter: { stiffness: 220, damping: 14 } } });
 ```
 
-**Icons.** Replace a status icon with SVG path strings on a 24×24 grid, drawn as strokes. The first path is the outer ring. Keep three paths for `warning` and `info`, since their animations target the second and third.
+**Icons.** Replace a status icon with SVG path strings on a 24×24 grid, drawn as strokes. The first path is the outer ring. Keep three paths for `warning` and `info`, since their animations target the second and third. Applies to toasts shown afterwards; `configure({ icons: 'default' })` undoes it. For one toast instead of every toast of that type, pass `icon` (or `false` for none) to the call itself.
 
 ```ts
 toast.configure({ icons: { success: ['M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18', 'M8 12l3 3 5-6'] } });
+toast.success('Loved it', { icon: ['M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18', 'M9 12h6'] });
 ```
 
 ## Sound

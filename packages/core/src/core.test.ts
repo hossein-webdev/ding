@@ -223,3 +223,48 @@ test('configure() retunes springs', async () => {
   assert.equal(getSpringConfigs().enter.stiffness, 500);
   t.configure({ springs: { enter: was } });
 });
+
+test("configure({ icons: 'default' }) and configure({ springs: 'default' }) undo a custom set", async () => {
+  const { ICONS } = await import('./icons.ts');
+  const { getSpringConfigs } = await import('./styles.ts');
+  const originalIcon = [...ICONS.info];
+  const originalStiffness = getSpringConfigs().enter.stiffness;
+  const t = createToaster();
+  t.configure({ icons: { info: ['M0 0h1'] }, springs: { enter: { stiffness: 999 } } });
+  assert.deepEqual(ICONS.info, ['M0 0h1']);
+  assert.equal(getSpringConfigs().enter.stiffness, 999);
+  t.configure({ icons: 'default', springs: 'default' });
+  assert.deepEqual(ICONS.info, originalIcon);
+  assert.equal(getSpringConfigs().enter.stiffness, originalStiffness);
+});
+
+test('configure() sets a default duration for toasts that leave their own unset', () => {
+  mock.timers.enable({ apis: ['setTimeout', 'Date'] });
+  const t = createToaster();
+  t.configure({ duration: 1000 });
+  t.success('hi');
+  mock.timers.tick(TIMING.openDelay);
+  assert.equal(t.getState().toasts[0]?.duration, 1000);
+  mock.timers.tick(1000);
+  assert.equal(t.getState().toasts[0]?.phase, 'closing');
+  mock.timers.reset();
+});
+
+test('dismissible: false rides on the toast; other toasts stay unaffected', () => {
+  const t = createToaster();
+  const id = t.success('hi', { dismissible: false });
+  assert.equal(t.getState().toasts[0]?.dismissible, false);
+  t.dismiss(id, { immediate: true }); // dismissible only gates dragging, not dismiss() itself
+  assert.equal(t.getState().toasts[0]?.phase, 'exit');
+});
+
+test('icon overrides or hides the status icon for one toast, independent of configure({ icons })', () => {
+  const t = createToaster();
+  const id = t.success('hi', { icon: ['M0 0h1'] });
+  assert.deepEqual(t.getState().toasts[0]?.icon, ['M0 0h1']);
+  t.update(id, { icon: false });
+  assert.equal(t.getState().toasts[0]?.icon, false);
+  t.update(id, { icon: null });
+  assert.equal(t.getState().toasts[0]?.icon, undefined);
+  t.dismiss();
+});

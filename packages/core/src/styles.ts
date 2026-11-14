@@ -6,6 +6,7 @@ const configs: Springs = {
   morph: { stiffness: 340, damping: 27 }, // pill opening: liquid but controlled
   stack: { stiffness: 400, damping: 36 }, // stack shuffle + fold/unfold: tight, no wobble
 };
+const DEFAULT_SPRINGS: Springs = { enter: { ...configs.enter }, morph: { ...configs.morph }, stack: { ...configs.stack } };
 let cache: { [K in keyof Springs]: ReturnType<typeof springEasing> } | undefined;
 
 export const getSpringConfigs = () => configs;
@@ -24,6 +25,11 @@ export function setSprings(p: Partial<Springs>): void {
     const el = document.querySelector('style[data-toast]');
     if (el) el.textContent = buildCss();
   }
+}
+
+/** Undo setSprings(): restore the built-in stiffness/damping. */
+export function resetSprings(): void {
+  setSprings(DEFAULT_SPRINGS);
 }
 
 export function buildCss(): string {

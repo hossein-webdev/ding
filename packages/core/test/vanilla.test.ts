@@ -149,6 +149,30 @@ describe('mountToaster', () => {
     }).not.toThrow();
   });
 
+  it('dismissible: false blocks a pointer drag from starting; a plain toast still drags', () => {
+    mount();
+    toast.success('Pinned', { dismissible: false });
+    const pinned = document.querySelector<HTMLElement>('.tst-slot')!;
+    pinned.dispatchEvent(new PointerEvent('pointerdown', { button: 0, pointerId: 1, clientX: 0, clientY: 0 }));
+    expect(pinned.hasAttribute('data-dragging')).toBe(false);
+    toast.dismiss(undefined, { immediate: true });
+    vi.advanceTimersByTime(TIMING.exit + 10);
+    toast.info('Draggable');
+    const draggable = document.querySelector<HTMLElement>('.tst-slot')!;
+    draggable.dispatchEvent(new PointerEvent('pointerdown', { button: 0, pointerId: 1, clientX: 0, clientY: 0 }));
+    expect(draggable.hasAttribute('data-dragging')).toBe(true);
+  });
+
+  it('a custom icon overrides the status icon, and icon: false shows none', () => {
+    mount();
+    toast.success('Custom', { icon: ['M0 0h1'] });
+    expect(document.querySelector('.tst-svg path')?.getAttribute('d')).toBe('M0 0h1');
+    toast.dismiss(undefined, { immediate: true });
+    vi.advanceTimersByTime(TIMING.exit + 10);
+    toast.success('Hidden', { icon: false });
+    expect(document.querySelector('.tst-badge')).toBeNull();
+  });
+
   it('stops animating a toast once it unmounts mid-motion (e.g. an early drag-dismiss)', () => {
     mount();
     toast.success('Saved'); // starts the entrance spring (slide + fade in) immediately

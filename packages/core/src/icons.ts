@@ -10,10 +10,19 @@ export const ICONS: Record<ToastType, string[]> = {
   loading: [RING],
 };
 
+const DEFAULT_ICONS: Record<ToastType, string[]> = Object.fromEntries(
+  (Object.entries(ICONS) as [ToastType, string[]][]).map(([type, paths]) => [type, [...paths]]),
+) as Record<ToastType, string[]>;
+
 /** Replace status icons. Applies to toasts shown afterwards. An empty list is ignored. */
 export function setIcons(icons: ToastIcons): void {
   for (const type of Object.keys(icons) as ToastType[]) {
     const paths = icons[type];
     if (paths?.length) ICONS[type] = [...paths];
   }
+}
+
+/** Undo setIcons(): restore the built-in paths. */
+export function resetIcons(): void {
+  for (const type of Object.keys(DEFAULT_ICONS) as ToastType[]) ICONS[type] = [...DEFAULT_ICONS[type]];
 }

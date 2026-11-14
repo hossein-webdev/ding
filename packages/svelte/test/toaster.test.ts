@@ -127,4 +127,16 @@ describe('Svelte Toaster', () => {
     expect(container.querySelector('.tst-svg path')?.getAttribute('d')).toBe(original);
     toast.configure({ icons: { success: before } });
   });
+
+  it('a custom icon overrides the status icon, and icon: false shows none', () => {
+    const { container } = render(Toaster);
+    toast.success('Custom', { icon: ['M0 0h1'] });
+    flushSync();
+    expect(container.querySelector('.tst-svg path')?.getAttribute('d')).toBe('M0 0h1');
+    toast.dismiss(undefined, { immediate: true });
+    vi.advanceTimersByTime(1000);
+    toast.success('Hidden', { icon: false });
+    flushSync();
+    expect(container.querySelector('.tst-badge')).toBeNull();
+  });
 });

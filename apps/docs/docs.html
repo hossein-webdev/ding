@@ -176,7 +176,9 @@ toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });<
               <dt><code>image</code></dt><dd>نشانی (URL) آواتار یا تصویر بندانگشتی. جایگزین آیکون وضعیت می‌شود.</dd>
               <dt><code>meta</code></dt><dd>متن کوچک انتهایی، مثل «الان» یا «⌘V».</dd>
               <dt><code>progress</code></dt><dd>عددی از ۰ تا ۱. نواری باریک در پایین توست نشان می‌دهد.</dd>
-              <dt><code>duration</code></dt><dd>مدت نمایش به میلی‌ثانیه تا بسته شدن توست. مقدار <code>0</code> آن را تا زمانی که بسته نشود نگه می‌دارد. پیش‌فرض: <code>5000</code>.</dd>
+              <dt><code>duration</code></dt><dd>مدت نمایش به میلی‌ثانیه تا بسته شدن توست. مقدار <code>0</code> آن را تا زمانی که بسته نشود نگه می‌دارد. پیش‌فرض: <code>5000</code>، یا هر چه <code>configure()</code> تعیین کرده باشد.</dd>
+              <dt><code>dismissible</code></dt><dd>با مقدار <code>false</code>، کشیدن یا سوایپ نمی‌تواند این توست را ببندد؛ دکمه‌های خودش و Esc همچنان کار می‌کنند. پیش‌فرض: <code>true</code>.</dd>
+              <dt><code>icon</code></dt><dd>آیکون وضعیت را فقط برای همین توست با مسیرهای دلخواه جایگزین می‌کند؛ با مقدار <code>false</code> هیچ آیکونی نشان داده نمی‌شود.</dd>
               <dt><code>id</code></dt><dd>یک شناسه را دوباره استفاده کنید تا فراخوانی‌های تکراری از یک نقطه، یک فراخواننده حساب شوند.</dd>
             </dl>
             <p>توست‌های خطا و بارگذاری و توست‌هایی که دکمه دارند ماندگارند و تا وقتی بسته نشوند روی صفحه می‌مانند، تا کسی چیزی را که باید رویش اقدام کند از دست ندهد. قرار گرفتن ماوس روی توست و فوکوس صفحه‌کلید، تایمر را متوقف می‌کنند.</p>
@@ -188,6 +190,7 @@ toast.update(id, { type: 'success', title: 'Photo uploaded', progress: null });<
   position: 'bottom-right', // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
   theme: 'dark',            // system, light, dark
   labels: { dismiss: 'Fermer la notification' }, // screen reader names, English by default
+  duration: 3000, // default ms before auto-close, for toasts that don't set their own
   sound: true,
   volume: 0.5,
 });
@@ -237,11 +240,11 @@ toast.dismiss();    // all</code></pre>
             <pre><code>toast.success('ذخیره شد', { className: 'big' });</code></pre>
 
             <h3>فنرها</h3>
-            <p>سه حرکت را دوباره تنظیم کنید؛ هرکدام <code>{ stiffness, damping }</code> می‌گیرد. اگر یکی را ندهید، مقدار پیش‌فرضش می‌ماند (ورود ۳۲۰/۲۶، تاخوردن ۳۴۰/۲۷، چیدمان ۴۰۰/۳۶). روی توست‌هایی که بعد از آن نشان داده می‌شوند اعمال می‌شود.</p>
+            <p>سه حرکت را دوباره تنظیم کنید؛ هرکدام <code>{ stiffness, damping }</code> می‌گیرد. اگر یکی را ندهید، مقدار پیش‌فرضش می‌ماند (ورود ۳۲۰/۲۶، تاخوردن ۳۴۰/۲۷، چیدمان ۴۰۰/۳۶). روی توست‌هایی که بعد از آن نشان داده می‌شوند اعمال می‌شود. <code>toast.configure({ springs: 'default' })</code> آن را برمی‌گرداند.</p>
             <pre><code>toast.configure({ springs: { enter: { stiffness: 220, damping: 14 } } });</code></pre>
 
             <h3>آیکون‌ها</h3>
-            <p>آیکون یک وضعیت را با مسیرهای SVG خودتان، روی شبکهٔ ۲۴×۲۴ و به‌صورت stroke، عوض کنید. مسیر اول همیشه حلقهٔ بیرونی است. برای <code>warning</code> و <code>info</code> سه مسیر نگه دارید، چون انیمیشنشان مسیر دوم و سوم را هدف می‌گیرد.</p>
+            <p>آیکون یک وضعیت را با مسیرهای SVG خودتان، روی شبکهٔ ۲۴×۲۴ و به‌صورت stroke، عوض کنید. مسیر اول همیشه حلقهٔ بیرونی است. برای <code>warning</code> و <code>info</code> سه مسیر نگه دارید، چون انیمیشنشان مسیر دوم و سوم را هدف می‌گیرد. روی توست‌هایی که بعد از آن نشان داده می‌شوند اعمال می‌شود؛ <code>toast.configure({ icons: 'default' })</code> آن را برمی‌گرداند. برای یک توست به‌جای همهٔ توست‌های آن نوع، گزینهٔ <code>icon</code> را به خود فراخوانی بدهید (یا <code>false</code> برای بدون آیکون).</p>
             <pre><code>toast.configure({ icons: { success: ['M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18', 'M8 12l3 3 5-6'] } });</code></pre>
           </section>
 

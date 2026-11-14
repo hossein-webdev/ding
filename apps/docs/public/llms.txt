@@ -29,9 +29,9 @@ All calls return the toast id. Import `toast` from the package.
 - `toast.promise(promise, { loading, success, error })` morphs one toast from loading to the result
 - `toast.update(id, patch)` changes a live toast in place. A patch may set title, description, type, duration, progress, action, secondary, meta, image. `null` removes action, secondary, meta, image and progress.
 - `toast.dismiss(id?)` closes one toast, or all
-- `toast.configure({ position, theme, dir, labels, sound, volume })`. `labels: { region, dismiss }` sets the accessible names of the region and the close button (English by default). `dir: 'ltr' | 'rtl'` sets the direction of the toast viewport; leave it out to follow the page
+- `toast.configure({ position, theme, dir, labels, sound, volume, duration, springs, icons })`. `labels: { region, dismiss }` sets the accessible names of the region and the close button (English by default). `dir: 'ltr' | 'rtl'` sets the direction of the toast viewport; leave it out to follow the page. `duration` sets the default ms before auto-close for toasts that don't set their own (default 5000). `springs`/`icons` are 'default' to restore the built-ins, see Styling
 
-Options: `description`, `action { label, onClick }`, `secondary { label, onClick }`, `image` (avatar URL), `meta` (small trailing text), `progress` (0 to 1), `duration` (ms, 0 stays until dismissed), `id`.
+Options: `description`, `action { label, onClick }`, `secondary { label, onClick }`, `image` (avatar URL), `meta` (small trailing text), `progress` (0 to 1), `duration` (ms, 0 stays until dismissed), `dismissible` (false blocks drag/swipe-dismiss; its own buttons and Esc still work), `icon` (override the status icon for this toast, or false for none), `id`.
 
 `onClick` may return a patch. The toast then morphs in place instead of closing. A returned patch removes the buttons unless it names them again.
 
@@ -41,7 +41,7 @@ Positions: top-left, top-center, top-right, top-start, top-end, bottom-left, bot
 
 Colors and corner radius are CSS variables. Set them in your own stylesheet on `.tst-viewport`: `--tst-radius` (default 22px), `--tst-bg`, `--tst-fg`, `--tst-success`, `--tst-error`, `--tst-warning`, `--tst-info`. The color defaults use `light-dark()`, so a single value applies to both themes. Example: `.tst-viewport { --tst-radius: 8px; --tst-bg: #1e3a8a; --tst-fg: #fff; }`
 
-Advanced: `--tst-size` (44px), `--tst-pad` (16px), `--tst-shadow`, `--tst-enter-scale`; font is set on `.tst-viewport`. Filled toast: override `--fill`, `--on`, `--c` on `.tst-viewport .tst[data-type=error]`. Theme: follows the system; pass `theme` to Toaster or `toast.configure({ theme })` when the site has its own switch. Colors may use `light-dark(a, b)`. Per-toast style: option `className`, styled as `.tst.your-class`. `toast.configure({ springs: { enter: { stiffness, damping } } })` retunes motion (enter, morph, stack). `toast.configure({ icons: { success: ['<svg path d>', ...] } })` replaces status icons (24x24 stroke paths, first is the ring; keep 3 paths for warning and info).
+Advanced: `--tst-size` (44px), `--tst-pad` (16px), `--tst-shadow`, `--tst-enter-scale`; font is set on `.tst-viewport`. Filled toast: override `--fill`, `--on`, `--c` on `.tst-viewport .tst[data-type=error]`. Theme: follows the system; pass `theme` to Toaster or `toast.configure({ theme })` when the site has its own switch. Colors may use `light-dark(a, b)`. Per-toast style: option `className`, styled as `.tst.your-class`. `toast.configure({ springs: { enter: { stiffness, damping } } })` retunes motion (enter, morph, stack); `'default'` undoes it. `toast.configure({ icons: { success: ['<svg path d>', ...] } })` replaces status icons (24x24 stroke paths, first is the ring; keep 3 paths for warning and info); `'default'` undoes it. For one toast instead of every toast of a type, pass `icon` (or `false` for none) to the call itself.
 
 ## Sound
 

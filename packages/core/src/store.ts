@@ -2,8 +2,8 @@ import type {
   Dir, Position, PromiseMessages, SpringSettings, Theme, ToastIcons, ToastItem, ToastLabels, ToasterState, ToastOptions, ToastPatch, ToastType,
 } from './types';
 import { chime } from './sound.ts';
-import { setIcons } from './icons.ts';
-import { setSprings } from './styles.ts';
+import { setIcons, resetIcons } from './icons.ts';
+import { setSprings, resetSprings } from './styles.ts';
 
 export const TIMING = {
   /** shape arrives, then the pill opens */
@@ -14,10 +14,6 @@ export const TIMING = {
   exit: 220,
   duration: 5000,
 };
-
-/** Errors, toasts with an action, and loading hold until dismissed (WCAG 2.2.2). */
-const autoDuration = (type: ToastType, hasAction: boolean) =>
-  type === 'loading' || type === 'error' || hasAction ? 0 : TIMING.duration;
 
 interface Entry {
   phaseTimer?: ReturnType<typeof setTimeout>;
@@ -44,6 +40,11 @@ export function createToaster() {
   // sound: off by default. true = built-in synth, a function = your own (e.g. a sound library)
   let sound: boolean | ((type: ToastType) => void) = false;
   let volume = 0.5;
+  // default duration for a toast that doesn't set its own, overridable via configure({ duration })
+  let defaultDuration = TIMING.duration;
+  /** Errors, toasts with an action, and loading hold until dismissed (WCAG 2.2.2). */
+  const autoDuration = (type: ToastType, hasAction: boolean) =>
+    type === 'loading' || type === 'error' || hasAction ? 0 : defaultDuration;
   // One toast at a time: a new call morphs the live toast instead of stacking. Each caller keeps its own id,
   // but only the newest caller may update the shared toast, so a stale loading->success can't hijack it.
   const live = new Map<string, string>(); // caller id -> toast id
@@ -94,7 +95,7 @@ export function createToaster() {
       patch(cur.id, { count: 1 });
       apply(cur.id, {
         type, title, description: opts.description ?? '', action: opts.action ?? null, secondary: opts.secondary ?? null, meta: opts.meta ?? null, image: opts.image ?? null, className: opts.className ?? null,
-        progress: opts.progress ?? null, ...(opts.duration !== undefined && { duration: opts.duration }),
+        icon: opts.icon ?? null, progress: opts.progress ?? null, ...(opts.duration !== undefined && { duration: opts.duration }),
       });
       return id;
     }
@@ -104,7 +105,7 @@ export function createToaster() {
     entries.set(id, e);
     setToasts([
       ...state.toasts,
-      { id, type, title, description: opts.description, phase: 'enter', duration: e.remaining, action: opts.action, secondary: opts.secondary, meta: opts.meta, image: opts.image, progress: opts.progress, count: 1, className: opts.className },
+      { id, type, title, description: opts.description, phase: 'enter', duration: e.remaining, action: opts.action, secondary: opts.secondary, meta: opts.meta, image: opts.image, progress: opts.progress, count: 1, className: opts.className, dismissible: opts.dismissible, icon: opts.icon },
     ]);
     announce(type, title, opts.description);
     e.phaseTimer = setTimeout(() => {
@@ -133,6 +134,7 @@ export function createToaster() {
       ...(p.meta !== undefined && { meta: p.meta ?? undefined }),
       ...(p.image !== undefined && { image: p.image ?? undefined }),
       ...(p.className !== undefined && { className: p.className ?? undefined }),
+      ...(p.icon !== undefined && { icon: p.icon ?? undefined }),
       ...(p.type !== undefined && { type: p.type }),
     });
     if (p.duration !== undefined) e.remaining = p.duration;
@@ -239,15 +241,20 @@ export function createToaster() {
       labels?: Partial<ToastLabels>;
       sound?: boolean | ((type: ToastType) => void);
       volume?: number;
-      /** Retune the springs. Applies to toasts shown afterwards. */
-      springs?: SpringSettings;
-      /** Replace status icons. Applies to toasts shown afterwards. */
-      icons?: ToastIcons;
+      /** Default ms before auto-close for a toast that doesn't set its own. Default 5000. */
+      duration?: number;
+      /** Retune the springs, or 'default' to restore the built-in ones. Applies to toasts shown afterwards. */
+      springs?: SpringSettings | 'default';
+      /** Replace status icons, or 'default' to restore the built-in ones. Applies to toasts shown afterwards. */
+      icons?: ToastIcons | 'default';
     }) {
-      if (c.springs) setSprings(c.springs);
-      if (c.icons) setIcons(c.icons);
+      if (c.springs === 'default') resetSprings();
+      else if (c.springs) setSprings(c.springs);
+      if (c.icons === 'default') resetIcons();
+      else if (c.icons) setIcons(c.icons);
       if (c.sound !== undefined) sound = c.sound;
       if (c.volume !== undefined) volume = c.volume;
+      if (c.duration !== undefined) defaultDuration = c.duration;
       state = {
         ...state,
         ...(c.position && { position: c.position }),

@@ -92,13 +92,13 @@ export function mountToaster(
       card.dataset.phase = t.phase;
       card.dataset.type = t.type;
       card.style.setProperty('--tst-life', `${t.duration}ms`);
-      // icon: rebuilt only when the type or image changes, so its draw-in replays exactly then
-      const iconKey = t.image ?? t.type;
+      // icon: rebuilt only when the type, image or per-toast icon changes, so its draw-in replays exactly then
+      const iconKey = t.image ?? (t.icon === false ? '\0none' : t.icon ? `\0${t.icon.join('\0')}` : t.type);
       if (n.type !== iconKey) {
         card.querySelector('.tst-icon')?.remove();
         const icon = el('div', 'tst-icon');
         if (t.image) Object.assign(el('img', 'tst-media', icon), { src: t.image, alt: '', width: 28, height: 28 });
-        else el('div', 'tst-badge', icon).append(svg('tst-svg', ICONS[t.type], 22));
+        else if (t.icon !== false) el('div', 'tst-badge', icon).append(svg('tst-svg', t.icon ?? ICONS[t.type], 22));
         card.prepend(icon);
         n.type = iconKey;
       }

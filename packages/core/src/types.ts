@@ -33,12 +33,16 @@ export interface ToastOptions {
   meta?: string;
   /** Avatar or thumbnail URL. Replaces the status icon with a round image. */
   image?: string;
-  /** ms before auto-close. 0 = until dismissed. Default 5000; errors, actions and loading stay until dismissed. */
+  /** ms before auto-close. 0 = until dismissed. Default 5000 (or configure()'s default); errors, actions and loading stay until dismissed. */
   duration?: number;
   /** 0–1. Draws a thin bar inside the pill. */
   progress?: number;
   /** Extra class on the toast element (`.tst`), for styling one toast. Style it as `.tst.your-class`. */
   className?: string;
+  /** false: dragging or swiping cannot dismiss this toast (its own buttons and Esc still work). Default true. */
+  dismissible?: boolean;
+  /** Override the status icon for this toast with your own paths (see configure()'s `icons`), or false to show no icon. */
+  icon?: string[] | false;
 }
 export interface ToastPatch {
   title?: string;
@@ -56,6 +60,8 @@ export interface ToastPatch {
   image?: string | null;
   /** null removes it */
   className?: string | null;
+  /** null returns to the status icon; false shows none */
+  icon?: string[] | false | null;
 }
 export interface ToastItem {
   id: string;
@@ -73,6 +79,8 @@ export interface ToastItem {
   /** identical toasts fired again collapse into one with a counter */
   count: number;
   className?: string;
+  dismissible?: boolean;
+  icon?: string[] | false;
 }
 /** Spring settings for the three motions. Leave a motion out to keep its current spring. */
 export interface SpringSettings {
