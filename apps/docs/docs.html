@@ -227,6 +227,22 @@ toast.dismiss();    // all</code></pre>
               </tbody>
             </table>
             <p>مقدارهای پیش‌فرض از طریق <code>light-dark()</code> پوسته را دنبال می‌کنند. اگر فقط یک مقدار بدهید، برای هر دو پوسته اعمال می‌شود. برای اینکه این دو از هم جدا بمانند، خودتان بنویسید: <code>--tst-bg: light-dark(#fff, #111)</code>.</p>
+
+            <h3>توست‌های پر (filled)</h3>
+            <p>هر توست سه متغیر <code>--fill</code> (سطح)، <code>--on</code> (متن، دکمه‌ها، دکمهٔ بستن، حلقهٔ فوکوس) و <code>--c</code> (رنگ آیکون) دارد؛ مقدارشان را عوض کنید تا کل توست با رنگ وضعیتش پر شود.</p>
+            <pre><code>.tst-viewport .tst[data-type=error] { --fill: #e5484d; --on: #fff; --c: #fff; }</code></pre>
+
+            <h3>یک توست، یک استایل</h3>
+            <p><code>className</code> را به فراخوانی بدهید و آن را به‌صورت <code>.tst.your-class</code> استایل کنید. <code>toast.update(id, { className: null })</code> آن را برمی‌دارد.</p>
+            <pre><code>toast.success('ذخیره شد', { className: 'big' });</code></pre>
+
+            <h3>فنرها</h3>
+            <p>سه حرکت را دوباره تنظیم کنید؛ هرکدام <code>{ stiffness, damping }</code> می‌گیرد. هرکدام را ندهید، مقدار پیش‌فرضش می‌ماند (ورود ۳۲۰/۲۶، تاخوردن ۳۴۰/۲۷، چیدمان ۴۰۰/۳۶). روی توست‌هایی که بعد از آن نشان داده می‌شوند اعمال می‌شود.</p>
+            <pre><code>toast.configure({ springs: { enter: { stiffness: 220, damping: 14 } } });</code></pre>
+
+            <h3>آیکون‌ها</h3>
+            <p>آیکون یک وضعیت را با مسیرهای SVG خودتان روی شبکهٔ ۲۴×۲۴ عوض کنید (به‌صورت stroke). مسیر اول همیشه حلقهٔ بیرونی است. برای <code>warning</code> و <code>info</code> سه مسیر نگه دارید، چون انیمیشنشان مسیر دوم و سوم را هدف می‌گیرد.</p>
+            <pre><code>toast.configure({ icons: { success: ['M12 3a9 9 0 1 0 0 18a9 9 0 1 0 0-18', 'M8 12l3 3 5-6'] } });</code></pre>
           </section>
 
           <section id="sound">

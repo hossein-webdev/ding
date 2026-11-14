@@ -41,6 +41,8 @@ Positions: top-left, top-center, top-right, top-start, top-end, bottom-left, bot
 
 Colors and corner radius are CSS variables. Set them in your own stylesheet on `.tst-viewport`: `--tst-radius` (default 22px), `--tst-bg`, `--tst-fg`, `--tst-success`, `--tst-error`, `--tst-warning`, `--tst-info`. The color defaults use `light-dark()`, so a single value applies to both themes. Example: `.tst-viewport { --tst-radius: 8px; --tst-bg: #1e3a8a; --tst-fg: #fff; }`
 
+Advanced: `--tst-size` (44px), `--tst-pad` (16px), `--tst-shadow`, `--tst-enter-scale`; font is set on `.tst-viewport`. Filled toast: override `--fill`, `--on`, `--c` on `.tst-viewport .tst[data-type=error]`. Theme: follows the system; pass `theme` to Toaster or `toast.configure({ theme })` when the site has its own switch. Colors may use `light-dark(a, b)`. Per-toast style: option `className`, styled as `.tst.your-class`. `toast.configure({ springs: { enter: { stiffness, damping } } })` retunes motion (enter, morph, stack). `toast.configure({ icons: { success: ['<svg path d>', ...] } })` replaces status icons (24x24 stroke paths, first is the ring; keep 3 paths for warning and info).
+
 ## Sound
 
 Off by default. `toast.configure({ sound: true, volume: 0.5 })` plays a soft built-in mallet tone per status, no audio files (success rises, error falls, warning double-taps, info is one note). Volume is 0 to 1. Loading is silent. Browsers keep audio locked until a click or key press, so the first sound must follow one.
