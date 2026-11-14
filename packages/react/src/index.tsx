@@ -1,4 +1,4 @@
-import { useEffect, useRef, useSyncExternalStore, type CSSProperties } from 'react';
+import { useEffect, useMemo, useRef, useSyncExternalStore, type CSSProperties } from 'react';
 import {
   toast, injectStyles, bindToast, onToastKey, ICONS,
   type Dir, type Position, type Theme, type ToastItem, type ToastLabels,
@@ -11,6 +11,8 @@ function Item({ t, i, labels }: { t: ToastItem; i: number; labels: ToastLabels }
   const slot = useRef<HTMLDivElement>(null);
   useEffect(() => (slot.current ? bindToast(slot.current, t.id) : undefined), [t.id]);
   const sticky = t.duration === 0 && t.type !== 'loading' && !t.secondary;
+  // snapshot once per type/image, not on every render: a later configure({ icons }) must not repaint a toast already on screen
+  const iconPaths = useMemo(() => ICONS[t.type], [t.image ?? t.type]);
   return (
     <div ref={slot} className="tst-slot" tabIndex={-1} style={{ '--tst-i': i } as CSSProperties}>
       <div
@@ -28,7 +30,7 @@ function Item({ t, i, labels }: { t: ToastItem; i: number; labels: ToastLabels }
           ) : (
             <div className="tst-badge">
               <svg className="tst-svg" viewBox="0 0 24 24" width={22} height={22} aria-hidden="true">
-                {ICONS[t.type].map((d) => (
+                {iconPaths.map((d) => (
                   <path key={d} d={d} pathLength={1} />
                 ))}
               </svg>

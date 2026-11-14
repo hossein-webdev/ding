@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { cleanup, fireEvent, render } from '@testing-library/svelte';
 import { flushSync } from 'svelte';
+import { ICONS } from '@yusufceng1z/ding';
 import { Toaster, toast } from '../src/lib/index.ts';
 
 beforeEach(() => void vi.useFakeTimers());
@@ -113,5 +114,17 @@ describe('Svelte Toaster', () => {
       toast.loading('Uploading', { progress: 0.4 });
       flushSync();
     }).not.toThrow();
+  });
+
+  it('does not repaint an already-shown toast when configure({ icons }) changes afterwards', () => {
+    const before = [...ICONS.success];
+    const { container } = render(Toaster);
+    toast.success('Saved');
+    flushSync();
+    const original = container.querySelector('.tst-svg path')?.getAttribute('d');
+    toast.configure({ icons: { success: ['M0 0h1', 'M0 0h2'] } });
+    flushSync();
+    expect(container.querySelector('.tst-svg path')?.getAttribute('d')).toBe(original);
+    toast.configure({ icons: { success: before } });
   });
 });

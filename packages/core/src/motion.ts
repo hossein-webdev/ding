@@ -47,3 +47,7 @@ export function run(task: (dt: number) => boolean): void {
     raf = requestAnimationFrame(tick);
   }
 }
+/** Stop a task before it settles on its own, e.g. when the toast is removed mid-motion. */
+export function stop(task: (dt: number) => boolean): void {
+  tasks.delete(task);
+}

@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { act, cleanup, fireEvent, render } from '@testing-library/react';
+import { ICONS } from '@yusufceng1z/ding';
 import { Toaster, toast } from '../src/index.tsx';
 
 beforeEach(() => void vi.useFakeTimers());
@@ -111,5 +112,15 @@ describe('React Toaster', () => {
     const { container } = render(<Toaster />);
     act(() => void toast.success('Saved', { className: 'mine' }));
     expect(container.querySelector('.tst.mine')).not.toBeNull();
+  });
+
+  it('does not repaint an already-shown toast when configure({ icons }) changes afterwards', () => {
+    const before = [...ICONS.success];
+    const { container } = render(<Toaster />);
+    act(() => void toast.success('Saved'));
+    const original = container.querySelector('.tst-svg path')?.getAttribute('d');
+    act(() => void toast.configure({ icons: { success: ['M0 0h1', 'M0 0h2'] } }));
+    expect(container.querySelector('.tst-svg path')?.getAttribute('d')).toBe(original);
+    act(() => void toast.configure({ icons: { success: before } }));
   });
 });

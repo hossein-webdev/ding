@@ -148,4 +148,16 @@ describe('mountToaster', () => {
       toast.loading('Uploading', { progress: 0.4 });
     }).not.toThrow();
   });
+
+  it('stops animating a toast once it unmounts mid-motion (e.g. an early drag-dismiss)', () => {
+    mount();
+    toast.success('Saved'); // starts the entrance spring (slide + fade in) immediately
+    const pill = document.querySelector<HTMLElement>('.tst')!;
+    toast.dismiss(undefined, { immediate: true });
+    vi.advanceTimersByTime(TIMING.exit + 10); // the toast is now actually removed; bind cleanup has run
+    expect(viewport().contains(pill)).toBe(false); // sanity: really detached
+    const translateAfterUnmount = pill.style.translate;
+    vi.advanceTimersByTime(1000); // long past when the entrance spring would otherwise have settled
+    expect(pill.style.translate).toBe(translateAfterUnmount); // no further writes to the detached node
+  });
 });

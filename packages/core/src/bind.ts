@@ -1,5 +1,5 @@
 import { toast, type Toaster } from './store';
-import { Spring, run } from './motion';
+import { Spring, run, stop } from './motion';
 import { getSpringConfigs, getSprings } from './styles';
 
 const reduced = () => typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -229,6 +229,7 @@ function watchMotion(slot: HTMLElement, id: string, t: Toaster): () => void {
     mo.disconnect();
     unsub();
     ghost?.remove();
+    stop(task); // the toast can unmount mid-motion (e.g. a flung drag-dismiss); don't keep animating a detached node
   };
 }
 

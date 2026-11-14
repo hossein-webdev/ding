@@ -2,6 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { mount, type VueWrapper } from '@vue/test-utils';
 import { createSSRApp, nextTick } from 'vue';
 import { renderToString } from 'vue/server-renderer';
+import { ICONS } from '@yusufceng1z/ding';
 import { Toaster, toast } from '../src/index.ts';
 
 let wrapper: VueWrapper | undefined;
@@ -119,5 +120,17 @@ describe('Vue Toaster', () => {
       mountToaster();
       toast.loading('Uploading', { progress: 0.4 });
     }).not.toThrow();
+  });
+
+  it('does not repaint an already-shown toast when configure({ icons }) changes afterwards', async () => {
+    const before = [...ICONS.success];
+    mountToaster();
+    toast.success('Saved');
+    await nextTick();
+    const original = viewport().querySelector('.tst-svg path')?.getAttribute('d');
+    toast.configure({ icons: { success: ['M0 0h1', 'M0 0h2'] } });
+    await nextTick();
+    expect(viewport().querySelector('.tst-svg path')?.getAttribute('d')).toBe(original);
+    toast.configure({ icons: { success: before } });
   });
 });

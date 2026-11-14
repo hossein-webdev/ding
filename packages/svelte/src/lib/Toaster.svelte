@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { toast, injectStyles, bindToast, onToastKey, ICONS, type Dir, type Position, type Theme, type ToastLabels } from '@yusufceng1z/ding';
+  import { toast, injectStyles, bindToast, onToastKey, ICONS, type Dir, type Position, type Theme, type ToastItem, type ToastLabels } from '@yusufceng1z/ding';
 
   let {
     position,
@@ -31,6 +31,19 @@
   function bind(node: HTMLElement, id: string) {
     return { destroy: bindToast(node, id) };
   }
+
+  // Snapshot once per type/image, not on every re-render: a later configure({ icons }) must not repaint a toast already on screen.
+  const iconCache = new Map<string, { key: unknown; paths: string[] }>();
+  function iconFor(t: ToastItem): string[] {
+    const key = t.image ?? t.type;
+    const cached = iconCache.get(t.id);
+    if (!cached || cached.key !== key) iconCache.set(t.id, { key, paths: ICONS[t.type] });
+    return iconCache.get(t.id)!.paths;
+  }
+  $effect(() => {
+    const ids = new Set(state.toasts.map((t) => t.id));
+    for (const id of iconCache.keys()) if (!ids.has(id)) iconCache.delete(id);
+  });
 </script>
 
 <svelte:document onkeydown={onToastKey} />
@@ -67,7 +80,7 @@
           {:else}
             <div class="tst-badge">
               <svg class="tst-svg" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                {#each ICONS[t.type] as d (d)}
+                {#each iconFor(t) as d (d)}
                   <path {d} pathLength="1" />
                 {/each}
               </svg>
